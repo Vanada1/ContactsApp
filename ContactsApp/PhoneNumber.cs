@@ -24,11 +24,12 @@ namespace ContactsApp
 			set
 			{
 				const int MAXDIGITCOUNT = 11;
-				if(value.ToString().Length != MAXDIGITCOUNT)
+				string numberString = value.ToString();
+				if (numberString.Length != MAXDIGITCOUNT)
 				{
 					throw new ArgumentException("Invalid phone number");
 				}
-				else if(value.ToString()[0] != '7')
+				else if(numberString[0] != '7')
 				{
 					throw new ArgumentException("The first digit is not 7");
 				}
