@@ -10,7 +10,8 @@ namespace ContactsApp
 {
 	public static class ProjectManager
 	{
-		private static readonly string _path = @"..\My Documents\ContactsApp.notes";
+		private static readonly string _path =
+			@"..\My Documents\ContactsApp.notes";
 		/// <summary>
 		/// Append new contact into the file
 		/// </summary>
@@ -34,19 +35,22 @@ namespace ContactsApp
 		/// <returns>Returns all contacts from file</returns>
 		public static List<Contact> ReadFile()
 		{
+			List<Contact> contacts = new List<Contact>();
 			if (!File.Exists(_path))
 			{
 				File.Create(_path).Close();
 			}
-			List<Contact> contacts = new List<Contact>();
-			using (StreamReader file = new StreamReader(
-				_path, System.Text.Encoding.Default))
+			else
 			{
-				string line;
-				while ((line = file.ReadLine()) != null)
+				using (StreamReader file = new StreamReader(
+					_path, System.Text.Encoding.Default))
 				{
-					contacts.Add(
-						JsonConvert.DeserializeObject<Contact>(line));
+					string line;
+					while ((line = file.ReadLine()) != null)
+					{
+						contacts.Add(
+							JsonConvert.DeserializeObject<Contact>(line));
+					}
 				}
 			}
 			return contacts;
