@@ -17,7 +17,7 @@ namespace ContactsApp
 		{
 			string firstName = "sergey";
 			string lastName = "artemov";
-			PhoneNumber phoneNumber = new PhoneNumber("78005553535");
+			PhoneNumber phoneNumber = new PhoneNumber(78005553535);
 			DateTime birthday = new DateTime(2000, 12, 12);
 			string email = "superg@mail.ru";
 			string vkId = "ya123";
@@ -35,7 +35,7 @@ namespace ContactsApp
 
 			string firstName1 = "dmity";
 			string lastName1 = "ivan";
-			PhoneNumber phoneNumber1 = new PhoneNumber("78005553535");
+			PhoneNumber phoneNumber1 = new PhoneNumber(78005553535);
 			DateTime birthday1 = new DateTime(2000, 12, 12);
 			string email1 = "superg@mail.ru";
 			string vkId1 = "ya123";
