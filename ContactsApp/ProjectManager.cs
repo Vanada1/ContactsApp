@@ -10,23 +10,18 @@ namespace ContactsApp
 {
 	public static class ProjectManager
 	{
-		private const string PATH = @"..\My Documents\";
-		private const string FILENAME = "ContactsApp.notes";
+		private static readonly string _path = @"..\My Documents\ContactsApp.notes";
 		/// <summary>
 		/// Append new contact into the file
 		/// </summary>
 		/// <param name="contact"> Contact to write to the file </param>
 		public static void AppendNewContact(ref Contact contact)
 		{
-			if(!Directory.Exists(PATH))
+			if(!File.Exists(_path))
 			{
-				Directory.CreateDirectory(PATH);
+				File.Create(_path);
 			}
-			if(!File.Exists(PATH + FILENAME))
-			{
-				File.Create(FILENAME);
-			}
-			using (StreamWriter file = new StreamWriter(PATH + FILENAME,
+			using (StreamWriter file = new StreamWriter(_path,
 				true, System.Text.Encoding.Default))
 			{
 				file.WriteLine(JsonConvert.SerializeObject(contact));
@@ -39,9 +34,13 @@ namespace ContactsApp
 		/// <returns>Returns all contacts from file</returns>
 		public static List<Contact> ReadFile()
 		{
+			if (!File.Exists(_path))
+			{
+				File.Create(_path).Close();
+			}
 			List<Contact> contacts = new List<Contact>();
 			using (StreamReader file = new StreamReader(
-				PATH + FILENAME, System.Text.Encoding.Default))
+				_path, System.Text.Encoding.Default))
 			{
 				string line;
 				while ((line = file.ReadLine()) != null)
@@ -61,16 +60,12 @@ namespace ContactsApp
 		/// </param>
 		public static void OverwriteFile(List<Contact> contacts)
 		{
-			if (!Directory.Exists(PATH))
+			if (!File.Exists(_path))
 			{
-				Directory.CreateDirectory(PATH);
-			}
-			if (!File.Exists(PATH + FILENAME))
-			{
-				File.Create(FILENAME);
+				File.Create(_path);
 			}
 			using (StreamWriter file = new StreamWriter(
-				PATH + FILENAME, false, System.Text.Encoding.Default))
+				_path, false, System.Text.Encoding.Default))
 			{
 				foreach (Contact contact in contacts)
 				{
@@ -88,10 +83,15 @@ namespace ContactsApp
 		/// </param>
 		public static void RemoveContact(Contact deletedContact)
 		{
-			string deletedString = JsonConvert.SerializeObject(deletedContact);
-			using (var reader = new StreamReader(PATH + FILENAME))
+			if (!File.Exists(_path))
 			{
-				using (var writer = new StreamWriter(PATH + FILENAME))
+				throw new ArgumentException("None file");
+			}
+			string deletedString = JsonConvert.SerializeObject(deletedContact);
+			string tempFile = Path.GetTempFileName();
+			using (var reader = new StreamReader(_path))
+			{
+				using (var writer = new StreamWriter(tempFile))
 				{
 					string line;
 					while ((line = reader.ReadLine()) != null)
@@ -104,7 +104,36 @@ namespace ContactsApp
 					}
 				}
 			}
+			File.Delete(_path);
+			File.Move(tempFile, _path);
 
+		}
+
+		/// <summary>
+		/// Searches for the specified contact
+		/// </summary>
+		/// <param name="searchedContact"></param>
+		/// <returns>
+		/// Returns the number of duplicate contacts.
+		/// Returns Zero if <see cref="Contact"> is not found.
+		/// </returns>
+		public static int SearchContact(Contact searchedContact)
+		{
+			int contactsCount = 0;
+			string jsonSearchedContact = JsonConvert.SerializeObject(
+				searchedContact);
+			using (var reader = new StreamReader(_path))
+			{
+				string line;
+				while ((line = reader.ReadLine()) != null)
+				{
+					if (String.Compare(line, jsonSearchedContact) == 0)
+					{
+						contactsCount++;
+					}
+				}
+			}
+			return contactsCount;
 		}
 	}
 }
