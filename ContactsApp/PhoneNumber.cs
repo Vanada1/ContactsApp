@@ -4,33 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Class PhoneNumber contains the telephone number of the person
-/// </summary>
 namespace ContactsApp
 {
 	/// <summary>
-	/// Class containing phone number
+	/// Class <see cref="PhoneNumber"> contains the telephone number of the person
 	/// </summary>
 	public class PhoneNumber
 	{
 		private long _number;
 
 		/// <summary>
-		/// Sets and returns Phone Number values 
+		/// Sets and returns <see cref="Number"> values 
 		/// </summary>
 		public long Number
 		{
 			set
 			{
 				const int MAXDIGITCOUNT = 11;
-				if(value.ToString().Length != MAXDIGITCOUNT)
+				string numberString = value.ToString();
+				if (numberString.Length != MAXDIGITCOUNT)
 				{
 					throw new ArgumentException("Invalid phone number");
 				}
-				else if(value.ToString()[0] != '7')
+				else if(numberString[0] != '7')
 				{
-					throw new ArgumentException("The first digit is not 7");
+					throw new ArgumentException(
+						"The first digit is not 7");
 				}
 				else 
 				{
@@ -41,9 +40,11 @@ namespace ContactsApp
 			get { return this._number; }
 		}
 		/// <summary>
-		/// PhoneNumber constructor
+		/// <see cref="PhoneNumber"/> constructor
 		/// </summary>
-		/// <param name="number"></param>
+		/// <param name="number">
+		/// Gets a phone number
+		/// </param>
 		public PhoneNumber(long number)
 		{
 			this.Number = number;

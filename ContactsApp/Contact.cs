@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace ContactsApp
 {
 	/// <summary>
-	/// The Contact class contains information about the contact: 
-	/// First name, Last name, Phone number, Birthday, Email, vkID
+	/// The <see cref="Contact"> class contains information about the contact: 
+	/// <see cref="Name">, <see cref="Surname">, <see cref="PhoneNumber">,
+	/// <see cref="Birthday">, <see cref="Email">, <see cref="VkId">
 	/// </summary>
 	public class Contact : ICloneable
 	{
@@ -21,7 +22,7 @@ namespace ContactsApp
 		private string _vkId;
 
 		/// <summary>
-		/// Sets and returns FirstName values 
+		/// Sets and returns <see cref="Name"> values 
 		/// </summary>
 		public string Name
 		{
@@ -34,9 +35,8 @@ namespace ContactsApp
 			}
 			get { return _name; }
 		}
-
 		/// <summary>
-		/// Sets and returns LastName values
+		/// Sets and returns <see cref="Surname"> values
 		/// </summary>
 		public string Surname
 		{
@@ -49,9 +49,8 @@ namespace ContactsApp
 			}
 			get { return this._surname; }
 		}
-
 		/// <summary>
-		/// Sets and returns Email values 
+		/// Sets and returns <see cref="Email"> values 
 		/// </summary>
 		public string Email
 		{
@@ -63,14 +62,12 @@ namespace ContactsApp
 			}
 			get { return this._email; }
 		}
-
 		/// <summary>
-		/// Sets and returns Phone Number values 
+		/// Sets and returns <see cref="PhoneNumber"> values 
 		/// </summary>
 		public PhoneNumber PhoneNumber { set; get; }
-
 		/// <summary>
-		/// Sets and returns VKid values 
+		/// Sets and returns <see cref="VkId"> values 
 		/// </summary>
 		public string VkId
 		{
@@ -82,9 +79,8 @@ namespace ContactsApp
 			}
 			get { return this._vkId; }
 		}
-
 		/// <summary>
-		/// Sets and returns Birthday values 
+		/// Sets and returns <see cref="Birthday"> values 
 		/// </summary>
 		public DateTime Birthday
 		{
@@ -107,16 +103,15 @@ namespace ContactsApp
 			}
 			get { return this._birthday; }
 		}
-
 		/// <summary>
-		/// Contact object constructor
+		/// <see cref="Contact"> object constructor
 		/// </summary>
-		/// <param name="surname"></param>
-		/// <param name="name"></param>
-		/// <param name="phoneNumber"></param>
-		/// <param name="birthday"></param>
-		/// <param name="email"></param>
-		/// <param name="vkId"></param>
+		/// <param name="surname"><see cref="Surname"></param>
+		/// <param name="name"><see cref="Name"/></param>
+		/// <param name="phoneNumber"><see cref="PhoneNumber"/></param>
+		/// <param name="birthday"><see cref="Birthday"/></param>
+		/// <param name="email"><see cref="Email"/></param>
+		/// <param name="vkId"><see cref="VkId"/></param>
 		public Contact(string name, string surname,
 			 PhoneNumber phoneNumber, DateTime birthday,
 			 string email, string vkId)
@@ -128,11 +123,10 @@ namespace ContactsApp
 			this.Email = email;
 			this.VkId = vkId;
 		}
-
 		/// <summary>
-		/// Returns a clone of the Contact object
+		/// Creates a <see cref="Contact"/> clone
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Returns a clone of the <see cref="Contact"/> object</returns>
 		public object Clone()
 		{
 			return new Contact(this.Name, this.Surname,
