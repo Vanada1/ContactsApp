@@ -166,7 +166,7 @@
 			this.SurnameTextBox.Name = "SurnameTextBox";
 			this.SurnameTextBox.ReadOnly = true;
 			this.SurnameTextBox.ShortcutsEnabled = false;
-			this.SurnameTextBox.Size = new System.Drawing.Size(229, 20);
+			this.SurnameTextBox.Size = new System.Drawing.Size(233, 20);
 			this.SurnameTextBox.TabIndex = 12;
 			// 
 			// NameTextBox
@@ -175,7 +175,7 @@
 			this.NameTextBox.Location = new System.Drawing.Point(352, 65);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.ReadOnly = true;
-			this.NameTextBox.Size = new System.Drawing.Size(229, 20);
+			this.NameTextBox.Size = new System.Drawing.Size(233, 20);
 			this.NameTextBox.TabIndex = 13;
 			// 
 			// EmailTextBox
@@ -184,7 +184,7 @@
 			this.EmailTextBox.Location = new System.Drawing.Point(352, 143);
 			this.EmailTextBox.Name = "EmailTextBox";
 			this.EmailTextBox.ReadOnly = true;
-			this.EmailTextBox.Size = new System.Drawing.Size(229, 20);
+			this.EmailTextBox.Size = new System.Drawing.Size(233, 20);
 			this.EmailTextBox.TabIndex = 16;
 			// 
 			// VkTextBox
@@ -193,7 +193,7 @@
 			this.VkTextBox.Location = new System.Drawing.Point(352, 169);
 			this.VkTextBox.Name = "VkTextBox";
 			this.VkTextBox.ReadOnly = true;
-			this.VkTextBox.Size = new System.Drawing.Size(229, 20);
+			this.VkTextBox.Size = new System.Drawing.Size(233, 20);
 			this.VkTextBox.TabIndex = 17;
 			// 
 			// BirthdayDateTimePicker
@@ -206,7 +206,7 @@
 			this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
 			this.BirthdayDateTimePicker.Size = new System.Drawing.Size(93, 20);
 			this.BirthdayDateTimePicker.TabIndex = 18;
-			this.BirthdayDateTimePicker.Value = new System.DateTime(2020, 7, 6, 17, 14, 22, 0);
+			this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			// 
 			// ContactsListBox
 			// 
@@ -225,7 +225,7 @@
 			this.PhoneMaskedTextBox.Mask = "7 (999) 000-0000";
 			this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
 			this.PhoneMaskedTextBox.ReadOnly = true;
-			this.PhoneMaskedTextBox.Size = new System.Drawing.Size(229, 20);
+			this.PhoneMaskedTextBox.Size = new System.Drawing.Size(233, 20);
 			this.PhoneMaskedTextBox.TabIndex = 20;
 			// 
 			// menuStrip1

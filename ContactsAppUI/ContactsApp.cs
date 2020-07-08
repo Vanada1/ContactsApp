@@ -22,8 +22,10 @@ namespace ContactsAppUI
 			exitToolStripMenuItem.Click += Exit_Click;
 			addToolStripMenuItem.Click += Add_Click;
 			editContactToolStripMenuItem.Click += Edit_Click;
+			removeToolStripMenuItem.Click += Remove_Click;
 			aboutToolStripMenuItem.Click += About_Click;
-
+			RemoveButton.Click += Remove_Click;
+			this.FormClosing += ContactsApp_FormClosing;
 			ContactsListBox.SelectedIndexChanged += listBox1_SelectedIndexChanged;
 		}
 
@@ -79,6 +81,30 @@ namespace ContactsAppUI
 			}
 		}
 
+		private void Remove_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = ContactsListBox.SelectedIndex;
+			if (selectedIndex != -1)
+			{
+				var selectedContact = _project.Contacts[selectedIndex];
+				_project.Contacts.Remove(selectedContact);
+				ProjectManager.RemoveContact(selectedContact);
+				ContactsListBox.Items.RemoveAt(selectedIndex);
+				SurnameTextBox.Clear();
+				NameTextBox.Clear();
+				BirthdayDateTimePicker.Value = BirthdayDateTimePicker.MinDate;
+				PhoneMaskedTextBox.Clear();
+				EmailTextBox.Clear();
+				VkTextBox.Clear();
+
+			}
+			else
+			{
+				MessageBox.Show("No contact selected", "Error",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
+
 		private void listBox1_SelectedIndexChanged(object sender,
 			EventArgs e)
 		{
@@ -116,6 +142,12 @@ namespace ContactsAppUI
 				return true;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
+		private void ContactsApp_FormClosing(Object sender,
+			FormClosingEventArgs e)
+		{
+			ProjectManager.OverwriteFile(_project.Contacts);
 		}
 	}
 }

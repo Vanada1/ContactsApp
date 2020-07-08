@@ -61,7 +61,7 @@
 			this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
 			this.BirthdayDateTimePicker.Size = new System.Drawing.Size(163, 20);
 			this.BirthdayDateTimePicker.TabIndex = 31;
-			this.BirthdayDateTimePicker.Value = new System.DateTime(2020, 7, 6, 17, 14, 22, 0);
+			this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			// 
 			// VkTextBox
 			// 
