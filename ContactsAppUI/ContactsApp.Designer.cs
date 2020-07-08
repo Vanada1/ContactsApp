@@ -348,7 +348,6 @@
 			this.Name = "ContactsApp";
 			this.Text = "ContactApp";
 			this.Load += new System.EventHandler(this.ContactsApp_Load);
-			this.Click += new System.EventHandler(this.Add_Click);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.editPictureBox)).EndInit();
