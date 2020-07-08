@@ -15,7 +15,7 @@ namespace ContactsApp
 		/// <summary>
 		/// Append new contact into the file
 		/// </summary>
-		/// <param name="contact"></param>
+		/// <param name="contact"> Contact to write to the file </param>
 		public static void AppendNewContact(ref Contact contact)
 		{
 			if(!Directory.Exists(PATH))
@@ -36,7 +36,7 @@ namespace ContactsApp
 		/// <summary>
 		/// Read all contacts from file
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Returns all contacts from file</returns>
 		public static List<Contact> ReadFile()
 		{
 			List<Contact> contacts = new List<Contact>();
@@ -56,7 +56,9 @@ namespace ContactsApp
 		/// <summary>
 		/// Overwrite file
 		/// </summary>
-		/// <param name="contacts"></param>
+		/// <param name="contacts">
+		/// Contacts list to write to the file
+		/// </param>
 		public static void OverwriteFile(List<Contact> contacts)
 		{
 			if (!Directory.Exists(PATH))
@@ -81,9 +83,12 @@ namespace ContactsApp
 		/// <summary>
 		/// Remove selected contact from file
 		/// </summary>
-		/// <param name="deletedString"></param>
-		public static void RemoveContact(ref string deletedString)
+		/// <param name="deletedContact">
+		/// Gets a delete contact
+		/// </param>
+		public static void RemoveContact(Contact deletedContact)
 		{
+			string deletedString = JsonConvert.SerializeObject(deletedContact);
 			using (var reader = new StreamReader(PATH + FILENAME))
 			{
 				using (var writer = new StreamWriter(PATH + FILENAME))
