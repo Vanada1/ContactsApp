@@ -18,15 +18,6 @@ namespace ContactsAppUI
 		public ContactsApp()
 		{
 			InitializeComponent();
-
-			exitToolStripMenuItem.Click += Exit_Click;
-			addToolStripMenuItem.Click += Add_Click;
-			editContactToolStripMenuItem.Click += Edit_Click;
-			removeToolStripMenuItem.Click += Remove_Click;
-			aboutToolStripMenuItem.Click += About_Click;
-			RemoveButton.Click += Remove_Click;
-			this.FormClosing += ContactsApp_FormClosing;
-			ContactsListBox.SelectedIndexChanged += listBox1_SelectedIndexChanged;
 		}
 
 		private void ContactsApp_Load(object sender, EventArgs e)
@@ -57,6 +48,7 @@ namespace ContactsAppUI
 				var surname = updateContact.Surname;
 				ContactsListBox.Items.Insert(selectedIndex,
 					surname + ' ' + name);
+				ChangeTextBoxes(updateContact);
 			}
 			else
 			{
@@ -86,17 +78,16 @@ namespace ContactsAppUI
 			var selectedIndex = ContactsListBox.SelectedIndex;
 			if (selectedIndex != -1)
 			{
-				var selectedContact = _project.Contacts[selectedIndex];
-				_project.Contacts.Remove(selectedContact);
-				ProjectManager.RemoveContact(selectedContact);
-				ContactsListBox.Items.RemoveAt(selectedIndex);
-				SurnameTextBox.Clear();
-				NameTextBox.Clear();
-				BirthdayDateTimePicker.Value = BirthdayDateTimePicker.MinDate;
-				PhoneMaskedTextBox.Clear();
-				EmailTextBox.Clear();
-				VkTextBox.Clear();
-
+				var choose = MessageBox.Show("Are you sure you want to delete",
+					"To delete", MessageBoxButtons.YesNo);
+				if (choose == DialogResult.Yes)
+				{
+					var selectedContact = _project.Contacts[selectedIndex];
+					_project.Contacts.Remove(selectedContact);
+					ProjectManager.RemoveContact(selectedContact);
+					ContactsListBox.Items.RemoveAt(selectedIndex);
+					ClearTextBoxes();
+				}
 			}
 			else
 			{
@@ -111,13 +102,7 @@ namespace ContactsAppUI
 			var choosenIndex = ContactsListBox.SelectedIndex;
 			if (choosenIndex != -1)
 			{
-				var contact = _project.Contacts[choosenIndex];
-				SurnameTextBox.Text = contact.Surname;
-				NameTextBox.Text = contact.Name;
-				BirthdayDateTimePicker.Value = contact.Birthday;
-				PhoneMaskedTextBox.Text = contact.PhoneNumber.Number.ToString();
-				EmailTextBox.Text = contact.Email;
-				VkTextBox.Text = contact.VkId;
+				ChangeTextBoxes(_project.Contacts[choosenIndex]);
 			}
 
 		}
@@ -148,6 +133,35 @@ namespace ContactsAppUI
 			FormClosingEventArgs e)
 		{
 			ProjectManager.OverwriteFile(_project.Contacts);
+		}
+
+		/// <summary>
+		/// Clears all Text boxes
+		/// </summary>
+		private void ClearTextBoxes()
+		{
+			SurnameTextBox.Clear();
+			NameTextBox.Clear();
+			BirthdayDateTimePicker.Value = BirthdayDateTimePicker.MinDate;
+			PhoneMaskedTextBox.Clear();
+			EmailTextBox.Clear();
+			VkTextBox.Clear();
+		}
+
+		/// <summary>
+		/// Changes Text Boxes
+		/// </summary>
+		/// <param name="contact">
+		/// Contact to add to Text Boxes
+		/// </param>
+		private void ChangeTextBoxes(Contact contact)
+		{
+			SurnameTextBox.Text = contact.Surname;
+			NameTextBox.Text = contact.Name;
+			BirthdayDateTimePicker.Value = contact.Birthday;
+			PhoneMaskedTextBox.Text = contact.PhoneNumber.Number.ToString();
+			EmailTextBox.Text = contact.Email;
+			VkTextBox.Text = contact.VkId;
 		}
 	}
 }

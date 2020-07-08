@@ -17,8 +17,6 @@ namespace ContactsAppUI
 		public AddEditContact()
 		{
 			InitializeComponent();
-			OKButton.Click += OK_Click;
-			CancelButton.Click += Cancel_Click;
 		}
 
 		private void AddEditContact_Load(object sender, EventArgs e)

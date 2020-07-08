@@ -103,6 +103,7 @@
 			this.RemoveButton.TabIndex = 5;
 			this.RemoveButton.Text = "Remove";
 			this.RemoveButton.UseVisualStyleBackColor = true;
+			this.RemoveButton.Click += new System.EventHandler(this.Remove_Click);
 			// 
 			// Surname
 			// 
@@ -254,6 +255,7 @@
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.exitToolStripMenuItem.Text = "Exit (ALT + F4)";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.Exit_Click);
 			// 
 			// editToolStripMenuItem
 			// 
@@ -270,18 +272,21 @@
 			this.addToolStripMenuItem.Name = "addToolStripMenuItem";
 			this.addToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.addToolStripMenuItem.Text = "Add";
+			this.addToolStripMenuItem.Click += new System.EventHandler(this.Add_Click);
 			// 
 			// editContactToolStripMenuItem
 			// 
 			this.editContactToolStripMenuItem.Name = "editContactToolStripMenuItem";
 			this.editContactToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.editContactToolStripMenuItem.Text = "Edit Contact";
+			this.editContactToolStripMenuItem.Click += new System.EventHandler(this.Edit_Click);
 			// 
 			// removeToolStripMenuItem
 			// 
 			this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
 			this.removeToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.removeToolStripMenuItem.Text = "Remove";
+			this.removeToolStripMenuItem.Click += new System.EventHandler(this.Remove_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -296,6 +301,7 @@
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
 			this.aboutToolStripMenuItem.Text = "About (F1)";
+			this.aboutToolStripMenuItem.Click+= new System.EventHandler(this.About_Click);
 			// 
 			// ContactsApp
 			// 
@@ -331,6 +337,7 @@
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
+			this.FormClosing += ContactsApp_FormClosing;
 
 		}
 
