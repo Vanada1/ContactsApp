@@ -30,9 +30,6 @@
 		{
 			this.Search = new System.Windows.Forms.TextBox();
 			this.Find = new System.Windows.Forms.Label();
-			this.AddButton = new System.Windows.Forms.Button();
-			this.EditButton = new System.Windows.Forms.Button();
-			this.RemoveButton = new System.Windows.Forms.Button();
 			this.Surname = new System.Windows.Forms.Label();
 			this.NamePerson = new System.Windows.Forms.Label();
 			this.Birthday = new System.Windows.Forms.Label();
@@ -55,7 +52,13 @@
 			this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editPictureBox = new System.Windows.Forms.PictureBox();
+			this.removePictureBox = new System.Windows.Forms.PictureBox();
+			this.addPictureBox = new System.Windows.Forms.PictureBox();
 			this.menuStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.editPictureBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.removePictureBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.addPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Search
@@ -74,36 +77,6 @@
 			this.Find.Size = new System.Drawing.Size(27, 13);
 			this.Find.TabIndex = 2;
 			this.Find.Text = "Find";
-			// 
-			// AddButton
-			// 
-			this.AddButton.Location = new System.Drawing.Point(20, 397);
-			this.AddButton.Name = "AddButton";
-			this.AddButton.Size = new System.Drawing.Size(36, 33);
-			this.AddButton.TabIndex = 3;
-			this.AddButton.Text = "Add";
-			this.AddButton.UseVisualStyleBackColor = true;
-			this.AddButton.Click += new System.EventHandler(this.Add_Click);
-			// 
-			// EditButton
-			// 
-			this.EditButton.Location = new System.Drawing.Point(62, 397);
-			this.EditButton.Name = "EditButton";
-			this.EditButton.Size = new System.Drawing.Size(36, 33);
-			this.EditButton.TabIndex = 4;
-			this.EditButton.Text = "Edit";
-			this.EditButton.UseVisualStyleBackColor = true;
-			this.EditButton.Click += new System.EventHandler(this.Edit_Click);
-			// 
-			// RemoveButton
-			// 
-			this.RemoveButton.Location = new System.Drawing.Point(104, 397);
-			this.RemoveButton.Name = "RemoveButton";
-			this.RemoveButton.Size = new System.Drawing.Size(36, 33);
-			this.RemoveButton.TabIndex = 5;
-			this.RemoveButton.Text = "Remove";
-			this.RemoveButton.UseVisualStyleBackColor = true;
-			this.RemoveButton.Click += new System.EventHandler(this.Remove_Click);
 			// 
 			// Surname
 			// 
@@ -301,7 +274,49 @@
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
 			this.aboutToolStripMenuItem.Text = "About (F1)";
-			this.aboutToolStripMenuItem.Click+= new System.EventHandler(this.About_Click);
+			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.About_Click);
+			// 
+			// editPictureBox
+			// 
+			this.editPictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources.edit;
+			this.editPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.editPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.editPictureBox.Location = new System.Drawing.Point(114, 390);
+			this.editPictureBox.Name = "editPictureBox";
+			this.editPictureBox.Size = new System.Drawing.Size(36, 36);
+			this.editPictureBox.TabIndex = 24;
+			this.editPictureBox.TabStop = false;
+			this.editPictureBox.Click += new System.EventHandler(this.Edit_Click);
+			this.editPictureBox.MouseLeave += new System.EventHandler(this.EditPictureBox_MouseLeave);
+			this.editPictureBox.MouseHover += new System.EventHandler(this.EditPictureBox_MouseHover);
+			// 
+			// removePictureBox
+			// 
+			this.removePictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources.minus;
+			this.removePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.removePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.removePictureBox.Location = new System.Drawing.Point(198, 390);
+			this.removePictureBox.Name = "removePictureBox";
+			this.removePictureBox.Size = new System.Drawing.Size(36, 36);
+			this.removePictureBox.TabIndex = 23;
+			this.removePictureBox.TabStop = false;
+			this.removePictureBox.Click += new System.EventHandler(this.Remove_Click);
+			this.removePictureBox.MouseLeave += new System.EventHandler(this.RemovePictureBox_MouseLeave);
+			this.removePictureBox.MouseHover += new System.EventHandler(this.RemovePictureBox_MouseHover);
+			// 
+			// addPictureBox
+			// 
+			this.addPictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources.plus;
+			this.addPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.addPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.addPictureBox.Location = new System.Drawing.Point(30, 390);
+			this.addPictureBox.Name = "addPictureBox";
+			this.addPictureBox.Size = new System.Drawing.Size(36, 36);
+			this.addPictureBox.TabIndex = 22;
+			this.addPictureBox.TabStop = false;
+			this.addPictureBox.Click += new System.EventHandler(this.Add_Click);
+			this.addPictureBox.MouseLeave += new System.EventHandler(this.AddPictureBox_MouseLeave);
+			this.addPictureBox.MouseHover += new System.EventHandler(this.AddPictureBox_MouseHover);
 			// 
 			// ContactsApp
 			// 
@@ -309,6 +324,9 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.ClientSize = new System.Drawing.Size(597, 438);
+			this.Controls.Add(this.editPictureBox);
+			this.Controls.Add(this.removePictureBox);
+			this.Controls.Add(this.addPictureBox);
 			this.Controls.Add(this.PhoneMaskedTextBox);
 			this.Controls.Add(this.ContactsListBox);
 			this.Controls.Add(this.BirthdayDateTimePicker);
@@ -322,9 +340,6 @@
 			this.Controls.Add(this.Birthday);
 			this.Controls.Add(this.NamePerson);
 			this.Controls.Add(this.Surname);
-			this.Controls.Add(this.RemoveButton);
-			this.Controls.Add(this.EditButton);
-			this.Controls.Add(this.AddButton);
 			this.Controls.Add(this.Find);
 			this.Controls.Add(this.Search);
 			this.Controls.Add(this.menuStrip1);
@@ -333,11 +348,14 @@
 			this.Name = "ContactsApp";
 			this.Text = "ContactApp";
 			this.Load += new System.EventHandler(this.ContactsApp_Load);
+			this.Click += new System.EventHandler(this.Add_Click);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.editPictureBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.removePictureBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.addPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-			this.FormClosing += ContactsApp_FormClosing;
 
 		}
 
@@ -345,9 +363,6 @@
 
 		private System.Windows.Forms.TextBox Search;
 		private System.Windows.Forms.Label Find;
-		private System.Windows.Forms.Button AddButton;
-		private System.Windows.Forms.Button EditButton;
-		private System.Windows.Forms.Button RemoveButton;
 		private System.Windows.Forms.Label Surname;
 		private System.Windows.Forms.Label NamePerson;
 		private System.Windows.Forms.Label Birthday;
@@ -370,6 +385,9 @@
 		private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+		private System.Windows.Forms.PictureBox editPictureBox;
+		private System.Windows.Forms.PictureBox removePictureBox;
+		private System.Windows.Forms.PictureBox addPictureBox;
 	}
 }
 

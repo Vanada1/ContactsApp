@@ -1,20 +1,14 @@
 ﻿using ContactsApp;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace ContactsAppUI
 {
 	public partial class ContactsApp : Form
 	{
 		private Project _project = new Project();
-
 		public ContactsApp()
 		{
 			InitializeComponent();
@@ -162,6 +156,64 @@ namespace ContactsAppUI
 			PhoneMaskedTextBox.Text = contact.PhoneNumber.Number.ToString();
 			EmailTextBox.Text = contact.Email;
 			VkTextBox.Text = contact.VkId;
+		}
+
+		private void AddPictureBox_MouseHover(object sender, EventArgs e)
+		{
+			int imageWidth = addPictureBox.BackgroundImage.Width - (
+				(addPictureBox.Width * 20) / 100);
+			int imageHeight = addPictureBox.BackgroundImage.Height - (
+				(addPictureBox.Height * 20) / 100);
+			Bitmap newImage = new Bitmap(imageWidth,
+				imageHeight);
+			Graphics g = Graphics.FromImage(newImage);
+			g.DrawImage(addPictureBox.BackgroundImage, new Rectangle(Point.Empty,
+				newImage.Size));
+			addPictureBox.BackgroundImage = newImage;
+			addPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+		}
+
+		private void AddPictureBox_MouseLeave(object sender, EventArgs e)
+		{
+			addPictureBox.BackgroundImage = Properties.Resources.plus;
+		}
+
+		private void EditPictureBox_MouseHover(object sender, EventArgs e)
+		{
+			int imageWidth = editPictureBox.BackgroundImage.Width - (
+				(editPictureBox.Width * 20) / 100);
+			int imageHeight = editPictureBox.BackgroundImage.Height - (
+				(editPictureBox.Height * 20) / 100);
+			Bitmap newImage = new Bitmap(imageWidth,
+				imageHeight);
+			Graphics g = Graphics.FromImage(newImage);
+			g.DrawImage(editPictureBox.BackgroundImage, new Rectangle(Point.Empty,
+				newImage.Size));
+			editPictureBox.BackgroundImage = newImage;
+			editPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+		}
+		private void EditPictureBox_MouseLeave(object sender, EventArgs e)
+		{
+			editPictureBox.BackgroundImage = Properties.Resources.edit;
+		}
+
+		private void RemovePictureBox_MouseHover(object sender, EventArgs e)
+		{
+			int imageWidth = removePictureBox.BackgroundImage.Width - (
+				(removePictureBox.Width * 20) / 100);
+			int imageHeight = removePictureBox.BackgroundImage.Height - (
+				(removePictureBox.Height * 20) / 100);
+			Bitmap newImage = new Bitmap(imageWidth,
+				imageHeight);
+			Graphics g = Graphics.FromImage(newImage);
+			g.DrawImage(removePictureBox.BackgroundImage, new Rectangle(Point.Empty,
+				newImage.Size));
+			removePictureBox.BackgroundImage = newImage;
+			removePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+		}
+		private void RemovePictureBox_MouseLeave(object sender, EventArgs e)
+		{
+			removePictureBox.BackgroundImage = Properties.Resources.minus;
 		}
 	}
 }
