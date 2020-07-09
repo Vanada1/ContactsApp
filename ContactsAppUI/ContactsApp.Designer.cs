@@ -70,9 +70,9 @@
 			this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.Search.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-			this.Search.Location = new System.Drawing.Point(36, 3);
+			this.Search.Location = new System.Drawing.Point(37, 3);
 			this.Search.Name = "Search";
-			this.Search.Size = new System.Drawing.Size(214, 20);
+			this.Search.Size = new System.Drawing.Size(213, 20);
 			this.Search.TabIndex = 1;
 			// 
 			// Find
