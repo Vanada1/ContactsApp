@@ -77,6 +77,19 @@ namespace ContactsApp
 
 			return birthdayContacts;
 		}
+
+		public int FindtIndex(Contact contact)
+		{
+			for (int i = 0; i < Contacts.Count; i++)
+			{
+				if (Contacts[i] == contact)
+				{
+					return i;
+				}
+			}
+
+			return -1;
+		}
 	}
 
 	

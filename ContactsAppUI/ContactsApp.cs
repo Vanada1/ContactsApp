@@ -14,6 +14,8 @@ namespace ContactsAppUI
 		/// </summary>
 		private Project _project;
 
+		private List<Contact> _contacts;
+
 		public ContactsApp()
 		{
 			InitializeComponent();
@@ -25,6 +27,7 @@ namespace ContactsAppUI
 			{
 				_project = ProjectManager.ReadFile(null);
 				_project.Contacts = _project.SortContacts();
+				_contacts = _project.Contacts;
 			}
 			catch(AccessViolationException exception)
 			{
@@ -54,13 +57,16 @@ namespace ContactsAppUI
 			var selectedIndex = ContactsListBox.SelectedIndex;
 			if(selectedIndex != -1)
 			{
-				var selectedContact = _project.Contacts[selectedIndex];
+				var selectedContact = _contacts[selectedIndex];
 				var editForm = new AddEditContact();
 				editForm.Contact = selectedContact;
 				editForm.ShowDialog();
 				var updateContact = editForm.Contact;
-				_project.Contacts.RemoveAt(selectedIndex);
-				_project.Contacts.Insert(selectedIndex, updateContact);
+				var selectIndexForProjectContacts = _project.FindtIndex(
+					_contacts[selectedIndex]);
+				_project.Contacts.RemoveAt(selectIndexForProjectContacts);
+				_project.Contacts.Insert(selectIndexForProjectContacts, 
+					updateContact);
 				_project.Contacts = _project.SortContacts();
 			}
 			else
@@ -68,7 +74,9 @@ namespace ContactsAppUI
 				MessageBox.Show("No contact selected", "Error", 
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-			UpdatesListBox(null);
+
+			SearchContact();
+			UpdatesListBox(_contacts);
 
 		}
 
@@ -83,7 +91,9 @@ namespace ContactsAppUI
 				ProjectManager.AppendNewContact(ref newContact, null);
 				_project.Contacts = _project.SortContacts();
 			}
-			UpdatesListBox(null);
+
+			SearchContact();
+			UpdatesListBox(_contacts);
 		}
 
 		private void Remove_Click(object sender, EventArgs e)
@@ -103,7 +113,7 @@ namespace ContactsAppUI
 					"To delete", MessageBoxButtons.YesNo);
 				if (choice == DialogResult.Yes)
 				{
-					var selectedContact = _project.Contacts[selectedIndex];
+					var selectedContact = _contacts[selectedIndex];
 					_project.Contacts.Remove(selectedContact);
 					ClearTextBoxes();
 				}
@@ -113,7 +123,9 @@ namespace ContactsAppUI
 				MessageBox.Show("No contact selected", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-			UpdatesListBox(null);
+
+			SearchContact();
+			UpdatesListBox(_contacts);
 		}
 
 		private void listBox1_SelectedIndexChanged(object sender,
@@ -122,7 +134,7 @@ namespace ContactsAppUI
 			var choosenIndex = ContactsListBox.SelectedIndex;
 			if (choosenIndex != -1)
 			{
-				ChangeTextBoxes(_project.Contacts[choosenIndex]);
+				ChangeTextBoxes(_contacts[choosenIndex]);
 			}
 		}
 
@@ -265,15 +277,23 @@ namespace ContactsAppUI
 
 		private void Search_TextChanged(object sender, EventArgs e)
 		{
+			SearchContact();
+		}
+
+		/// <summary>
+		/// Looking for all contacts by first and last name
+		/// </summary>
+		private void SearchContact()
+		{
 			if (Search.Text.Length == 0)
 			{
-				_project = ProjectManager.ReadFile(null);
+				_contacts = _project.Contacts;
 			}
 			else
 			{
-				_project.Contacts = _project.SortContacts(Search.Text);
+				_contacts = _project.SortContacts(Search.Text);
 			}
-			UpdatesListBox(_project.Contacts);
+			UpdatesListBox(_contacts);
 		}
 	}
 }
