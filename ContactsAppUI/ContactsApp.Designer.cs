@@ -404,6 +404,7 @@
 			this.MinimumSize = new System.Drawing.Size(613, 477);
 			this.Name = "ContactsApp";
 			this.Text = "ContactApp";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContactsApp_FormClosing);
 			this.Load += new System.EventHandler(this.ContactsApp_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
