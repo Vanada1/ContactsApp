@@ -130,44 +130,6 @@ namespace ContactsApp
 			}
 			
 		}
-		/// <summary>
-		/// Remove element from file
-		/// </summary>
-		/// <param name="deletedContact"></param>
-		/// <param name="path">Path to the file.
-		/// If <paramref name="path"/> is Null then take defult value
-		/// </param>
-		public static void RemoveContact(Contact deletedContact, string path)
-		{
-			if (path == null)
-			{
-				path = _path;
-			}
-			if (!File.Exists(_path))
-			{
-				throw new ArgumentException("None file");
-			}
-			string deletedString = JsonConvert.SerializeObject(deletedContact);
-			string tempFile = Path.GetTempFileName();
-			using (var reader = new StreamReader(_path))
-			{
-				using (var writer = new StreamWriter(tempFile))
-				{
-					string line;
-					while ((line = reader.ReadLine()) != null)
-					{
-						if (String.Compare(line, deletedString) == 0)
-						{
-							continue;
-						}
-						writer.WriteLine(line);
-					}
-				}
-			}
-			File.Delete(_path);
-			File.Move(tempFile, _path);
-
-		}
 
 		/// <summary>
 		/// Creates file along path
