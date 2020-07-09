@@ -76,7 +76,7 @@ namespace ContactsApp
 			{
 				StringValidator.AssertStringLength(ref value,
 					MAXLETTERCOUNT, nameof(Surname));
-				this._surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
+				this._surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value); ;
 			}
 		}
 
