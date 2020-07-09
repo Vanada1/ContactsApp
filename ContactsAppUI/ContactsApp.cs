@@ -1,5 +1,6 @@
 ﻿using ContactsApp;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Resources;
@@ -8,7 +9,11 @@ namespace ContactsAppUI
 {
 	public partial class ContactsApp : Form
 	{
+		/// <summary>
+		/// Contains all data of app
+		/// </summary>
 		private Project _project;
+
 		public ContactsApp()
 		{
 			InitializeComponent();
@@ -19,11 +24,7 @@ namespace ContactsAppUI
 			try
 			{
 				_project = ProjectManager.ReadFile(null);
-				foreach (var i in _project.Contacts)
-				{
-					ContactsListBox.Items.Add(i.Surname.ToString() + ' ' +
-						i.Name.ToString());
-				}
+				_project.Contacts = _project.SortContacts();
 			}
 			catch(AccessViolationException exception)
 			{
@@ -31,9 +32,23 @@ namespace ContactsAppUI
 				_project = new Project();
 				ProjectManager.CreatPath(null, null);
 			}
-			UpdatesListBox();
-		}
 
+			BirthdayLabel.Text = "Today birthday have:\n";
+			var birthdayContacts = _project.FindBirthday(DateTime.Now);
+			if (birthdayContacts.Count != 0)
+			{
+				for (int i = 0; i < birthdayContacts.Count - 1; i++)
+				{
+					BirthdayLabel.Text += birthdayContacts[i].Surname + ", ";
+				}
+
+				BirthdayLabel.Text += birthdayContacts[birthdayContacts.Count - 1].Surname;
+			}
+			
+
+			UpdatesListBox(null);
+		}
+		
 		private void Edit_Click(object sender, EventArgs e)
 		{
 			var selectedIndex = ContactsListBox.SelectedIndex;
@@ -46,13 +61,14 @@ namespace ContactsAppUI
 				var updateContact = editForm.Contact;
 				_project.Contacts.RemoveAt(selectedIndex);
 				_project.Contacts.Insert(selectedIndex, updateContact);
+				_project.Contacts = _project.SortContacts();
 			}
 			else
 			{
 				MessageBox.Show("No contact selected", "Error", 
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-			UpdatesListBox();
+			UpdatesListBox(null);
 
 		}
 
@@ -65,11 +81,20 @@ namespace ContactsAppUI
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
 				ProjectManager.AppendNewContact(ref newContact, null);
+				_project.Contacts = _project.SortContacts();
 			}
-			UpdatesListBox();
+			UpdatesListBox(null);
 		}
 
 		private void Remove_Click(object sender, EventArgs e)
+		{
+			RemoveElement();
+		}
+
+		/// <summary>
+		/// Remove the element
+		/// </summary>
+		private void RemoveElement()
 		{
 			var selectedIndex = ContactsListBox.SelectedIndex;
 			if (selectedIndex != -1)
@@ -88,7 +113,7 @@ namespace ContactsAppUI
 				MessageBox.Show("No contact selected", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-			UpdatesListBox();
+			UpdatesListBox(null);
 		}
 
 		private void listBox1_SelectedIndexChanged(object sender,
@@ -120,6 +145,11 @@ namespace ContactsAppUI
 				about.ShowDialog();
 				return true;
 			}
+
+			if (keyData == (Keys.Delete))
+			{
+				RemoveElement();
+			}
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
@@ -145,10 +175,14 @@ namespace ContactsAppUI
 		/// <summary>
 		/// Update Contacts list box
 		/// </summary>
-		private void UpdatesListBox()
+		private void UpdatesListBox(List<Contact> contacts)
 		{
+			if (contacts == null)
+			{
+				contacts = _project.Contacts;
+			}
 			ContactsListBox.DataSource = null;
-			ContactsListBox.DataSource = _project.Contacts;
+			ContactsListBox.DataSource = contacts;
 			ContactsListBox.DisplayMember = "Surname";
 			ContactsListBox.ValueMember = "PhoneNumber";
 		}
@@ -203,6 +237,7 @@ namespace ContactsAppUI
 			editPictureBox.BackgroundImage = newImage;
 			editPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 		}
+
 		private void EditPictureBox_MouseLeave(object sender, EventArgs e)
 		{
 			editPictureBox.BackgroundImage = Properties.Resources.edit;
@@ -222,9 +257,23 @@ namespace ContactsAppUI
 			removePictureBox.BackgroundImage = newImage;
 			removePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 		}
+
 		private void RemovePictureBox_MouseLeave(object sender, EventArgs e)
 		{
 			removePictureBox.BackgroundImage = Properties.Resources.minus;
+		}
+
+		private void Search_TextChanged(object sender, EventArgs e)
+		{
+			if (Search.Text.Length == 0)
+			{
+				_project = ProjectManager.ReadFile(null);
+			}
+			else
+			{
+				_project.Contacts = _project.SortContacts(Search.Text);
+			}
+			UpdatesListBox(_project.Contacts);
 		}
 	}
 }
