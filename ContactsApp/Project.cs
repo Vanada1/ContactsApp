@@ -14,16 +14,7 @@ namespace ContactsApp
 		/// <summary>
 		/// Contains all <see cref="Contacts"/> at the moment
 		/// </summary>
-		public List<Contact> Contacts { set; get; }
-
-		public Project()
-		{
-			Contacts = null;
-		}
-		public Project(ref List<Contact> contacts)
-		{
-			Contacts = contacts;
-		}
+		public List<Contact> Contacts { set; get; } = new List<Contact>();
 	}
 
 	
