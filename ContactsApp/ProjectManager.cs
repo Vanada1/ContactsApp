@@ -16,18 +16,19 @@ namespace ContactsApp
 	public static class ProjectManager
     { //TODO: xml(done)
 	  //TODO: я же вчера говорил, что путь  должен быть не до Моих документов, а до папки AppData с подпапкой для программы(done)
-	  /// <summary>
-	  /// File name
-	  /// </summary>
-		private const string FILENAME = "ContactsApp.notes";
+		/// <summary>
+		/// File name
+		/// </summary>
+		private static readonly string _fileName = "ContactsApp.notes";
+
+		private static readonly string _folder = Environment.GetFolderPath(
+				Environment.SpecialFolder.ApplicationData) +
+			"\\ContactsApp\\";
 
 		/// <summary>
 		/// The path to the file
 		/// </summary>
-		private static readonly string _path =
-			Environment.GetFolderPath(
-				Environment.SpecialFolder.ApplicationData) +
-			"\\Roaming\\ContactsApp\\" + FILENAME;
+		private static readonly string _path = _folder + _fileName;
 
 		/// <summary>
 		/// Append new contact into the file
@@ -42,9 +43,9 @@ namespace ContactsApp
 			{
 				path = _path;
 			}
-			if (!File.Exists(_path))
+			if (!File.Exists(path))
 			{
-				File.Create(FILENAME).Close();
+				File.Create(path).Close();
 			}
 			using (StreamWriter file = new StreamWriter(_path,
 				true, System.Text.Encoding.Default))
@@ -70,12 +71,16 @@ namespace ContactsApp
 			{
 				path = _path;
 			}
-			
+			var project = new Project();
+
+			//if (!Directory.Exists(_folder))
+			//{
+			//	Directory.CreateDirectory(_folder);
+			//}
 			if (!File.Exists(path))
 			{
 				throw new AccessViolationException("File not found");
 			}
-			var project = new Project();
 			try
 			{
 				using (StreamReader file = new StreamReader(
@@ -127,6 +132,69 @@ namespace ContactsApp
 				}
 			}
 			
+		}
+		/// <summary>
+		/// Remove element from file
+		/// </summary>
+		/// <param name="deletedContact"></param>
+		/// <param name="path">Path to the file.
+		/// If <paramref name="path"/> is Null then take defult value
+		/// </param>
+		public static void RemoveContact(Contact deletedContact, string path)
+		{
+			if (path == null)
+			{
+				path = _path;
+			}
+			if (!File.Exists(_path))
+			{
+				throw new ArgumentException("None file");
+			}
+			string deletedString = JsonConvert.SerializeObject(deletedContact);
+			string tempFile = Path.GetTempFileName();
+			using (var reader = new StreamReader(_path))
+			{
+				using (var writer = new StreamWriter(tempFile))
+				{
+					string line;
+					while ((line = reader.ReadLine()) != null)
+					{
+						if (String.Compare(line, deletedString) == 0)
+						{
+							continue;
+						}
+						writer.WriteLine(line);
+					}
+				}
+			}
+			File.Delete(_path);
+			File.Move(tempFile, _path);
+
+		}
+
+		/// <summary>
+		/// Creates file along path
+		/// </summary>
+		/// <param name="path">File location</param>
+		/// <param name="fileName">File name</param>
+		public static void CreatPath(string path, string fileName)
+		{
+			if (path == null)
+			{
+				path = _folder;
+			}
+			if (fileName == null)
+			{
+				fileName = _fileName;
+			}
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+			if (!File.Exists(path + fileName))
+			{
+				File.Create(path + fileName).Close();
+			}
 		}
 	}
 }
