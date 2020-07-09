@@ -58,7 +58,7 @@ namespace ContactsApp
 				StringValidator.AssertStringLength(ref value,
 					MAXLETTERCOUNT, nameof(Name)); //TODO: интересно, что ты увечил первую букву, но не стал уменьшать остальные(Done)
 												   //TODO: здесь и далее, вместо передачи строки "Name", можно передавать nameof(Name). nameof() метод, который получает строку для членов классов, переменных, классов и т.д. (done)
-				CultureInfo.CurrentCulture.TextInfo.ToTitleCase(this._name);
+				this._name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
 			}
 			
 		}
@@ -76,7 +76,7 @@ namespace ContactsApp
 			{
 				StringValidator.AssertStringLength(ref value,
 					MAXLETTERCOUNT, nameof(Surname));
-				CultureInfo.CurrentCulture.TextInfo.ToTitleCase(this._surname);
+				this._surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
 			}
 		}
 
