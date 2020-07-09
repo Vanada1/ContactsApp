@@ -74,9 +74,9 @@ namespace ContactsAppUI
 			var selectedIndex = ContactsListBox.SelectedIndex;
 			if (selectedIndex != -1)
 			{
-				var choose = MessageBox.Show("Are you sure you want to delete",
+				var choice = MessageBox.Show("Are you sure you want to delete",
 					"To delete", MessageBoxButtons.YesNo);
-				if (choose == DialogResult.Yes)
+				if (choice == DialogResult.Yes)
 				{
 					var selectedContact = _project.Contacts[selectedIndex];
 					_project.Contacts.Remove(selectedContact);

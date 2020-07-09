@@ -20,7 +20,9 @@ namespace ContactsApp
 		/// File name
 		/// </summary>
 		private static readonly string _fileName = "ContactsApp.notes";
-
+		/// <summary>
+		/// Folder for file
+		/// </summary>
 		private static readonly string _folder = Environment.GetFolderPath(
 				Environment.SpecialFolder.ApplicationData) +
 			"\\ContactsApp\\";
