@@ -12,8 +12,8 @@ namespace ContactsApp
 	/// <see cref="Birthday">, <see cref="Email">, <see cref="VkId">
 	/// </summary>
 	public class Contact : ICloneable
-	{
-		private const int MAXLETTERCOUNT = 50;
+    { //TODO: xml у каждого члена класса
+        private const int MAXLETTERCOUNT = 50;
 		private const int MAXVKLETTERCOUNT = 15;
 		private string _name;
 		private string _surname;
@@ -29,8 +29,9 @@ namespace ContactsApp
 			set
 			{
 				StringValidator.AssertStringLength(ref value,
-					MAXLETTERCOUNT, "Name");
-				this._name = StringValidator.IncreaseFirstLetter(
+					MAXLETTERCOUNT, "Name"); //TODO: интересно, что ты увечил первую букву, но не стал уменьшать остальные
+                //TODO: здесь и далее, вместо передачи строки "Name", можно передавать nameof(Name). nameof() метод, который получает строку для членов классов, переменных, классов и т.д.
+                this._name = StringValidator.IncreaseFirstLetter(
 					ref value);
 			}
 			get { return _name; }
@@ -90,8 +91,8 @@ namespace ContactsApp
 				{
 					throw new ArgumentException(
 						"This year is less than 1900");
-				}
-				else if (value > DateTime.Today)
+                } //TODO: else не нужны //TODO: вместо Today лучше использовать Now
+                else if (value > DateTime.Today)
 				{
 					throw new ArgumentException(
 						"This date is more than today");
@@ -100,8 +101,8 @@ namespace ContactsApp
 				{
 					this._birthday = value;
 				}
-			}
-			get { return this._birthday; }
+            } //TODO: если в set скобки перенесены на следующие строки, то в get надо тоже //TODO: обычно сначала идет get, потом set
+            get { return this._birthday; }
 		}
 		/// <summary>
 		/// <see cref="Contact"> object constructor
@@ -128,8 +129,8 @@ namespace ContactsApp
 		/// </summary>
 		/// <returns>Returns a clone of the <see cref="Contact"/> object</returns>
 		public object Clone()
-		{
-			return new Contact(this.Name, this.Surname,
+        { //TODO: PhoneNumber ссылочный объект. Один и тот же объект хранится в обоих экземплярах контакта. В итоге, если у тебя  в склонированном контакте поменяется номер телефона, то он поменяется в обоих контактах.
+            return new Contact(this.Name, this.Surname,
 				 this.PhoneNumber,  this.Birthday,  this.Email,
 				 this.VkId);
 		}

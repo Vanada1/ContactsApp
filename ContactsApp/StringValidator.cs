@@ -29,17 +29,17 @@ namespace ContactsApp
 		/// <param name="variableString"></param>
 		/// <returns></returns>
 		public static string IncreaseFirstLetter(ref string variableString)
-		{
-			return (variableString.Substring(0, 1).ToUpper() +
+        { //TODO: возможно, для этой задачи есть готовый стандартный метод
+            return (variableString.Substring(0, 1).ToUpper() +
 					variableString.Substring(1));
 		}
-
-		/// <summary>
-		/// Returns only digits of a number
-		/// </summary>
-		/// <param name="phomeNumber"></param>
-		/// <returns></returns>
-		public static string GetClearPhoneNumber(string phomeNumber)
+        //TODO: грамошибка в названии переменной
+        /// <summary>
+        /// Returns only digits of a number
+        /// </summary>
+        /// <param name="phomeNumber"></param>
+        /// <returns></returns>
+        public static string GetClearPhoneNumber(string phomeNumber)
 		{
 			string clearPhoneNumber = "";
 			foreach(var i in phomeNumber)

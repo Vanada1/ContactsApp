@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace ContactsApp
-{
-	public static class ProjectManager
-	{
-		private const string PATH = @"..\My Documents\";
+{ //TODO: xml
+    public static class ProjectManager
+    { //TODO: xml
+        //TODO: я же вчера говорил, что путь  должен быть не до Моих документов, а до папки AppData с подпапкой для программы
+        private const string PATH = @"..\My Documents\";
 		private const string FILENAME = "ContactsApp.notes";
 		/// <summary>
 		/// Append new contact into the file
 		/// </summary>
 		/// <param name="contact"> Contact to write to the file </param>
 		public static void AppendNewContact(ref Contact contact)
-		{
-			if(!Directory.Exists(PATH))
+        { //TODO: этот метод не нужен.
+            if (!Directory.Exists(PATH))
 			{
 				Directory.CreateDirectory(PATH);
 			}
@@ -38,8 +39,10 @@ namespace ContactsApp
 		/// </summary>
 		/// <returns>Returns all contacts from file</returns>
 		public static List<Contact> ReadFile()
-		{
-			List<Contact> contacts = new List<Contact>();
+        { //TODO: я же вчера говорил, что в метод загрузки надо передавать путь
+            //TODO: метод должен возвращать обьект проекта, а не список контактов
+            //TODO: я вчера говорил, что в классе должна быть проверка на существование файла, а также обработка ситуации, когда файл не может десериализоваться
+            List<Contact> contacts = new List<Contact>();
 			using (StreamReader file = new StreamReader(
 				PATH + FILENAME, System.Text.Encoding.Default))
 			{
@@ -60,8 +63,10 @@ namespace ContactsApp
 		/// Contacts list to write to the file
 		/// </param>
 		public static void OverwriteFile(List<Contact> contacts)
-		{
-			if (!Directory.Exists(PATH))
+        { //TODO: не перезапись, а просто СохранитьПроект()
+            //TODO: в метод надо передавать путь
+            //TODO: в метод надо передавать объект проекта, вместо списка контактов
+            if (!Directory.Exists(PATH))
 			{
 				Directory.CreateDirectory(PATH);
 			}
@@ -87,8 +92,8 @@ namespace ContactsApp
 		/// Gets a delete contact
 		/// </param>
 		public static void RemoveContact(Contact deletedContact)
-		{
-			string deletedString = JsonConvert.SerializeObject(deletedContact);
+        { //TODO: этот метод не нужен
+            string deletedString = JsonConvert.SerializeObject(deletedContact);
 			using (var reader = new StreamReader(PATH + FILENAME))
 			{
 				using (var writer = new StreamWriter(PATH + FILENAME))

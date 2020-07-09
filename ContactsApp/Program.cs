@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace ContactsApp
 {
+    //TODO: не забудь потом удалить этот класс, и сделать этот проект библиотекой классов вместо консольного проекта
 	static class Program
 	{
 		/// <summary>
