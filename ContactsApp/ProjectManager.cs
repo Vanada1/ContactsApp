@@ -72,11 +72,6 @@ namespace ContactsApp
 				path = _path;
 			}
 			var project = new Project();
-
-			//if (!Directory.Exists(_folder))
-			//{
-			//	Directory.CreateDirectory(_folder);
-			//}
 			if (!File.Exists(path))
 			{
 				throw new AccessViolationException("File not found");

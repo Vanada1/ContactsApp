@@ -36,28 +36,13 @@ namespace ContactsAppUI
 		{
 			try
 			{
-				if(Contact != null)
-				{
-					Contact.Surname = SurnameTextBox.Text;
-					Contact.Name = NameTextBox.Text;
-					Contact.PhoneNumber.Number = Convert.ToInt64(
-						StringValidator.GetClearPhoneNumber(
-							PhoneMaskedTextBox.Text));
-					Contact.Birthday = BirthdayDateTimePicker.Value;
-					Contact.Email = EmailTextBox.Text;
-					Contact.VkId = VkTextBox.Text;
-				}
-				else
-				{
-					var phoneNumber = new PhoneNumber(
-						Convert.ToInt64(StringValidator.GetClearPhoneNumber(
-							PhoneMaskedTextBox.Text)));
-					Contact = new Contact(SurnameTextBox.Text,
-						NameTextBox.Text, phoneNumber, 
-						BirthdayDateTimePicker.Value, EmailTextBox.Text,
-						VkTextBox.Text);
-				}
-
+				var phoneNumber = new PhoneNumber(
+					Convert.ToInt64(StringValidator.GetClearPhoneNumber(
+						PhoneMaskedTextBox.Text)));
+				Contact = new Contact(NameTextBox.Text,
+					SurnameTextBox.Text, phoneNumber, 
+					BirthdayDateTimePicker.Value, EmailTextBox.Text,
+					VkTextBox.Text);
 				this.Close();
 			}
 			catch(ArgumentException exception)

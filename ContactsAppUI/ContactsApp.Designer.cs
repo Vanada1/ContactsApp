@@ -359,8 +359,8 @@
 			this.tableLayoutPanel1.Controls.Add(this.vkId, 0, 5);
 			this.tableLayoutPanel1.Controls.Add(this.BirthdayDateTimePicker, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.NameTextBox, 1, 1);
-			this.tableLayoutPanel1.Controls.Add(this.SurnameTextBox, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.VkTextBox, 1, 5);
+			this.tableLayoutPanel1.Controls.Add(this.SurnameTextBox, 1, 0);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(259, 39);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 6;

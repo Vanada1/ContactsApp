@@ -31,6 +31,7 @@ namespace ContactsAppUI
 				_project = new Project();
 				ProjectManager.CreatPath(null, null);
 			}
+			UpdatesListBox();
 		}
 
 		private void Edit_Click(object sender, EventArgs e)
@@ -43,22 +44,16 @@ namespace ContactsAppUI
 				editForm.Contact = selectedContact;
 				editForm.ShowDialog();
 				var updateContact = editForm.Contact;
-
-				ContactsListBox.Items.RemoveAt(selectedIndex);
 				_project.Contacts.RemoveAt(selectedIndex);
 				_project.Contacts.Insert(selectedIndex, updateContact);
-				var name = updateContact.Name;
-				var surname = updateContact.Surname;
-				ContactsListBox.Items.Insert(selectedIndex,
-					surname + ' ' + name);
-				ChangeTextBoxes(updateContact);
 			}
 			else
 			{
 				MessageBox.Show("No contact selected", "Error", 
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-			
+			UpdatesListBox();
+
 		}
 
 		private void Add_Click(object sender, EventArgs e)
@@ -70,10 +65,8 @@ namespace ContactsAppUI
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
 				ProjectManager.AppendNewContact(ref newContact, null);
-				var name = newContact.Name;
-				var surname = newContact.Surname;
-				ContactsListBox.Items.Add(surname + ' ' + name);
 			}
+			UpdatesListBox();
 		}
 
 		private void Remove_Click(object sender, EventArgs e)
@@ -87,8 +80,6 @@ namespace ContactsAppUI
 				{
 					var selectedContact = _project.Contacts[selectedIndex];
 					_project.Contacts.Remove(selectedContact);
-					ProjectManager.RemoveContact(selectedContact, null);
-					ContactsListBox.Items.RemoveAt(selectedIndex);
 					ClearTextBoxes();
 				}
 			}
@@ -97,6 +88,7 @@ namespace ContactsAppUI
 				MessageBox.Show("No contact selected", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
+			UpdatesListBox();
 		}
 
 		private void listBox1_SelectedIndexChanged(object sender,
@@ -107,7 +99,6 @@ namespace ContactsAppUI
 			{
 				ChangeTextBoxes(_project.Contacts[choosenIndex]);
 			}
-
 		}
 
 		private void Exit_Click(object sender, EventArgs e)
@@ -149,6 +140,17 @@ namespace ContactsAppUI
 			PhoneMaskedTextBox.Clear();
 			EmailTextBox.Clear();
 			VkTextBox.Clear();
+		}
+
+		/// <summary>
+		/// Update Contacts list box
+		/// </summary>
+		private void UpdatesListBox()
+		{
+			ContactsListBox.DataSource = null;
+			ContactsListBox.DataSource = _project.Contacts;
+			ContactsListBox.DisplayMember = "Surname";
+			ContactsListBox.ValueMember = "PhoneNumber";
 		}
 
 		/// <summary>
