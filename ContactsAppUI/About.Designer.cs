@@ -121,8 +121,10 @@
 			// 
 			// About
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
 			this.ClientSize = new System.Drawing.Size(332, 316);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.linkLabel2);
@@ -133,6 +135,7 @@
 			this.Controls.Add(this.linkLabel1);
 			this.Controls.Add(this.label4);
 			this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "About";
 			this.Text = "About";

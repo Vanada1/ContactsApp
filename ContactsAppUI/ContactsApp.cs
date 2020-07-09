@@ -8,7 +8,7 @@ namespace ContactsAppUI
 {
 	public partial class ContactsApp : Form
 	{
-		private Project _project = new Project();
+		private Project _project;
 		public ContactsApp()
 		{
 			InitializeComponent();
@@ -16,11 +16,20 @@ namespace ContactsAppUI
 
 		private void ContactsApp_Load(object sender, EventArgs e)
 		{
-			_project.Contacts = ProjectManager.ReadFile();
-			foreach (var i in _project.Contacts)
+			try
 			{
-				ContactsListBox.Items.Add(i.Surname.ToString() + ' ' +
-					i.Name.ToString());
+				_project = ProjectManager.ReadFile(null);
+				foreach (var i in _project.Contacts)
+				{
+					ContactsListBox.Items.Add(i.Surname.ToString() + ' ' +
+						i.Name.ToString());
+				}
+			}
+			catch(AccessViolationException exception)
+			{
+				MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+				_project = new Project();
+				ProjectManager.CreatPath(null, null);
 			}
 		}
 
@@ -60,7 +69,7 @@ namespace ContactsAppUI
 			{
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
-				ProjectManager.AppendNewContact(ref newContact);
+				ProjectManager.AppendNewContact(ref newContact, null);
 				var name = newContact.Name;
 				var surname = newContact.Surname;
 				ContactsListBox.Items.Add(surname + ' ' + name);
@@ -78,7 +87,7 @@ namespace ContactsAppUI
 				{
 					var selectedContact = _project.Contacts[selectedIndex];
 					_project.Contacts.Remove(selectedContact);
-					ProjectManager.RemoveContact(selectedContact);
+					ProjectManager.RemoveContact(selectedContact, null);
 					ContactsListBox.Items.RemoveAt(selectedIndex);
 					ClearTextBoxes();
 				}
@@ -126,7 +135,7 @@ namespace ContactsAppUI
 		private void ContactsApp_FormClosing(Object sender,
 			FormClosingEventArgs e)
 		{
-			ProjectManager.OverwriteFile(_project.Contacts);
+			ProjectManager.SaveProject(_project, null);
 		}
 
 		/// <summary>
