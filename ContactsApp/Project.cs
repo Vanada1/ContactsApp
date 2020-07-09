@@ -14,16 +14,7 @@ namespace ContactsApp
 		/// <summary>
 		/// Contains all <see cref="Contacts"/> at the moment
 		/// </summary>
-		public List<Contact> Contacts { set; get; }
-        //TODO: xml
-        public Project()
-        { //TODO: вместо двух конструкторов лучше сделать значение для свойства по умолчанию в виде нового списка, а конструкторы убрать
-            Contacts = null;
-        } //TODO: пустые строки между членами класса
-        public Project(ref List<Contact> contacts)
-		{
-			Contacts = contacts;
-		}
+		public List<Contact> Contacts { set; get; } = new List<Contact>();
 	}
 
 	

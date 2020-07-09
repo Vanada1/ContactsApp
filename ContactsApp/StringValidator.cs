@@ -23,26 +23,16 @@ namespace ContactsApp
 			}
 		}
 
-		/// <summary>
-		/// Returns a string with an uppercase first letter
-		/// </summary>
-		/// <param name="variableString"></param>
-		/// <returns></returns>
-		public static string IncreaseFirstLetter(ref string variableString)
-        { //TODO: возможно, для этой задачи есть готовый стандартный метод
-            return (variableString.Substring(0, 1).ToUpper() +
-					variableString.Substring(1));
-		}
-        //TODO: грамошибка в названии переменной
+        //TODO: грамошибка в названии переменной(done)
         /// <summary>
         /// Returns only digits of a number
         /// </summary>
-        /// <param name="phomeNumber"></param>
+        /// <param name="phoneNumber"></param>
         /// <returns></returns>
-        public static string GetClearPhoneNumber(string phomeNumber)
+        public static string GetClearPhoneNumber(string phoneNumber)
 		{
 			string clearPhoneNumber = "";
-			foreach(var i in phomeNumber)
+			foreach(var i in phoneNumber)
 			{
 				if(i >= '0' && i<='9')
 				{

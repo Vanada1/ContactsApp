@@ -5,29 +5,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace ContactsApp
-{ //TODO: xml
-    public static class ProjectManager
-    { //TODO: xml
-        //TODO: я же вчера говорил, что путь  должен быть не до Моих документов, а до папки AppData с подпапкой для программы
-        private const string PATH = @"..\My Documents\";
+{ //TODO: xml(done)
+	/// <summary>
+	/// Class for working with files
+	/// </summary>
+	public static class ProjectManager
+    { //TODO: xml(done)
+	  //TODO: я же вчера говорил, что путь  должен быть не до Моих документов, а до папки AppData с подпапкой для программы(done)
+	  /// <summary>
+	  /// File name
+	  /// </summary>
 		private const string FILENAME = "ContactsApp.notes";
+
+		/// <summary>
+		/// The path to the file
+		/// </summary>
+		private static readonly string _path =
+			Environment.GetFolderPath(
+				Environment.SpecialFolder.ApplicationData) +
+			"\\Roaming\\ContactsApp\\" + FILENAME;
+
 		/// <summary>
 		/// Append new contact into the file
 		/// </summary>
 		/// <param name="contact"> Contact to write to the file </param>
-		public static void AppendNewContact(ref Contact contact)
-        { //TODO: этот метод не нужен.
-            if (!Directory.Exists(PATH))
+		/// <param name="path">Path to the file.
+		/// If <paramref name="path"/> is Null then take defult value
+		/// </param>
+		public static void AppendNewContact(ref Contact contact, string path)
+		{
+			if (path == null)
 			{
-				Directory.CreateDirectory(PATH);
+				path = _path;
 			}
-			if(!File.Exists(PATH + FILENAME))
+			if (!File.Exists(_path))
 			{
-				File.Create(FILENAME);
+				File.Create(FILENAME).Close();
 			}
-			using (StreamWriter file = new StreamWriter(PATH + FILENAME,
+			using (StreamWriter file = new StreamWriter(_path,
 				true, System.Text.Encoding.Default))
 			{
 				file.WriteLine(JsonConvert.SerializeObject(contact));
@@ -35,81 +54,79 @@ namespace ContactsApp
 		}
 
 		/// <summary>
-		/// Read all contacts from file
+		/// Read file along the path
 		/// </summary>
-		/// <returns>Returns all contacts from file</returns>
-		public static List<Contact> ReadFile()
-        { //TODO: я же вчера говорил, что в метод загрузки надо передавать путь
-            //TODO: метод должен возвращать обьект проекта, а не список контактов
-            //TODO: я вчера говорил, что в классе должна быть проверка на существование файла, а также обработка ситуации, когда файл не может десериализоваться
-            List<Contact> contacts = new List<Contact>();
-			using (StreamReader file = new StreamReader(
-				PATH + FILENAME, System.Text.Encoding.Default))
+		/// <param name="path">Path to the file.
+		/// If <paramref name="path"/> is Null then take defult value
+		/// </param>
+		/// <returns>
+		/// Returns all data from file
+		/// </returns>
+		public static Project ReadFile(string path)
+        { //TODO: я же вчера говорил, что в метод загрузки надо передавать путь(done)
+		  //TODO: метод должен возвращать обьект проекта, а не список контактов(done)
+		  //TODO: я вчера говорил, что в классе должна быть проверка на существование файла, а также обработка ситуации, когда файл не может десериализоваться(done)
+			if(path == null)
 			{
-				string line;
-				while ((line = file.ReadLine()) != null)
+				path = _path;
+			}
+			
+			if (!File.Exists(path))
+			{
+				throw new AccessViolationException("File not found");
+			}
+			var project = new Project();
+			try
+			{
+				using (StreamReader file = new StreamReader(
+					path, System.Text.Encoding.Default))
 				{
-					contacts.Add(
-						JsonConvert.DeserializeObject<Contact>(line));
+
+					string line;
+					while ((line = file.ReadLine()) != null)
+					{
+						project.Contacts.Add(
+							JsonConvert.DeserializeObject<Contact>(line));
+					}
 				}
 			}
-			return contacts;
+			catch (SerializationException e)
+			{
+				throw new AccessViolationException(e.Message);
+			}
+			return project;
 		}
 
 		/// <summary>
-		/// Overwrite file
+		/// Save file
 		/// </summary>
-		/// <param name="contacts">
-		/// Contacts list to write to the file
+		/// <param name="project">
+		/// All data of app
 		/// </param>
-		public static void OverwriteFile(List<Contact> contacts)
-        { //TODO: не перезапись, а просто СохранитьПроект()
-            //TODO: в метод надо передавать путь
-            //TODO: в метод надо передавать объект проекта, вместо списка контактов
-            if (!Directory.Exists(PATH))
+		/// <param name="path">Path to the file.
+		/// If <paramref name="path"/> is Null then take defult value
+		/// </param>
+		public static void SaveProject(Project project, string path)
+        { //TODO: не перезапись, а просто СохранитьПроект(done)
+		  //TODO: в метод надо передавать путь(done)
+		  //TODO: в метод надо передавать объект проекта, вместо списка контактов(done)
+			if (path == null)
 			{
-				Directory.CreateDirectory(PATH);
+				path = _path;
 			}
-			if (!File.Exists(PATH + FILENAME))
+			if (!File.Exists(path))
 			{
-				File.Create(FILENAME);
+				File.Create(path).Close();
 			}
 			using (StreamWriter file = new StreamWriter(
-				PATH + FILENAME, false, System.Text.Encoding.Default))
+				path, false, System.Text.Encoding.Default))
 			{
-				foreach (Contact contact in contacts)
+				foreach (Contact contact in project.Contacts)
 				{
 					file.WriteLine(JsonConvert.SerializeObject(contact));
 				}
 			}
 			
-		}
-
-		/// <summary>
-		/// Remove selected contact from file
-		/// </summary>
-		/// <param name="deletedContact">
-		/// Gets a delete contact
-		/// </param>
-		public static void RemoveContact(Contact deletedContact)
-        { //TODO: этот метод не нужен
-            string deletedString = JsonConvert.SerializeObject(deletedContact);
-			using (var reader = new StreamReader(PATH + FILENAME))
-			{
-				using (var writer = new StreamWriter(PATH + FILENAME))
-				{
-					string line;
-					while ((line = reader.ReadLine()) != null)
-					{
-						if (String.Compare(line, deletedString) == 0)
-						{ 
-							continue; 
-						}
-						writer.WriteLine(line);
-					}
-				}
-			}
-
 		}
 	}
 }
