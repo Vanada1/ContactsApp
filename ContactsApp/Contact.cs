@@ -29,8 +29,8 @@ namespace ContactsApp
 			set
 			{
 				StringValidator.AssertStringLength(ref value,
-					MAXLETTERCOUNT, "Name"); //TODO: интересно, что ты увечил первую букву, но не стал уменьшать остальные
-                //TODO: здесь и далее, вместо передачи строки "Name", можно передавать nameof(Name). nameof() метод, который получает строку для членов классов, переменных, классов и т.д.
+					MAXLETTERCOUNT, nameof(Name)); //TODO: интересно, что ты увечил первую букву, но не стал уменьшать остальные
+                //TODO: здесь и далее, вместо передачи строки "Name", можно передавать nameof(Name). nameof() метод, который получает строку для членов классов, переменных, классов и т.д. (done)
                 this._name = StringValidator.IncreaseFirstLetter(
 					ref value);
 			}
@@ -91,8 +91,8 @@ namespace ContactsApp
 				{
 					throw new ArgumentException(
 						"This year is less than 1900");
-                } //TODO: else не нужны //TODO: вместо Today лучше использовать Now
-                else if (value > DateTime.Today)
+                } //TODO: else не нужны //TODO: вместо Today лучше использовать Now(done)
+                if (value > DateTime.Now)
 				{
 					throw new ArgumentException(
 						"This date is more than today");
