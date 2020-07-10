@@ -14,7 +14,7 @@ namespace ContactsApp
 		/// <summary>
 		/// Throws an error if the line does not fit the range
 		/// </summary>
-		public static void AssertStringLength(ref string checkedString,
+		public static void AssertStringLength(string checkedString,
 			int maxLength, string name)
 		{
 			if (checkedString.Length > maxLength || checkedString.Length == 0)

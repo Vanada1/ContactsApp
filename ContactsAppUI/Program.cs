@@ -56,7 +56,7 @@ namespace ContactsAppUI
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(true);
-			Application.Run(new ContactsApp());
+			Application.Run(new MainForm());
 		}
 	}
 }

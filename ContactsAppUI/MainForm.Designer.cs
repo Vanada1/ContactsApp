@@ -1,6 +1,6 @@
 ﻿namespace ContactsAppUI
 {
-	partial class ContactsApp
+	partial class MainForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.Search = new System.Windows.Forms.TextBox();
 			this.Find = new System.Windows.Forms.Label();
 			this.Surname = new System.Windows.Forms.Label();
@@ -55,19 +56,18 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.BirthdayLabel = new System.Windows.Forms.Label();
-			this.editPictureBox = new System.Windows.Forms.PictureBox();
-			this.removePictureBox = new System.Windows.Forms.PictureBox();
-			this.addPictureBox = new System.Windows.Forms.PictureBox();
+			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.RemoveButton = new System.Windows.Forms.Button();
+			this.EditButton = new System.Windows.Forms.Button();
+			this.AddButton = new System.Windows.Forms.Button();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.menuStrip1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
+			this.tableLayoutPanel4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.editPictureBox)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.removePictureBox)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.addPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Search
@@ -373,6 +373,89 @@
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(326, 104);
 			this.tableLayoutPanel3.TabIndex = 27;
 			// 
+			// BirthdayLabel
+			// 
+			this.BirthdayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.BirthdayLabel.AutoSize = true;
+			this.BirthdayLabel.Location = new System.Drawing.Point(108, 0);
+			this.BirthdayLabel.Name = "BirthdayLabel";
+			this.BirthdayLabel.Size = new System.Drawing.Size(215, 104);
+			this.BirthdayLabel.TabIndex = 1;
+			this.BirthdayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// tableLayoutPanel4
+			// 
+			this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.tableLayoutPanel4.ColumnCount = 3;
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel4.Controls.Add(this.RemoveButton, 2, 0);
+			this.tableLayoutPanel4.Controls.Add(this.AddButton, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.EditButton, 1, 0);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 395);
+			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			this.tableLayoutPanel4.RowCount = 1;
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(105, 31);
+			this.tableLayoutPanel4.TabIndex = 31;
+			// 
+			// RemoveButton
+			// 
+			this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.RemoveButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.bin;
+			this.RemoveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.RemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.RemoveButton.ForeColor = System.Drawing.SystemColors.Control;
+			this.RemoveButton.Location = new System.Drawing.Point(73, 3);
+			this.RemoveButton.Name = "RemoveButton";
+			this.RemoveButton.Size = new System.Drawing.Size(29, 25);
+			this.RemoveButton.TabIndex = 29;
+			this.RemoveButton.UseVisualStyleBackColor = true;
+			this.RemoveButton.Click += new System.EventHandler(this.Remove_Click);
+			this.RemoveButton.MouseLeave += new System.EventHandler(this.RemovePictureBox_MouseLeave);
+			this.RemoveButton.MouseHover += new System.EventHandler(this.RemovePictureBox_MouseHover);
+			// 
+			// EditButton
+			// 
+			this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.EditButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.edit;
+			this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.EditButton.ForeColor = System.Drawing.SystemColors.Control;
+			this.EditButton.Location = new System.Drawing.Point(38, 3);
+			this.EditButton.Name = "EditButton";
+			this.EditButton.Size = new System.Drawing.Size(29, 25);
+			this.EditButton.TabIndex = 30;
+			this.EditButton.UseVisualStyleBackColor = true;
+			this.EditButton.Click += new System.EventHandler(this.Edit_Click);
+			this.EditButton.MouseLeave += new System.EventHandler(this.EditPictureBox_MouseLeave);
+			this.EditButton.MouseHover += new System.EventHandler(this.EditPictureBox_MouseHover);
+			// 
+			// AddButton
+			// 
+			this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.AddButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.plus;
+			this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.AddButton.ForeColor = System.Drawing.SystemColors.Control;
+			this.AddButton.Location = new System.Drawing.Point(3, 3);
+			this.AddButton.Name = "AddButton";
+			this.AddButton.Size = new System.Drawing.Size(29, 25);
+			this.AddButton.TabIndex = 28;
+			this.AddButton.UseVisualStyleBackColor = true;
+			this.AddButton.Click += new System.EventHandler(this.Add_Click);
+			this.AddButton.MouseLeave += new System.EventHandler(this.AddPictureBox_MouseLeave);
+			this.AddButton.MouseHover += new System.EventHandler(this.AddPictureBox_MouseHover);
+			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -385,85 +468,25 @@
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
-			// BirthdayLabel
-			// 
-			this.BirthdayLabel.AutoSize = true;
-			this.BirthdayLabel.Location = new System.Drawing.Point(108, 0);
-			this.BirthdayLabel.Name = "BirthdayLabel";
-			this.BirthdayLabel.Size = new System.Drawing.Size(0, 13);
-			this.BirthdayLabel.TabIndex = 1;
-			this.BirthdayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BirthdayLabel.Anchor =
-				((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
-				                                       System.Windows.Forms.AnchorStyles.Right |
-				                                       System.Windows.Forms.AnchorStyles.Top |
-				                                       System.Windows.Forms.AnchorStyles.Bottom)));
-			// 
-			// editPictureBox
-			// 
-			this.editPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.editPictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources.edit;
-			this.editPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.editPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.editPictureBox.Location = new System.Drawing.Point(114, 390);
-			this.editPictureBox.Name = "editPictureBox";
-			this.editPictureBox.Size = new System.Drawing.Size(36, 36);
-			this.editPictureBox.TabIndex = 24;
-			this.editPictureBox.TabStop = false;
-			this.editPictureBox.Click += new System.EventHandler(this.Edit_Click);
-			this.editPictureBox.MouseLeave += new System.EventHandler(this.EditPictureBox_MouseLeave);
-			this.editPictureBox.MouseHover += new System.EventHandler(this.EditPictureBox_MouseHover);
-			// 
-			// removePictureBox
-			// 
-			this.removePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.removePictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources.minus;
-			this.removePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.removePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.removePictureBox.Location = new System.Drawing.Point(198, 390);
-			this.removePictureBox.Name = "removePictureBox";
-			this.removePictureBox.Size = new System.Drawing.Size(36, 36);
-			this.removePictureBox.TabIndex = 23;
-			this.removePictureBox.TabStop = false;
-			this.removePictureBox.Click += new System.EventHandler(this.Remove_Click);
-			this.removePictureBox.MouseLeave += new System.EventHandler(this.RemovePictureBox_MouseLeave);
-			this.removePictureBox.MouseHover += new System.EventHandler(this.RemovePictureBox_MouseHover);
-			// 
-			// addPictureBox
-			// 
-			this.addPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.addPictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources.plus;
-			this.addPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.addPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.addPictureBox.Location = new System.Drawing.Point(30, 390);
-			this.addPictureBox.Name = "addPictureBox";
-			this.addPictureBox.Size = new System.Drawing.Size(36, 36);
-			this.addPictureBox.TabIndex = 22;
-			this.addPictureBox.TabStop = false;
-			this.addPictureBox.Click += new System.EventHandler(this.Add_Click);
-			this.addPictureBox.MouseLeave += new System.EventHandler(this.AddPictureBox_MouseLeave);
-			this.addPictureBox.MouseHover += new System.EventHandler(this.AddPictureBox_MouseHover);
-			// 
-			// ContactsApp
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(597, 438);
+			this.Controls.Add(this.tableLayoutPanel4);
 			this.Controls.Add(this.tableLayoutPanel3);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.ContactsListBox);
-			this.Controls.Add(this.editPictureBox);
-			this.Controls.Add(this.removePictureBox);
-			this.Controls.Add(this.addPictureBox);
 			this.Controls.Add(this.menuStrip1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
 			this.MainMenuStrip = this.menuStrip1;
 			this.MinimumSize = new System.Drawing.Size(613, 477);
-			this.Name = "ContactsApp";
+			this.Name = "MainForm";
 			this.Text = "ContactApp";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContactsApp_FormClosing);
-			this.Load += new System.EventHandler(this.ContactsApp_Load);
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -472,10 +495,8 @@
 			this.tableLayoutPanel2.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
+			this.tableLayoutPanel4.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.editPictureBox)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.removePictureBox)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.addPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -507,14 +528,15 @@
 		private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.PictureBox editPictureBox;
-		private System.Windows.Forms.PictureBox removePictureBox;
-		private System.Windows.Forms.PictureBox addPictureBox;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label BirthdayLabel;
+		private System.Windows.Forms.Button AddButton;
+		private System.Windows.Forms.Button RemoveButton;
+		private System.Windows.Forms.Button EditButton;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 	}
 }
 

@@ -18,11 +18,11 @@ namespace ContactsApp
 		/// Max count of letters for <see cref="Name"/>, 
 		/// <see cref="Surname"/>, <see cref="Email"/>
 		/// </summary>
-        private const int MAXLETTERCOUNT = 50;
+        public const int MAXLETTERCOUNT = 50;
 		/// <summary>
 		/// Max count of letters for <see cref="VkId"/>
 		/// </summary>
-		private const int MAXVKLETTERCOUNT = 15;
+		public const int MAXVKLETTERCOUNT = 15;
 		/// <summary>
 		/// Contact <see cref="Name"/>
 		/// </summary>
@@ -55,7 +55,7 @@ namespace ContactsApp
 			}
 			set
 			{
-				StringValidator.AssertStringLength(ref value,
+				StringValidator.AssertStringLength(value,
 					MAXLETTERCOUNT, nameof(Name)); 
 				this._name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
 			}
@@ -73,7 +73,7 @@ namespace ContactsApp
 			}
 			set
 			{
-				StringValidator.AssertStringLength(ref value,
+				StringValidator.AssertStringLength(value,
 					MAXLETTERCOUNT, nameof(Surname));
 				this._surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value); ;
 			}
@@ -90,7 +90,7 @@ namespace ContactsApp
 			}
 			set
 			{
-				StringValidator.AssertStringLength(ref value,
+				StringValidator.AssertStringLength(value,
 					MAXLETTERCOUNT, nameof(Email));
 				this._email = value;
 			}
@@ -113,7 +113,7 @@ namespace ContactsApp
 			}
 			set
 			{
-				StringValidator.AssertStringLength(ref value,
+				StringValidator.AssertStringLength(value,
 					MAXVKLETTERCOUNT, nameof(VkId));
 				this._vkId = value;
 			}
@@ -131,17 +131,7 @@ namespace ContactsApp
 			}
 			set
 			{
-				if (value.Year < 1900)
-				{
-					throw new ArgumentException(
-						"This year is less than 1900");
-                }
-
-                if (value > DateTime.Now)
-				{
-					throw new ArgumentException(
-						"This date is more than today");
-				}
+				DateValidator.AssertDate(value);
 				this._birthday = value;
             }
 		}

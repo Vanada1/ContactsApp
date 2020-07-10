@@ -1,6 +1,6 @@
 ﻿namespace ContactsAppUI
 {
-	partial class AddEditContact
+	partial class ContactForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContactForm));
 			this.PhoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
 			this.BirthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.VkTextBox = new System.Windows.Forms.TextBox();
@@ -60,7 +61,11 @@
 			// BirthdayDateTimePicker
 			// 
 			this.BirthdayDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.BirthdayDateTimePicker.CalendarForeColor = System.Drawing.Color.Black;
+			this.BirthdayDateTimePicker.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
+			this.BirthdayDateTimePicker.CalendarTitleForeColor = System.Drawing.SystemColors.ActiveBorder;
 			this.BirthdayDateTimePicker.CustomFormat = "";
+			this.BirthdayDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.BirthdayDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.BirthdayDateTimePicker.Location = new System.Drawing.Point(66, 53);
 			this.BirthdayDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
@@ -68,6 +73,7 @@
 			this.BirthdayDateTimePicker.Size = new System.Drawing.Size(163, 20);
 			this.BirthdayDateTimePicker.TabIndex = 31;
 			this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+			this.BirthdayDateTimePicker.ValueChanged += new System.EventHandler(this.BirthdayDateTimePicker_ValueChanged);
 			// 
 			// VkTextBox
 			// 
@@ -76,6 +82,7 @@
 			this.VkTextBox.Name = "VkTextBox";
 			this.VkTextBox.Size = new System.Drawing.Size(302, 20);
 			this.VkTextBox.TabIndex = 30;
+			this.VkTextBox.TextChanged += new System.EventHandler(this.VkTextBox_TextChanged);
 			// 
 			// EmailTextBox
 			// 
@@ -84,6 +91,7 @@
 			this.EmailTextBox.Name = "EmailTextBox";
 			this.EmailTextBox.Size = new System.Drawing.Size(302, 20);
 			this.EmailTextBox.TabIndex = 29;
+			this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
 			// 
 			// NameTextBox
 			// 
@@ -92,6 +100,7 @@
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(302, 20);
 			this.NameTextBox.TabIndex = 28;
+			this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
 			// 
 			// SurnameTextBox
 			// 
@@ -100,6 +109,7 @@
 			this.SurnameTextBox.Name = "SurnameTextBox";
 			this.SurnameTextBox.Size = new System.Drawing.Size(302, 20);
 			this.SurnameTextBox.TabIndex = 27;
+			this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
 			// 
 			// vkId
 			// 
@@ -233,19 +243,20 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 30);
 			this.tableLayoutPanel2.TabIndex = 36;
 			// 
-			// AddEditContact
+			// ContactForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(393, 212);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(409, 251);
-			this.Name = "AddEditContact";
+			this.Name = "ContactForm";
 			this.Text = "Add/Edit Contact";
-			this.Load += new System.EventHandler(this.AddEditContact_Load);
+			this.Load += new System.EventHandler(this.ContactForm_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
