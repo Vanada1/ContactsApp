@@ -33,30 +33,6 @@ namespace ContactsApp
 		private static readonly string _path = _folder + _fileName;
 
 		/// <summary>
-		/// Append new contact into the file
-		/// </summary>
-		/// <param name="contact"> Contact to write to the file </param>
-		/// <param name="path">Path to the file.
-		/// If <paramref name="path"/> is Null then take defult value
-		/// </param>
-		public static void AppendNewContact(ref Contact contact, string path)
-		{
-			if (path == null)
-			{
-				path = _path;
-			}
-			if (!File.Exists(path))
-			{
-				File.Create(path).Close();
-			}
-			using (StreamWriter file = new StreamWriter(_path,
-				true, System.Text.Encoding.Default))
-			{
-				file.WriteLine(JsonConvert.SerializeObject(contact));
-			}
-		}
-
-		/// <summary>
 		/// Read file along the path
 		/// </summary>
 		/// <param name="path">Path to the file.
@@ -115,7 +91,7 @@ namespace ContactsApp
 			using (StreamWriter file = new StreamWriter(
 				path, false, System.Text.Encoding.Default))
 			{ 
-				//TODO: записывай проект целиком, а не по одному контакт
+				//TODO: записывай проект целиком, а не по одному контакт(Done)
 				file.Write(JsonConvert.SerializeObject(project));
                
 			}
