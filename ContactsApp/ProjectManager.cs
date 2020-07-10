@@ -9,17 +9,17 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
 namespace ContactsApp
-{ //TODO: xml(done)
+{
 	/// <summary>
 	/// Class for working with files
 	/// </summary>
 	public static class ProjectManager
-    { //TODO: xml(done)
-	  //TODO: я же вчера говорил, что путь  должен быть не до Моих документов, а до папки AppData с подпапкой для программы(done)
+    {
 		/// <summary>
 		/// File name
 		/// </summary>
 		private static readonly string _fileName = "ContactsApp.notes";
+
 		/// <summary>
 		/// Folder for file
 		/// </summary>
@@ -66,9 +66,7 @@ namespace ContactsApp
 		/// Returns all data from file
 		/// </returns>
 		public static Project ReadFile(string path)
-        { //TODO: я же вчера говорил, что в метод загрузки надо передавать путь(done)
-		  //TODO: метод должен возвращать обьект проекта, а не список контактов(done)
-		  //TODO: я вчера говорил, что в классе должна быть проверка на существование файла, а также обработка ситуации, когда файл не может десериализоваться(done)
+        {
 			if(path == null)
 			{
 				path = _path;
@@ -87,7 +85,8 @@ namespace ContactsApp
 					string line;
 					while ((line = file.ReadLine()) != null)
 					{
-						project.Contacts.Add(
+                        //TODO: зачем считывать по отдельным строкам? записывай и считывай весь Prokect целиком
+                        project.Contacts.Add(
 							JsonConvert.DeserializeObject<Contact>(line));
 					}
 				}
@@ -109,10 +108,9 @@ namespace ContactsApp
 		/// If <paramref name="path"/> is Null then take defult value
 		/// </param>
 		public static void SaveProject(Project project, string path)
-        { //TODO: не перезапись, а просто СохранитьПроект(done)
-		  //TODO: в метод надо передавать путь(done)
-		  //TODO: в метод надо передавать объект проекта, вместо списка контактов(done)
-			if (path == null)
+        {
+            //TODO: SaveProject, но ReadFile - сделать именование
+            if (path == null)
 			{
 				path = _path;
 			}
@@ -123,7 +121,8 @@ namespace ContactsApp
 			using (StreamWriter file = new StreamWriter(
 				path, false, System.Text.Encoding.Default))
 			{
-				foreach (Contact contact in project.Contacts)
+                //TODO: записывай проект целиком, а не по одному контакту
+                foreach (Contact contact in project.Contacts)
 				{
 					file.WriteLine(JsonConvert.SerializeObject(contact));
 				}
@@ -131,12 +130,13 @@ namespace ContactsApp
 			
 		}
 
-		/// <summary>
-		/// Creates file along path
-		/// </summary>
-		/// <param name="path">File location</param>
-		/// <param name="fileName">File name</param>
-		public static void CreatPath(string path, string fileName)
+        //TODO: грамошибка
+        /// <summary>
+        /// Creates file along path
+        /// </summary>
+        /// <param name="path">File location</param>
+        /// <param name="fileName">File name</param>
+        public static void CreatPath(string path, string fileName)
 		{
 			if (path == null)
 			{
