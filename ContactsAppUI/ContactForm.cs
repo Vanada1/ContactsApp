@@ -75,7 +75,11 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				SurnameTextBox.BackColor = Color.LightSalmon;
+				if (SurnameTextBox.Text.Length != 0)
+				{
+					SurnameTextBox.BackColor = Color.LightSalmon;
+				}
+				
 			}
 		}
 
@@ -89,7 +93,11 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				NameTextBox.BackColor = Color.LightSalmon;
+				if (NameTextBox.Text.Length != 0)
+				{
+					NameTextBox.BackColor = Color.LightSalmon;
+				}
+
 			}
 		}
 
@@ -116,7 +124,10 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				EmailTextBox.BackColor = Color.LightSalmon;
+				if (EmailTextBox.Text.Length != 0)
+				{
+					EmailTextBox.BackColor = Color.LightSalmon;
+				}
 			}
 		}
 
@@ -130,7 +141,11 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				VkTextBox.BackColor = Color.LightSalmon;
+				if (VkTextBox.Text.Length != 0)
+				{
+					VkTextBox.BackColor = Color.LightSalmon;
+				}
+				
 			}
 		}
 	}
