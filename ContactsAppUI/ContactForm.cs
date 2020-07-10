@@ -71,11 +71,11 @@ namespace ContactsAppUI
 			{
 				StringValidator.AssertStringLength(SurnameTextBox.Text,
 					Contact.MAXLETTERCOUNT, null);
-				SurnameTextBox.ForeColor = Color.Black;
+				SurnameTextBox.BackColor = Color.White;
 			}
 			catch (ArgumentException exception)
 			{
-				SurnameTextBox.ForeColor = Color.LightSalmon;
+				SurnameTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 
@@ -85,11 +85,11 @@ namespace ContactsAppUI
 			{
 				StringValidator.AssertStringLength(NameTextBox.Text,
 					Contact.MAXLETTERCOUNT, null);
-				NameTextBox.ForeColor = Color.Black;
+				NameTextBox.BackColor = Color.White;
 			}
 			catch (ArgumentException exception)
 			{
-				NameTextBox.ForeColor = Color.LightSalmon;
+				NameTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 
@@ -98,11 +98,11 @@ namespace ContactsAppUI
 			try
 			{
 				DateValidator.AssertDate(BirthdayDateTimePicker.Value);
-				BirthdayDateTimePicker.CalendarForeColor = Color.Black;
+				BirthdayDateTimePicker.CalendarTitleBackColor = Color.White;
 			}
 			catch (ArgumentException exception)
 			{
-				BirthdayDateTimePicker.CalendarForeColor = Color.LightSalmon;
+				BirthdayDateTimePicker.CalendarTitleBackColor = Color.LightSalmon;
 			}
 		}
 
@@ -112,11 +112,11 @@ namespace ContactsAppUI
 			{
 				StringValidator.AssertStringLength(EmailTextBox.Text,
 					Contact.MAXLETTERCOUNT, null);
-				EmailTextBox.ForeColor = Color.Black;
+				EmailTextBox.BackColor = Color.White;
 			}
 			catch (ArgumentException exception)
 			{
-				EmailTextBox.ForeColor = Color.LightSalmon;
+				EmailTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 
@@ -126,11 +126,11 @@ namespace ContactsAppUI
 			{
 				StringValidator.AssertStringLength(VkTextBox.Text,
 					Contact.MAXVKLETTERCOUNT, null);
-				VkTextBox.ForeColor = Color.Black;
+				VkTextBox.BackColor = Color.White;
 			}
 			catch (ArgumentException exception)
 			{
-				VkTextBox.ForeColor = Color.LightSalmon;
+				VkTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 	}
