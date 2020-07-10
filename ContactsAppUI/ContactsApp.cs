@@ -88,7 +88,7 @@ namespace ContactsAppUI
 			{
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
-				ProjectManager.AppendNewContact(ref newContact, null);
+				ProjectManager.SaveProject(_project, null);
 				_project.Contacts = _project.SortContacts();
 			}
 
@@ -116,6 +116,7 @@ namespace ContactsAppUI
 					var selectedContact = _contacts[selectedIndex];
 					_project.Contacts.Remove(selectedContact);
 					ClearTextBoxes();
+					ProjectManager.SaveProject(_project, null);
 				}
 			}
 			else
