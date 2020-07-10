@@ -13,7 +13,7 @@ namespace ContactsApp
 	/// <see cref="Birthday">, <see cref="Email">, <see cref="VkId">
 	/// </summary>
 	public class Contact : ICloneable
-    { //TODO: xml у каждого члена класса(done)
+    {
 		/// <summary>
 		/// Max count of letters for <see cref="Name"/>, 
 		/// <see cref="Surname"/>, <see cref="Email"/>
@@ -56,8 +56,7 @@ namespace ContactsApp
 			set
 			{
 				StringValidator.AssertStringLength(ref value,
-					MAXLETTERCOUNT, nameof(Name)); //TODO: интересно, что ты увечил первую букву, но не стал уменьшать остальные(Done)
-												   //TODO: здесь и далее, вместо передачи строки "Name", можно передавать nameof(Name). nameof() метод, который получает строку для членов классов, переменных, классов и т.д. (done)
+					MAXLETTERCOUNT, nameof(Name)); 
 				this._name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
 			}
 			
@@ -136,14 +135,15 @@ namespace ContactsApp
 				{
 					throw new ArgumentException(
 						"This year is less than 1900");
-                } //TODO: else не нужны //TODO: вместо Today лучше использовать Now(done)
+                }
+
                 if (value > DateTime.Now)
 				{
 					throw new ArgumentException(
 						"This date is more than today");
 				}
 				this._birthday = value;
-            } //TODO: если в set скобки перенесены на следующие строки, то в get надо тоже //TODO: обычно сначала идет get, потом set(done)
+            }
 		}
 
 		/// <summary>
@@ -173,7 +173,7 @@ namespace ContactsApp
 		/// <returns>Returns a clone of the <see cref="Contact"/>
 		/// object</returns>
 		public object Clone()
-        { //TODO: PhoneNumber ссылочный объект. Один и тот же объект хранится в обоих экземплярах контакта. В итоге, если у тебя  в склонированном контакте поменяется номер телефона, то он поменяется в обоих контактах.(done)
+        {
             return new Contact(this.Name, this.Surname,
 				 new PhoneNumber(this.PhoneNumber.Number),  
 				 this.Birthday,  this.Email, this.VkId);
