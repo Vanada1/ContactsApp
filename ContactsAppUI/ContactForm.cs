@@ -75,7 +75,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				SurnameTextBox.ForeColor = Color.Red;
+				SurnameTextBox.ForeColor = Color.LightSalmon;
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				NameTextBox.ForeColor = Color.Red;
+				NameTextBox.ForeColor = Color.LightSalmon;
 			}
 		}
 
@@ -102,7 +102,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				BirthdayDateTimePicker.CalendarForeColor = Color.Red;
+				BirthdayDateTimePicker.CalendarForeColor = Color.LightSalmon;
 			}
 		}
 
@@ -116,7 +116,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				EmailTextBox.ForeColor = Color.Red;
+				EmailTextBox.ForeColor = Color.LightSalmon;
 			}
 		}
 
@@ -130,7 +130,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				VkTextBox.ForeColor = Color.Red;
+				VkTextBox.ForeColor = Color.LightSalmon;
 			}
 		}
 	}
