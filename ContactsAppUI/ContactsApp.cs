@@ -25,7 +25,7 @@ namespace ContactsAppUI
 		{
 			try
 			{
-				_project = ProjectManager.ReadFile(null);
+				_project = ProjectManager.ReadProject(null);
 				_project.Contacts = _project.SortContacts();
 				_contacts = _project.Contacts;
 			}
@@ -33,7 +33,7 @@ namespace ContactsAppUI
 			{
 				MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
 				_project = new Project();
-				ProjectManager.CreatPath(null, null);
+				ProjectManager.CreatePath(null, null);
 			}
 
 			BirthdayLabel.Text = "Today birthday have:\n";
