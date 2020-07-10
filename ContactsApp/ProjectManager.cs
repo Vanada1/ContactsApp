@@ -65,7 +65,7 @@ namespace ContactsApp
 		/// <returns>
 		/// Returns all data from file
 		/// </returns>
-		public static Project ReadFile(string path)
+		public static Project ReadProject(string path)
         {
 			if(path == null)
 			{
@@ -81,14 +81,8 @@ namespace ContactsApp
 				using (StreamReader file = new StreamReader(
 					path, System.Text.Encoding.Default))
 				{
-
-					string line;
-					while ((line = file.ReadLine()) != null)
-					{
-                        //TODO: зачем считывать по отдельным строкам? записывай и считывай весь Prokect целиком
-                        project.Contacts.Add(
-							JsonConvert.DeserializeObject<Contact>(line));
-					}
+					//TODO: зачем считывать по отдельным строкам? записывай и считывай весь Prokect целиком(done)
+					project = JsonConvert.DeserializeObject<Project>(file.ReadLine());
 				}
 			}
 			catch (SerializationException e)
@@ -109,7 +103,7 @@ namespace ContactsApp
 		/// </param>
 		public static void SaveProject(Project project, string path)
         {
-            //TODO: SaveProject, но ReadFile - сделать именование
+            //TODO: SaveProject, но ReadProject - сделать именование(done)
             if (path == null)
 			{
 				path = _path;
@@ -120,23 +114,21 @@ namespace ContactsApp
 			}
 			using (StreamWriter file = new StreamWriter(
 				path, false, System.Text.Encoding.Default))
-			{
-                //TODO: записывай проект целиком, а не по одному контакту
-                foreach (Contact contact in project.Contacts)
-				{
-					file.WriteLine(JsonConvert.SerializeObject(contact));
-				}
+			{ 
+				//TODO: записывай проект целиком, а не по одному контакт
+				file.Write(JsonConvert.SerializeObject(project));
+               
 			}
 			
 		}
 
-        //TODO: грамошибка
+        //TODO: грамошибка(done)
         /// <summary>
         /// Creates file along path
         /// </summary>
         /// <param name="path">File location</param>
         /// <param name="fileName">File name</param>
-        public static void CreatPath(string path, string fileName)
+        public static void CreatePath(string path, string fileName)
 		{
 			if (path == null)
 			{
