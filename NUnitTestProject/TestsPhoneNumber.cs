@@ -9,33 +9,61 @@ namespace NUnitTestProject
 	public class TestsPhoneNumber
 	{
 		private PhoneNumber _phoneNumber;
+
+		[SetUp]
+		public void InitPhoneNumber()
+		{
+			_phoneNumber = new PhoneNumber();
+		}
 		
 		[Test(Description = "Positive test of the Number getter")]
 		public void TestNumberGet_CorrectValue()
 		{
 			var expected = 78005553535;
-			var phoneNumber = new PhoneNumber(expected);
-			var actual = phoneNumber.Number;
+			_phoneNumber.Number = expected;
+			var actual = _phoneNumber.Number;
 			Assert.AreEqual(expected, actual, "Getter Number returns incorrect value");
 		}
 
-		[TestCase(88005553535, "An exception should occur if the phone number does not start at 7",
-			TestName = "Assignment of a number starting not with 7")]
-		[TestCase(880055535353, "An exception should occur if the phone number does not have 11 numbers",
-			TestName = "Assignment of a number has not 11 numbers")]
-		public void TestNumberSet_ArgumentException(long number, string messege)
+		[TestCase(88005553535, "An exception should occur if the phone Number does not start at 7",
+			TestName = "Assignment of a Number starting not with 7")]
+		[TestCase(880055535353, "An exception should occur if the phone Number does not have 11 numbers",
+			TestName = "Assignment of a Number has not 11 numbers")]
+		public void TestNumberSet_ArgumentException(long wrongNumber, string message)
 		{
+
 			Assert.Throws<ArgumentException>(
-				() => { var phoneNumber = new PhoneNumber(number); },
-				messege);
+				() => { _phoneNumber.Number = wrongNumber; },
+				message);
 		}
 
 		[Test(Description = "Positive test of the Number setter")]
 		public void TestNumberSet_CorrectValue()
 		{
-			var number = 78005553535;
+			var expected = 78005553535;
 			Assert.DoesNotThrow(
-				()=> { var phoneNumber = new PhoneNumber(number); },
+				()=> { _phoneNumber.Number = expected; },
+				"Positive test of the Number setter");
+		}
+
+		[TestCase(88005553535, "An exception should occur if the phone wrongNumber does not start at 7",
+			TestName = "Assignment of a wrongNumber starting not with 7")]
+		[TestCase(880055535353, "An exception should occur if the phone wrongNumber does not have 11 numbers",
+			TestName = "Assignment of a wrongNumber has not 11 numbers")]
+		public void TestConstructorPhoneNumber_ArgumentException(long wrongNumber,
+			string message)
+		{
+			Assert.Throws<ArgumentException>(
+				() => { _phoneNumber = new PhoneNumber(wrongNumber); },
+				message);
+		}
+
+		[Test(Description = "Positive test of the Number setter")]
+		public void TestConstructorPhoneNumber_CorrectValue()
+		{
+			var expected = 78005553535;
+			Assert.DoesNotThrow(
+				() => { _phoneNumber = new PhoneNumber(expected); },
 				"Positive test of the Number setter");
 		}
 	}
