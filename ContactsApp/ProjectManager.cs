@@ -57,8 +57,13 @@ namespace ContactsApp
 				using (StreamReader file = new StreamReader(
 					path, System.Text.Encoding.Default))
 				{
+					var projectText = file.ReadLine();
+					if(projectText == "")
+					{
+						projectText = null;
+					}
 					//TODO: зачем считывать по отдельным строкам? записывай и считывай весь Prokect целиком(done)
-					project = JsonConvert.DeserializeObject<Project>(file.ReadLine());
+					project = JsonConvert.DeserializeObject<Project>(projectText);
 				}
 			}
 			catch (SerializationException e)
