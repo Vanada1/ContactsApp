@@ -9,12 +9,9 @@ namespace NUnitTestProject
 	[TestFixture]
 	class TestContact
 	{
-		private Contact _contact;
-
-		[SetUp]
-		public void InitContact()
+		private Contact createEmptyContact()
 		{
-			_contact = new Contact(" ", " ", new PhoneNumber(), 
+			return new Contact(" ", " ", new PhoneNumber(),
 				DateTime.Now, " ", " ");
 		}
 
@@ -24,9 +21,10 @@ namespace NUnitTestProject
 		{
 			var expected = "Name";
 
-			_contact.Name = expected;
+			var contact = createEmptyContact();
+			contact.Name = expected;
 
-			var actual = _contact.Name;
+			var actual = contact.Name;
 
 			Assert.AreEqual(expected, actual, "Getter Name returns incorrect value");
 		}
@@ -39,18 +37,19 @@ namespace NUnitTestProject
 		public void TestNameSet_ArgumentException(string wrongValue,
 			string message)
 		{
-
+			var contact = createEmptyContact();
 			Assert.Throws<ArgumentException>(
-				() => { _contact.Name = wrongValue; },
+				() => { contact.Name = wrongValue; },
 				message);
 		}
 
 		[Test(Description = "Positive test of the Name setter")]
 		public void TestNameSet_CorrectValue()
 		{
+			var contact = createEmptyContact();
 			var name = "Name";
 			Assert.DoesNotThrow(
-				() => { _contact.Name = name; },
+				() => { contact.Name = name; },
 				"Positive test of the Name setter");
 		}
 		//Test Name end
@@ -61,9 +60,10 @@ namespace NUnitTestProject
 		{
 			var expected = "Surname";
 
-			_contact.Surname = expected;
+			var contact = createEmptyContact();
+			contact.Surname = expected;
 
-			var actual = _contact.Surname;
+			var actual = contact.Surname;
 
 			Assert.AreEqual(expected, actual, "Getter Surname returns incorrect value");
 		}
@@ -76,18 +76,19 @@ namespace NUnitTestProject
 		public void TestSurnameSet_ArgumentException(string wrongValue, 
 			string message)
 		{
-
+			var contact = createEmptyContact();
 			Assert.Throws<ArgumentException>(
-				() => { _contact.Surname = wrongValue; },
+				() => { contact.Surname = wrongValue; },
 				message);
 		}
 
 		[Test(Description = "Positive test of the Surname setter")]
 		public void TestSurnameSet_CorrectValue()
 		{
+			var contact = createEmptyContact();
 			var surname = "Surname";
 			Assert.DoesNotThrow(
-				() => { _contact.Surname = surname; },
+				() => { contact.Surname = surname; },
 				"Positive test of the Surname setter");
 		}
 		//Test Surname End
@@ -98,9 +99,10 @@ namespace NUnitTestProject
 		{
 			var expected = "Email";
 
-			_contact.Email = expected;
+			var contact = createEmptyContact();
+			contact.Email = expected;
 
-			var actual = _contact.Email;
+			var actual = contact.Email;
 
 			Assert.AreEqual(expected, actual, "Getter Email returns incorrect value");
 		}
@@ -113,18 +115,19 @@ namespace NUnitTestProject
 		public void TestEmailSet_ArgumentException(string wrongValue, 
 			string message)
 		{
-
+			var contact = createEmptyContact();
 			Assert.Throws<ArgumentException>(
-				() => { _contact.Email = wrongValue; },
+				() => { contact.Email = wrongValue; },
 				message);
 		}
 
 		[Test(Description = "Positive test of the Email setter")]
 		public void TestEmailSet_CorrectValue()
 		{
+			var contact = createEmptyContact();
 			var email = "Email";
 			Assert.DoesNotThrow(
-				() => { _contact.Email = email; },
+				() => { contact.Email = email; },
 				"Positive test of the Email setter");
 		}
 		//Test Email end
@@ -135,9 +138,10 @@ namespace NUnitTestProject
 		{
 			var expected = "VKID";
 
-			_contact.VkId = expected;
+			var contact = createEmptyContact();
+			contact.VkId = expected;
 
-			var actual = _contact.VkId;
+			var actual = contact.VkId;
 
 			Assert.AreEqual(expected, actual, "Getter VKID returns incorrect value");
 		}
@@ -150,18 +154,19 @@ namespace NUnitTestProject
 		public void TestVKIDSet_ArgumentException(string wrongValue,
 			string message)
 		{
-
+			var contact = createEmptyContact();
 			Assert.Throws<ArgumentException>(
-				() => { _contact.VkId = wrongValue; },
+				() => { contact.VkId = wrongValue; },
 				message);
 		}
 
 		[Test(Description = "Positive test of the VKID setter")]
 		public void TestVKIDSet_CorrectValue()
 		{
+			var contact = createEmptyContact();
 			var vkid = "VKID";
 			Assert.DoesNotThrow(
-				() => { _contact.Name = vkid; },
+				() => { contact.Name = vkid; },
 				"Positive test of the VKID setter");
 		}
 		//Test VkId end
@@ -172,9 +177,10 @@ namespace NUnitTestProject
 		{
 			var expected = new PhoneNumber(78005553535);
 
-			_contact.PhoneNumber = expected;
+			var contact = createEmptyContact();
+			contact.PhoneNumber = expected;
 
-			var actual = _contact.PhoneNumber;
+			var actual = contact.PhoneNumber;
 
 			Assert.AreEqual(expected, actual, "Getter PhoneNumber returns incorrect value");
 		}
@@ -186,17 +192,19 @@ namespace NUnitTestProject
 		public void TestPhoneNumber_ArgumentException(long wrongNumber,
 			string message)
 		{
+			var contact = createEmptyContact();
 			Assert.Throws<ArgumentException>(
-				() => { _contact.PhoneNumber = new PhoneNumber(wrongNumber); },
+				() => { contact.PhoneNumber = new PhoneNumber(wrongNumber); },
 				message);
 		}
 
 		[Test(Description = "Positive test of the PhoneNumber setter")]
 		public void TestPhoneNumberSet_CorrectValue()
 		{
+			var contact = createEmptyContact();
 			var phoneNumber = new PhoneNumber(78005553535);
 			Assert.DoesNotThrow(
-				() => { _contact.PhoneNumber = phoneNumber; },
+				() => { contact.PhoneNumber = phoneNumber; },
 				"Positive test of the PhoneNumber setter");
 		}
 		//Test PhoneNumber end
@@ -207,9 +215,10 @@ namespace NUnitTestProject
 		{
 			var expected = new DateTime(2000,12,12);
 
-			_contact.Birthday = expected;
+			var contact = createEmptyContact();
+			contact.Birthday = expected;
 
-			var actual = _contact.Birthday;
+			var actual = contact.Birthday;
 
 			Assert.AreEqual(expected, actual, "Getter Birthday returns incorrect value");
 		}
@@ -223,18 +232,20 @@ namespace NUnitTestProject
 		public void TestBirthdaySet_ArgumentException(int year, int month,
 			int day, string message)
 		{
+			var contact = createEmptyContact();
 			var wrongValue = new DateTime(year, month, day);
 			Assert.Throws<ArgumentException>(
-				() => { _contact.Birthday = wrongValue; },
+				() => { contact.Birthday = wrongValue; },
 				message);
 		}
 
 		[Test(Description = "Positive test of the Birthday setter")]
 		public void TestBirthdaySet_CorrectValue()
 		{
+			var contact = createEmptyContact();
 			var dateTime = new DateTime(2000, 12, 21);
 			Assert.DoesNotThrow(
-				() => { _contact.Birthday = dateTime; },
+				() => { contact.Birthday = dateTime; },
 				"Positive test of the PhoneNumber setter");
 		}
 		//Test Birthday end
@@ -251,7 +262,7 @@ namespace NUnitTestProject
 			Assert.Throws<ArgumentException>(
 				() =>
 				{
-					_contact = new Contact(wrongValue, "Surname",
+					var contact = new Contact(wrongValue, "Surname",
 						new PhoneNumber(78005553535), 
 						new DateTime(2000, 12, 12), 
 						"Email", "id1200");
@@ -265,7 +276,7 @@ namespace NUnitTestProject
 			var name = "Name";
 			Assert.DoesNotThrow(
 				() => {
-					_contact = new Contact(name, "Surname",
+					var contact = new Contact(name, "Surname",
 						new PhoneNumber(78005553535),
 						new DateTime(2000, 12, 12),
 						"Email", "id1200"); },
@@ -283,7 +294,7 @@ namespace NUnitTestProject
 			Assert.Throws<ArgumentException>(
 				() =>
 				{
-					_contact = new Contact("name", wrongValue,
+					var contact = new Contact("name", wrongValue,
 						new PhoneNumber(78005553535),
 						new DateTime(2000, 12, 12),
 						"Email", "id1200");
@@ -297,7 +308,7 @@ namespace NUnitTestProject
 			var surname = "Surname";
 			Assert.DoesNotThrow(
 				() => {
-					_contact = new Contact("Name", surname,
+					var contact = new Contact("Name", surname,
 						new PhoneNumber(78005553535),
 						new DateTime(2000, 12, 12),
 						"Email", "id1200");
@@ -313,10 +324,13 @@ namespace NUnitTestProject
 			long wrongNumber, string message)
 		{
 			Assert.Throws<ArgumentException>(
-				() => { _contact =new Contact("Name", "Surname",
+				() => 
+				{ 
+					var contact =new Contact("Name", "Surname",
 						new PhoneNumber(wrongNumber),
 					new DateTime(2000, 12, 12),
-					"Email", "id1200"); },
+					"Email", "id1200");
+				},
 				message);
 		}
 
@@ -325,8 +339,9 @@ namespace NUnitTestProject
 		{
 			var phoneNumber = new PhoneNumber(78005553535);
 			Assert.DoesNotThrow(
-				() => {
-					_contact = new Contact("Name", "Surname",
+				() => 
+				{
+					var contact = new Contact("Name", "Surname",
 						phoneNumber, 
 						new DateTime(2000, 12, 12),
 						"Email", "id1200");
@@ -347,7 +362,7 @@ namespace NUnitTestProject
 			Assert.Throws<ArgumentException>(
 				() => 
 				{
-					_contact = new Contact("Name", "Surname",
+					var contact = new Contact("Name", "Surname",
 						new PhoneNumber(78005553535),
 						wrongValue, "Email", "id1200");
 				},
@@ -361,7 +376,7 @@ namespace NUnitTestProject
 			Assert.DoesNotThrow(
 				() =>
 				{
-					_contact = new Contact("Name", "Surname",
+					var contact = new Contact("Name", "Surname",
 						new PhoneNumber(78005553535),
 						dateTime, "Email", "id1200");
 				},
@@ -379,7 +394,7 @@ namespace NUnitTestProject
 
 			Assert.Throws<ArgumentException>(
 				() => {
-					_contact = new Contact("Name", "Surname",
+					var contact = new Contact("Name", "Surname",
 						new PhoneNumber(78005553535),
 						new DateTime(2000,12, 12),
 						wrongValue, "id1200");
@@ -394,7 +409,7 @@ namespace NUnitTestProject
 			Assert.DoesNotThrow(
 				() => 
 				{
-					_contact = new Contact("Name", "Surname",
+					var contact = new Contact("Name", "Surname",
 						new PhoneNumber(78005553535),
 						new DateTime(2000, 12, 12),
 						email, "id1200");
@@ -414,7 +429,7 @@ namespace NUnitTestProject
 			Assert.Throws<ArgumentException>(
 				() => 
 				{
-					_contact = new Contact("Name", "Surname",
+					var contact = new Contact("Name", "Surname",
 						new PhoneNumber(78005553535),
 						new DateTime(2000, 12, 12),
 						"Email", wrongValue);
@@ -429,7 +444,7 @@ namespace NUnitTestProject
 			Assert.DoesNotThrow(
 				() => 
 				{
-					_contact = new Contact("Name", "Surname",
+					var contact = new Contact("Name", "Surname",
 						new PhoneNumber(78005553535),
 						new DateTime(2000, 12, 12),
 						"Email", vkid);

@@ -8,22 +8,16 @@ namespace NUnitTestProject
 	[TestFixture]
 	public class TestsPhoneNumber
 	{
-		private PhoneNumber _phoneNumber;
-
-		[SetUp]
-		public void InitPhoneNumber()
-		{
-			_phoneNumber = new PhoneNumber();
-		}
 		
 		[Test(Description = "Positive test of the Number getter")]
 		public void TestNumberGet_CorrectValue()
 		{
 			var expected = 78005553535;
 
-			_phoneNumber.Number = expected;
+			var phoneNumber = new PhoneNumber();
+			phoneNumber.Number = expected;
 
-			var actual = _phoneNumber.Number;
+			var actual = phoneNumber.Number;
 
 			Assert.AreEqual(expected, actual, "Getter Number returns incorrect value");
 		}
@@ -34,9 +28,9 @@ namespace NUnitTestProject
 			TestName = "Assignment of the Number has not 11 numbers")]
 		public void TestNumberSet_ArgumentException(long wrongNumber, string message)
 		{
-
+			var phoneNumber = new PhoneNumber();
 			Assert.Throws<ArgumentException>(
-				() => { _phoneNumber.Number = wrongNumber; },
+				() => { phoneNumber.Number = wrongNumber; },
 				message);
 		}
 
@@ -44,8 +38,10 @@ namespace NUnitTestProject
 		public void TestNumberSet_CorrectValue()
 		{
 			var expected = 78005553535;
+
+			var phoneNumber = new PhoneNumber();
 			Assert.DoesNotThrow(
-				()=> { _phoneNumber.Number = expected; },
+				()=> { phoneNumber.Number = expected; },
 				"Positive test of the Number setter");
 		}
 
@@ -57,7 +53,7 @@ namespace NUnitTestProject
 			string message)
 		{
 			Assert.Throws<ArgumentException>(
-				() => { _phoneNumber = new PhoneNumber(wrongNumber); },
+				() => { var phoneNumber = new PhoneNumber(wrongNumber); },
 				message);
 		}
 
@@ -66,7 +62,7 @@ namespace NUnitTestProject
 		{
 			var number = 78005553535;
 			Assert.DoesNotThrow(
-				() => { _phoneNumber = new PhoneNumber(number); },
+				() => { var phoneNumber = new PhoneNumber(number); },
 				"Positive test of the constructor");
 		}
 	}
