@@ -13,6 +13,9 @@ namespace ContactsAppUI
 {
 	public partial class ContactForm : Form
 	{
+		/// <summary>
+		/// Contact for add or edit the list
+		/// </summary>
 		public Contact Contact { set; get; }
 
 		private Contact _oldContact = null;
@@ -56,7 +59,6 @@ namespace ContactsAppUI
 					exception.Message, "Error", MessageBoxButtons.OK,
 					MessageBoxIcon.Error);
 			}
-			
 		}
 
 		private void Cancel_Click(object sender, EventArgs e)

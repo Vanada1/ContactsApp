@@ -14,6 +14,9 @@ namespace ContactsAppUI
 		/// </summary>
 		private Project _project;
 
+		/// <summary>
+		/// Support list for search 
+		/// </summary>
 		private List<Contact> _contacts;
 
 		public MainForm()
@@ -47,8 +50,6 @@ namespace ContactsAppUI
 
 				BirthdayLabel.Text += birthdayContacts[birthdayContacts.Count - 1].Surname;
 			}
-			
-
 			UpdatesListBox(null);
 		}
 		
@@ -62,7 +63,7 @@ namespace ContactsAppUI
 				editForm.Contact = selectedContact;
 				editForm.ShowDialog();
 				var updateContact = editForm.Contact;
-				var selectIndexForProjectContacts = _project.FindtIndex(
+				var selectIndexForProjectContacts = _project.FindIndex(
 					_contacts[selectedIndex]);
 				_project.Contacts.RemoveAt(selectIndexForProjectContacts);
 				_project.Contacts.Insert(selectIndexForProjectContacts, 
@@ -92,7 +93,7 @@ namespace ContactsAppUI
 				ProjectManager.SaveProject(_project, null);
 				_project.Contacts = _project.SortContacts();
 			}
-
+			
 			SearchContact();
 			UpdatesListBox(_contacts);
 		}
@@ -133,11 +134,10 @@ namespace ContactsAppUI
 		private void listBox1_SelectedIndexChanged(object sender,
 			EventArgs e)
 		{
-			var choosenIndex = ContactsListBox.SelectedIndex;
-			if (choosenIndex != -1)
-			{
-				ChangeTextBoxes(_contacts[choosenIndex]);
-			}
+			var chosenIndex = ContactsListBox.SelectedIndex;
+			if (chosenIndex == -1) return;
+			ChangeTextBoxes(_contacts[chosenIndex]);
+			
 		}
 
 		private void Exit_Click(object sender, EventArgs e)
