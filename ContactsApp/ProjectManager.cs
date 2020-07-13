@@ -48,8 +48,6 @@ namespace ContactsApp
 		/// </returns>
 		public static Project ReadProject()
         {
-            //TODO: маловероятно, что метод будет вызываться со значением null, в случае строк это не очевидное решение.(done)
-            //TODO: сделай открытое свойство DefaultPath, которое будет возвращать значение поля _path. Клиентский код будет забирать дефолтный путь из свойства менеджера и передавать его в метод чтения/записи
             var project = new Project();
             if (File.Exists(DefaultPath))
             {
@@ -69,8 +67,7 @@ namespace ContactsApp
 	            }
 	            catch (SerializationException e)
 	            {
-		            //TODO: вернуть пустой проект вместо исключения (done)
-		            return project;
+                    return project;
 	            }
             }
 
@@ -96,7 +93,7 @@ namespace ContactsApp
 			using (StreamWriter file = new StreamWriter(
 				DefaultPath, false, System.Text.Encoding.Default))
 			{
-                file.Write(JsonConvert.SerializeObject(project)); //TODO: подчисть не нужные пустые строки (done)
+                file.Write(JsonConvert.SerializeObject(project));
 			}
         }
 

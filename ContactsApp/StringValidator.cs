@@ -23,7 +23,6 @@ namespace ContactsApp
 			}
 		}
 
-        //TODO: грамошибка в названии переменной(done)
         /// <summary>
         /// Returns only digits of a number
         /// </summary>

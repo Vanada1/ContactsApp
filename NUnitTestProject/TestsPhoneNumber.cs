@@ -1,11 +1,12 @@
-using System;
+﻿using System;
 using System.Runtime.InteropServices.ComTypes;
 using NUnit.Framework;
 using ContactsApp;
 
 namespace NUnitTestProject
 {
-	[TestFixture]
+    //TODO: у классов юнит-тестов разное именование, при чем у всех неправильное
+    [TestFixture]
 	public class TestsPhoneNumber
 	{
 		private PhoneNumber CreateClearPhoneNumber()

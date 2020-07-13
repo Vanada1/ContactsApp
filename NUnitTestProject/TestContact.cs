@@ -9,7 +9,8 @@ namespace NUnitTestProject
 	[TestFixture]
 	class TestContact
 	{
-		private Contact createEmptyContact()
+        //TODO: именование метода
+        private Contact createEmptyContact()
 		{
 			return new Contact(" ", " ", new PhoneNumber(70000000000),
 				DateTime.Now, " ", " ");

@@ -13,10 +13,10 @@ namespace ContactsAppUI
 {
 	public partial class ContactForm : Form
 	{
-		/// <summary>
-		/// Contact for add or edit the list
-		/// </summary>
-		public Contact Contact { set; get; }
+        /// <summary>
+        /// Contact for add or edit the list
+        /// </summary>
+        public Contact Contact { set; get; }
 
 		/// <summary>
 		/// For backup old Contact
@@ -38,7 +38,7 @@ namespace ContactsAppUI
 				PhoneMaskedTextBox.Text = Contact.PhoneNumber.Number.ToString();
 				EmailTextBox.Text = Contact.Email;
 				VkTextBox.Text = Contact.VkId;
-				_oldContact = (Contact)Contact.Clone(); //TODO: Clone()(Done)
+				_oldContact = (Contact)Contact.Clone();
             }
 		}
 
@@ -53,6 +53,7 @@ namespace ContactsAppUI
 					SurnameTextBox.Text, phoneNumber, 
 					BirthdayDateTimePicker.Value, EmailTextBox.Text,
 					VkTextBox.Text);
+                //TODO: форма закрывается без присвоения dialogResult
 				this.Close();
 			}
 			catch(ArgumentException exception)
@@ -68,7 +69,8 @@ namespace ContactsAppUI
 
 		private void Cancel_Click(object sender, EventArgs e)
 		{
-			Contact = _oldContact;
+            //TODO: присвоить результат диалога перед закрытием
+            Contact = _oldContact;
 			this.Close();
 		}
 

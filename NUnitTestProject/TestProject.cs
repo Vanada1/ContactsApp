@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using ContactsApp;
 using NUnit.Framework.Internal;
-
+//TODO: неправильное название у проекта с юнит-тестами
+//TODO: проект создан под NET Core, а бизнес-логика под Net Framework. Должно быть одинаковым, иначе это будет мешать адекватной работе тестов в разных средах
 namespace NUnitTestProject
 {
 	[TestFixture]

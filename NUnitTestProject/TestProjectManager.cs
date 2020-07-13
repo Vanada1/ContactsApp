@@ -8,7 +8,8 @@ using Newtonsoft.Json;
 
 namespace NUnitTestProject
 {
-	[TestFixture]
+    //TODO: два файла с заметками почему-то лежат вне папки тестдата. Более того, два набора файлов не нужно, достаточно только одного
+    [TestFixture]
 	public class TestProjectManager
 	{
 		/// <summary>
@@ -30,11 +31,11 @@ namespace NUnitTestProject
 		/// Reference path file for tests
 		/// </summary>
 		private static readonly string _referencePath = @"..\..\..\TestData\Reference.txt";
-
-		/// <summary>
-		/// Reference path broken file for tests
-		/// </summary>
-		private static readonly string _referenceBrokenPath = @"..\..\..\TestData\ReferenceBroken.txt";
+        //TODO: ! Это не будет работать для других конфигураций сборки! Надо копировать файлы в выходную папку! Читай документ
+        /// <summary>
+        /// Reference path broken file for tests
+        /// </summary>
+        private static readonly string _referenceBrokenPath = @"..\..\..\TestData\ReferenceBroken.txt";
 
 		private static readonly string _nonexistentFile = @"..\..\..\TestData\NonexistentFile.txt";
 

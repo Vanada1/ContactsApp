@@ -50,7 +50,7 @@ namespace ContactsAppUI
 
 				BirthdayLabel.Text += birthdayContacts[birthdayContacts.Count - 1].Surname;
 			}
-            //TODO: здесь же метод можно было тоже вызвать с _contacts и не городить костылей с проверкой на null(done)
+
             UpdatesListBox(_contacts);
 		}
 		
@@ -62,7 +62,7 @@ namespace ContactsAppUI
 				var selectedContact = _contacts[selectedIndex];
 				var editForm = new ContactForm();
 				editForm.Contact = selectedContact;
-				editForm.ShowDialog(); //TODO: проверка DialogResult(done)
+				editForm.ShowDialog();
 				if (editForm.DialogResult == DialogResult.OK)
 				{
 					var updateContact = editForm.Contact;
@@ -91,7 +91,6 @@ namespace ContactsAppUI
 		{
 			var addForm = new ContactForm();
 			addForm.ShowDialog();
-            //TODO: надо проверять не по null, а по DialogResult, вернувшемуся из метода ShowDialog. Вторая форма соответственно при закрытии должна присваивать какое-то значение в DialogResult для кнопки Ok и Cancel(done)
             if (addForm.DialogResult == DialogResult.OK)
 			{
 				var newContact = addForm.Contact;
@@ -197,7 +196,6 @@ namespace ContactsAppUI
 		/// </summary>
 		private void UpdatesListBox(List<Contact> contacts)
 		{
-            //TODO: зачем эти неочевидные костыли с null? Почему не передавать везде вместо null существующий список контактов? А внутри не делать таких проверок(done)
             ContactsListBox.DataSource = null;
 			ContactsListBox.DataSource = contacts;
 			ContactsListBox.DisplayMember = "Surname";
@@ -222,7 +220,8 @@ namespace ContactsAppUI
 
 		private void AddPictureBox_MouseHover(object sender, EventArgs e)
 		{
-			int imageWidth = AddButton.BackgroundImage.Width - (
+            //TODO: я в дискорде писал сообщение, что здесь логика с формами слишком сложная. Можно сделать на обычных кнопках, используя свойства Image или BackImage. А это всё удалить
+            int imageWidth = AddButton.BackgroundImage.Width - (
 				(AddButton.Width * 20) / 100);
 			int imageHeight = AddButton.BackgroundImage.Height - (
 				(AddButton.Height * 20) / 100);
@@ -242,7 +241,8 @@ namespace ContactsAppUI
 
 		private void EditPictureBox_MouseHover(object sender, EventArgs e)
 		{
-			int imageWidth = EditButton.BackgroundImage.Width - (
+            //TODO: см. выше
+            int imageWidth = EditButton.BackgroundImage.Width - (
 				(EditButton.Width * 20) / 100);
 			int imageHeight = EditButton.BackgroundImage.Height - (
 				(EditButton.Height * 20) / 100);
@@ -262,7 +262,8 @@ namespace ContactsAppUI
 
 		private void RemovePictureBox_MouseHover(object sender, EventArgs e)
 		{
-			int imageWidth = RemoveButton.BackgroundImage.Width - (
+            //TODO: см. выше
+            int imageWidth = RemoveButton.BackgroundImage.Width - (
 				(RemoveButton.Width * 20) / 100);
 			int imageHeight = RemoveButton.BackgroundImage.Height - (
 				(RemoveButton.Height * 20) / 100);
