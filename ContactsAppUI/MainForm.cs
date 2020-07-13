@@ -14,10 +14,10 @@ namespace ContactsAppUI
 		/// </summary>
 		private Project _project;
 
-		/// <summary>
-		/// Support list for search 
-		/// </summary>
-		private List<Contact> _contacts;
+        /// <summary>
+        /// Support list for search 
+        /// </summary>
+        private List<Contact> _contacts;
 
 		public MainForm()
 		{
@@ -50,7 +50,8 @@ namespace ContactsAppUI
 
 				BirthdayLabel.Text += birthdayContacts[birthdayContacts.Count - 1].Surname;
 			}
-			UpdatesListBox(null);
+            //TODO: здесь же метод можно было тоже вызвать с _contacts и не городить костылей с проверкой на null
+            UpdatesListBox(null);
 		}
 		
 		private void Edit_Click(object sender, EventArgs e)
@@ -61,8 +62,8 @@ namespace ContactsAppUI
 				var selectedContact = _contacts[selectedIndex];
 				var editForm = new ContactForm();
 				editForm.Contact = selectedContact;
-				editForm.ShowDialog();
-				var updateContact = editForm.Contact;
+				editForm.ShowDialog(); //TODO: проверка DialogResult
+                var updateContact = editForm.Contact;
 				var selectIndexForProjectContacts = _project.FindIndex(
 					_contacts[selectedIndex]);
 				_project.Contacts.RemoveAt(selectIndexForProjectContacts);
@@ -86,7 +87,8 @@ namespace ContactsAppUI
 		{
 			var addForm = new ContactForm();
 			addForm.ShowDialog();
-			if (addForm.Contact != null)
+            //TODO: надо проверять не по null, а по DialogResult, вернувшемуся из метода ShowDialog. Вторая форма соответственно при закрытии должна присваивать какое-то значение в DialogResult для кнопки Ok и Cancel
+            if (addForm.Contact != null)
 			{
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
@@ -191,7 +193,8 @@ namespace ContactsAppUI
 		/// </summary>
 		private void UpdatesListBox(List<Contact> contacts)
 		{
-			if (contacts == null)
+            //TODO: зачем эти неочевидные костыли с null? Почему не передавать везде вместо null существующий список контактов? А внутри не делать таких проверок
+            if (contacts == null)
 			{
 				contacts = _project.Contacts;
 			}

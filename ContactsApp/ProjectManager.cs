@@ -43,14 +43,17 @@ namespace ContactsApp
 		/// </returns>
 		public static Project ReadProject(string path)
         {
-			if(path == null)
+            //TODO: маловероятно, что метод будет вызываться со значением null, в случае строк это не очевидное решение.
+            //TODO: сделай открытое свойство DefaultPath, которое будет возвращать значение поля _path. Клиентский код будет забирать дефолтный путь из свойства менеджера и передавать его в метод чтения/записи
+            if (path == null)
 			{
 				path = _path;
 			}
 			var project = new Project();
 			if (!File.Exists(path))
 			{
-				throw new AccessViolationException("File not found");
+                //TODO: не надо кидать исключения. Эта ситуация может быть разрулена здесь же в методе - надо просто вернуть пустой проект
+                throw new AccessViolationException("File not found");
 			}
 			try
 			{
@@ -62,13 +65,13 @@ namespace ContactsApp
 					{
 						projectText = null;
 					}
-					//TODO: зачем считывать по отдельным строкам? записывай и считывай весь Prokect целиком(done)
-					project = JsonConvert.DeserializeObject<Project>(projectText);
+                    project = JsonConvert.DeserializeObject<Project>(projectText);
 				}
 			}
 			catch (SerializationException e)
 			{
-				throw new AccessViolationException(e.Message);
+                //TODO: вернуть пустой проект вместо исключения
+                throw new AccessViolationException(e.Message);
 			}
 			return project;
 		}
@@ -84,7 +87,6 @@ namespace ContactsApp
 		/// </param>
 		public static void SaveProject(Project project, string path)
         {
-            //TODO: SaveProject, но ReadProject - сделать именование(done)
             if (path == null)
 			{
 				path = _path;
@@ -95,15 +97,13 @@ namespace ContactsApp
 			}
 			using (StreamWriter file = new StreamWriter(
 				path, false, System.Text.Encoding.Default))
-			{ 
-				//TODO: записывай проект целиком, а не по одному контакт(Done)
-				file.Write(JsonConvert.SerializeObject(project));
-               
-			}
+			{
+                file.Write(JsonConvert.SerializeObject(project)); //TODO: подчисть не нужные пустые строки
+
+            }
 			
 		}
 
-        //TODO: грамошибка(done)
         /// <summary>
         /// Creates file along folder
         /// </summary>
