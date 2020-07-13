@@ -59,7 +59,7 @@ namespace NUnitTestProject
 				File.Delete(_path);
 			}
 			File.Create(_path).Close();
-			ProjectManager.SaveProject(expected);
+			File.WriteAllText(_path, expectedString);
 			if (File.Exists(_path))
 			{
 				var actual = ProjectManager.ReadProject();
@@ -90,6 +90,54 @@ namespace NUnitTestProject
 
 			Assert.AreEqual(expected.Contacts, actual.Contacts,
 				"Actual project is existent");
+		}
+
+		[Test(Description = "Test to write in the file")]
+		public void TestSaveProject_WithCreatedFile()
+		{
+
+			ProjectManager.DefaultPath = _path;
+			if (File.Exists(_path))
+			{
+				File.Delete(_path);
+			}
+			File.Create(_path).Close();
+			var expectedString = File.ReadAllText(_referencePath);
+			var expected = JsonConvert.DeserializeObject<Project>(
+				expectedString);
+			ProjectManager.SaveProject(expected);
+			if (File.Exists(_path))
+			{
+				var actualString = File.ReadAllText(_path);
+				var actual = JsonConvert.DeserializeObject<Project>(
+				actualString);
+				Assert.AreEqual(expectedString, actualString,
+					"Values are not the same");
+			}
+		}
+
+		[Test(Description = "Test to write in the file without file")]
+		public void TestSaveProject_WithoutCreatedFile()
+		{
+
+			ProjectManager.DefaultPath = _path;
+			if (File.Exists(_path))
+			{
+				File.Delete(_path);
+			}
+			var expectedString = File.ReadAllText(_referencePath);
+			var expected = JsonConvert.DeserializeObject<Project>(
+				expectedString);
+			ProjectManager.SaveProject(expected);
+			if (File.Exists(ProjectManager.DefaultPath))
+			{
+				var actualString = File.ReadAllText(
+					ProjectManager.DefaultPath);
+				var actual = JsonConvert.DeserializeObject<Project>(
+				actualString);
+				Assert.AreEqual(expectedString, actualString,
+					"Values are not the same");
+			}
 		}
 	}
 }
