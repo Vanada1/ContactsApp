@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ContactsApp\ContactsApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestData\" />
+  </ItemGroup>
+
 </Project>

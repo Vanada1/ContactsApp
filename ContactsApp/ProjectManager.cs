@@ -88,10 +88,11 @@ namespace ContactsApp
 		/// </param>
 		public static void SaveProject(Project project)
         {
-			if (!File.Exists(DefaultPath))
+			if(!File.Exists(DefaultPath))
 			{
-				File.Create(DefaultPath).Close();
+				CreatePath(_folder, _fileName);
 			}
+
 			using (StreamWriter file = new StreamWriter(
 				DefaultPath, false, System.Text.Encoding.Default))
 			{

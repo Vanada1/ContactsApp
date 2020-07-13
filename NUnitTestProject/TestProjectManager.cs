@@ -29,14 +29,14 @@ namespace NUnitTestProject
 		/// <summary>
 		/// Reference path file for tests
 		/// </summary>
-		private static readonly string _referencePath = @"..\..\..\Reference.notes";
+		private static readonly string _referencePath = @"..\..\..\TestData\Reference.txt";
 
 		/// <summary>
 		/// Reference path broken file for tests
 		/// </summary>
-		private static readonly string _referenceBrokenPath = @"..\..\..\ReferenceBroken.notes";
+		private static readonly string _referenceBrokenPath = @"..\..\..\TestData\ReferenceBroken.txt";
 
-		private static readonly string _nonexistentFile = @"..\..\..\NonexistentFile.notes";
+		private static readonly string _nonexistentFile = @"..\..\..\TestData\NonexistentFile.txt";
 
 		[TearDown]
 		public void DeleteFile()
