@@ -41,5 +41,19 @@ namespace ContactsApp
 			}
 			return clearPhoneNumber;
 		}
+
+        public static void AssertPhoneNumber(long number, int maxDigitCount)
+        {
+	        string numberString = number.ToString();
+	        if (numberString.Length != maxDigitCount)
+	        {
+		        throw new ArgumentException("Invalid phone number");
+	        }
+	        if (numberString[0] != '7')
+	        {
+		        throw new ArgumentException(
+			        "The first digit is not 7");
+	        }
+		}
 	}
 }

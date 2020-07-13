@@ -28,12 +28,12 @@ namespace ContactsApp
 			"\\ContactsApp\\";
 
 		/// <summary>
-		/// The path to the file
+		/// The folder to the file
 		/// </summary>
 		private static readonly string _path = _folder + _fileName;
 
 		/// <summary>
-		/// Read file along the path
+		/// Read file along the folder
 		/// </summary>
 		/// <param name="path">Path to the file.
 		/// If <paramref name="path"/> is Null then take defult value
@@ -105,27 +105,27 @@ namespace ContactsApp
 
         //TODO: грамошибка(done)
         /// <summary>
-        /// Creates file along path
+        /// Creates file along folder
         /// </summary>
-        /// <param name="path">File location</param>
+        /// <param name="folder">File location</param>
         /// <param name="fileName">File name</param>
-        public static void CreatePath(string path, string fileName)
+        public static void CreatePath(string folder, string fileName)
 		{
-			if (path == null)
+			if (folder == null)
 			{
-				path = _folder;
+				folder = _folder;
 			}
 			if (fileName == null)
 			{
 				fileName = _fileName;
 			}
-			if (!Directory.Exists(path))
+			if (!Directory.Exists(folder))
 			{
-				Directory.CreateDirectory(path);
+				Directory.CreateDirectory(folder);
 			}
-			if (!File.Exists(path + fileName))
+			if (!File.Exists(folder + fileName))
 			{
-				File.Create(path + fileName).Close();
+				File.Create(folder + fileName).Close();
 			}
 		}
 	}
