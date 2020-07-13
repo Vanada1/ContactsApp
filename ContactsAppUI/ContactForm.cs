@@ -36,8 +36,8 @@ namespace ContactsAppUI
 				VkTextBox.Text = Contact.VkId;
 				_oldContact = new Contact(Contact.Name, Contact.Surname,
 					Contact.PhoneNumber, Contact.Birthday,  Contact.Email,
-					Contact.VkId);
-			}
+					Contact.VkId); //TODO: Clone()
+            }
 		}
 
 		private void OK_Click(object sender, EventArgs e)
