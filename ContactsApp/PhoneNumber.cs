@@ -46,10 +46,5 @@ namespace ContactsApp
 		{
 			this.Number = number;
 		}
-
-		public PhoneNumber()
-		{
-			this.Number = 70000000000;
-		}
 	}
 }

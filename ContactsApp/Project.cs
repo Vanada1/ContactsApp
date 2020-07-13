@@ -23,6 +23,13 @@ namespace ContactsApp
 		/// <returns>All sorted contacts</returns>
 		public List<Contact> SortContacts()
 		{
+			for (int i = 0; i < Contacts.Count; i++)
+			{
+				if (Contacts[i] == null)
+				{
+					Contacts.RemoveAt(i);
+				}
+			}
 			var query = Contacts.OrderBy(
 				contact => contact.Surname);
 			var contacts = new List<Contact>();
@@ -45,6 +52,13 @@ namespace ContactsApp
 		/// </returns>
 		public List<Contact> SortContacts(string substring)
 		{
+			for (int i = 0; i < Contacts.Count; i++)
+			{
+				if (Contacts[i] == null)
+				{
+					Contacts.RemoveAt(i);
+				}
+			}
 			var query = Contacts.OrderBy(
 				contact => contact.Surname);
 			var contacts = new List<Contact>();
@@ -63,6 +77,11 @@ namespace ContactsApp
 			return contacts;
 		}
 
+		/// <summary>
+		/// Find All people who has Birthday on a specific date
+		/// </summary>
+		/// <param name="date"></param>
+		/// <returns></returns>
 		public List<Contact> FindBirthday(DateTime date)
 		{
 			var birthdayContacts = new List<Contact>();
@@ -78,11 +97,18 @@ namespace ContactsApp
 			return birthdayContacts;
 		}
 
+		/// <summary>
+		/// Find first Contact with the same <see cref="Name"/>
+		/// and <see cref="Surname"/>
+		/// </summary>
+		/// <param name="contact"></param>
+		/// <returns></returns>
 		public int FindIndex(Contact contact)
 		{
 			for (int i = 0; i < Contacts.Count; i++)
 			{
-				if (Contacts[i] == contact)
+				if (Contacts[i].Name == contact.Name && 
+				    Contacts[i].Surname == contact.Surname)
 				{
 					return i;
 				}
