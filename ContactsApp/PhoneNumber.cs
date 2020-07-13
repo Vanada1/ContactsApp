@@ -31,16 +31,7 @@ namespace ContactsApp
 			}
 			set
 			{
-                string numberString = value.ToString();
-				if (numberString.Length != MAXDIGITCOUNT)
-				{
-					throw new ArgumentException("Invalid phone number");
-				}
-				if(numberString[0] != '7')
-				{
-					throw new ArgumentException(
-						"The first digit is not 7");
-				}
+               StringValidator.AssertPhoneNumber(value, MAXDIGITCOUNT);
 				this._number = value;
 			}
 		}
