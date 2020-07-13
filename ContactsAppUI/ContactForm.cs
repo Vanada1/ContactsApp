@@ -77,11 +77,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				if (SurnameTextBox.Text.Length != 0)
-				{
-					SurnameTextBox.BackColor = Color.LightSalmon;
-				}
-				
+				SurnameTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 
@@ -95,11 +91,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				if (NameTextBox.Text.Length != 0)
-				{
-					NameTextBox.BackColor = Color.LightSalmon;
-				}
-
+				NameTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 
@@ -126,10 +118,7 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				if (EmailTextBox.Text.Length != 0)
-				{
-					EmailTextBox.BackColor = Color.LightSalmon;
-				}
+				EmailTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 
@@ -143,11 +132,23 @@ namespace ContactsAppUI
 			}
 			catch (ArgumentException exception)
 			{
-				if (VkTextBox.Text.Length != 0)
-				{
-					VkTextBox.BackColor = Color.LightSalmon;
-				}
-				
+				VkTextBox.BackColor = Color.LightSalmon;
+			}
+		}
+
+		private void PhoneMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+		{
+			try
+			{
+				StringValidator.AssertPhoneNumber(Convert.ToInt64(
+					StringValidator.GetClearPhoneNumber(
+						PhoneMaskedTextBox.Text)),
+					PhoneNumber.MAXDIGITCOUNT);
+				PhoneMaskedTextBox.BackColor = Color.White;
+			}
+			catch (ArgumentException exception)
+			{
+				PhoneMaskedTextBox.BackColor = Color.LightSalmon;
 			}
 		}
 	}

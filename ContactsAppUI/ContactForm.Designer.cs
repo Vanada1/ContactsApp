@@ -57,6 +57,7 @@
 			this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
 			this.PhoneMaskedTextBox.Size = new System.Drawing.Size(302, 20);
 			this.PhoneMaskedTextBox.TabIndex = 32;
+			this.PhoneMaskedTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.PhoneMaskedTextBox_MaskInputRejected);
 			// 
 			// BirthdayDateTimePicker
 			// 
