@@ -28,7 +28,7 @@ namespace ContactsAppUI
 		{
 			try
 			{
-				_project = ProjectManager.ReadProject(null);
+				_project = ProjectManager.ReadProject();
 				_project.Contacts = _project.SortContacts();
 				_contacts = _project.Contacts;
 			}
@@ -50,8 +50,8 @@ namespace ContactsAppUI
 
 				BirthdayLabel.Text += birthdayContacts[birthdayContacts.Count - 1].Surname;
 			}
-            //TODO: здесь же метод можно было тоже вызвать с _contacts и не городить костылей с проверкой на null
-            UpdatesListBox(null);
+            //TODO: здесь же метод можно было тоже вызвать с _contacts и не городить костылей с проверкой на null(done)
+            UpdatesListBox(_contacts);
 		}
 		
 		private void Edit_Click(object sender, EventArgs e)
@@ -62,15 +62,19 @@ namespace ContactsAppUI
 				var selectedContact = _contacts[selectedIndex];
 				var editForm = new ContactForm();
 				editForm.Contact = selectedContact;
-				editForm.ShowDialog(); //TODO: проверка DialogResult
-                var updateContact = editForm.Contact;
-				var selectIndexForProjectContacts = _project.FindIndex(
-					_contacts[selectedIndex]);
-				_project.Contacts.RemoveAt(selectIndexForProjectContacts);
-				_project.Contacts.Insert(selectIndexForProjectContacts, 
-					updateContact);
-				_project.Contacts = _project.SortContacts();
-				ProjectManager.SaveProject(_project, null);
+				editForm.ShowDialog(); //TODO: проверка DialogResult(done)
+				if (editForm.DialogResult == DialogResult.OK)
+				{
+					var updateContact = editForm.Contact;
+					var selectIndexForProjectContacts = _project.FindIndex(
+						_contacts[selectedIndex]);
+					_project.Contacts.RemoveAt(selectIndexForProjectContacts);
+					_project.Contacts.Insert(selectIndexForProjectContacts,
+						updateContact);
+					_project.Contacts = _project.SortContacts();
+				}
+
+				ProjectManager.SaveProject(_project);
 			}
 			else
 			{
@@ -87,12 +91,12 @@ namespace ContactsAppUI
 		{
 			var addForm = new ContactForm();
 			addForm.ShowDialog();
-            //TODO: надо проверять не по null, а по DialogResult, вернувшемуся из метода ShowDialog. Вторая форма соответственно при закрытии должна присваивать какое-то значение в DialogResult для кнопки Ok и Cancel
-            if (addForm.Contact != null)
+            //TODO: надо проверять не по null, а по DialogResult, вернувшемуся из метода ShowDialog. Вторая форма соответственно при закрытии должна присваивать какое-то значение в DialogResult для кнопки Ok и Cancel(done)
+            if (addForm.DialogResult == DialogResult.OK)
 			{
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
-				ProjectManager.SaveProject(_project, null);
+				ProjectManager.SaveProject(_project);
 				_project.Contacts = _project.SortContacts();
 			}
 			
@@ -120,7 +124,7 @@ namespace ContactsAppUI
 					var selectedContact = _contacts[selectedIndex];
 					_project.Contacts.Remove(selectedContact);
 					ClearTextBoxes();
-					ProjectManager.SaveProject(_project, null);
+					ProjectManager.SaveProject(_project);
 				}
 			}
 			else
@@ -172,7 +176,7 @@ namespace ContactsAppUI
 		private void ContactsApp_FormClosing(Object sender,
 			FormClosingEventArgs e)
 		{
-			ProjectManager.SaveProject(_project, null);
+			ProjectManager.SaveProject(_project);
 		}
 
 		/// <summary>
@@ -193,12 +197,8 @@ namespace ContactsAppUI
 		/// </summary>
 		private void UpdatesListBox(List<Contact> contacts)
 		{
-            //TODO: зачем эти неочевидные костыли с null? Почему не передавать везде вместо null существующий список контактов? А внутри не делать таких проверок
-            if (contacts == null)
-			{
-				contacts = _project.Contacts;
-			}
-			ContactsListBox.DataSource = null;
+            //TODO: зачем эти неочевидные костыли с null? Почему не передавать везде вместо null существующий список контактов? А внутри не делать таких проверок(done)
+            ContactsListBox.DataSource = null;
 			ContactsListBox.DataSource = contacts;
 			ContactsListBox.DisplayMember = "Surname";
 			ContactsListBox.ValueMember = "PhoneNumber";

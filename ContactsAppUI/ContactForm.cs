@@ -18,7 +18,11 @@ namespace ContactsAppUI
 		/// </summary>
 		public Contact Contact { set; get; }
 
+		/// <summary>
+		/// For backup old Contact
+		/// </summary>
 		private Contact _oldContact = null;
+
 		public ContactForm()
 		{
 			InitializeComponent();
@@ -34,9 +38,7 @@ namespace ContactsAppUI
 				PhoneMaskedTextBox.Text = Contact.PhoneNumber.Number.ToString();
 				EmailTextBox.Text = Contact.Email;
 				VkTextBox.Text = Contact.VkId;
-				_oldContact = new Contact(Contact.Name, Contact.Surname,
-					Contact.PhoneNumber, Contact.Birthday,  Contact.Email,
-					Contact.VkId); //TODO: Clone()
+				_oldContact = (Contact)Contact.Clone(); //TODO: Clone()(Done)
             }
 		}
 
@@ -58,7 +60,10 @@ namespace ContactsAppUI
 				MessageBox.Show("Incorrect value: \n" +
 					exception.Message, "Error", MessageBoxButtons.OK,
 					MessageBoxIcon.Error);
+				return;
 			}
+
+			DialogResult = DialogResult.OK;
 		}
 
 		private void Cancel_Click(object sender, EventArgs e)
