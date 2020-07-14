@@ -263,7 +263,7 @@ namespace ContactsAppUI
 		{
 			if (Search.Text.Length == 0)
 			{
-				_contacts = _project.Contacts;
+				_contacts = _project.SortContacts();
 			}
 			else
 			{
