@@ -7,7 +7,7 @@
     <ProjectGuid>{06DE2120-A37D-4A78-A766-4A67509CF4FF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ContactsAppUI</RootNamespace>
-    <AssemblyName>ContactsAppUI</AssemblyName>
+    <AssemblyName>ContactsApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>phonebook.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ImageProcessor, Version=2.9.0.207, Culture=neutral, processorArchitecture=MSIL">
@@ -164,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\plus_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="phonebook.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
