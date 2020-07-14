@@ -85,12 +85,13 @@ namespace NUnitTestContactsApp
 		[Test(Description = "Try to read nonexistent file")]
 		public void TestFileReadWrite_NonexistentFile()
 		{
-			var expected = new Project();
+			var expected = JsonConvert.SerializeObject(new Project());
 
 			ProjectManager.DefaultPath = _nonexistentFile;
-			var actual = ProjectManager.ReadProject();
+			var actual = JsonConvert.SerializeObject(
+				ProjectManager.ReadProject());
 
-			Assert.AreEqual(expected.Contacts, actual.Contacts,
+			Assert.AreEqual(expected, actual,
 				"Actual project is existent");
 		}
 
