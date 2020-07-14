@@ -67,7 +67,7 @@ namespace ContactsAppUI
 				{
 					var updateContact = editForm.Contact;
 					var selectIndexForProjectContacts = _project.FindIndex(
-						_contacts[selectedIndex]);
+						selectedContact);
 					_project.Contacts.RemoveAt(selectIndexForProjectContacts);
 					_project.Contacts.Insert(selectIndexForProjectContacts,
 						updateContact);
