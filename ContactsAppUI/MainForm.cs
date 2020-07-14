@@ -52,6 +52,7 @@ namespace ContactsAppUI
 			}
 
             UpdatesListBox(_contacts);
+            ContactsListBox.ClearSelected();
 		}
 		
 		private void Edit_Click(object sender, EventArgs e)
@@ -81,10 +82,10 @@ namespace ContactsAppUI
 				MessageBox.Show("No contact selected", "Error", 
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-
+			
 			SearchContact();
 			UpdatesListBox(_contacts);
-
+			ContactsListBox.ClearSelected();
 		}
 
 		private void Add_Click(object sender, EventArgs e)
@@ -98,9 +99,10 @@ namespace ContactsAppUI
 				ProjectManager.SaveProject(_project);
 				_project.Contacts = _project.SortContacts();
 			}
-			
+
 			SearchContact();
 			UpdatesListBox(_contacts);
+			ContactsListBox.ClearSelected();
 		}
 
 		private void Remove_Click(object sender, EventArgs e)
@@ -134,13 +136,18 @@ namespace ContactsAppUI
 
 			SearchContact();
 			UpdatesListBox(_contacts);
+			ContactsListBox.ClearSelected();
 		}
 
 		private void listBox1_SelectedIndexChanged(object sender,
 			EventArgs e)
 		{
 			var chosenIndex = ContactsListBox.SelectedIndex;
-			if (chosenIndex == -1) return;
+			if (chosenIndex == -1)
+			{
+				ClearTextBoxes();
+				return;
+			}
 			ChangeTextBoxes(_contacts[chosenIndex]);
 			
 		}
