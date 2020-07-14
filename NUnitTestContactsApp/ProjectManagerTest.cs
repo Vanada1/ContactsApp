@@ -50,7 +50,7 @@ namespace NUnitTestContactsApp
 		}
 
 		[Test(Description = "Read correct file")]
-		public void TestFileReadWrite_CorrectData()
+		public void TestReadProject_CorrectData()
 		{
 			ProjectManager.DefaultPath = _path;
 			var expectedString = File.ReadAllText(_referencePath);
@@ -72,7 +72,7 @@ namespace NUnitTestContactsApp
 		}
 
 		[Test(Description = "Read broken  file")]
-		public void TestFileReadWrite_BrokenData()
+		public void TestReadProject_BrokenData()
 		{
 			Assert.Throws<JsonReaderException>(() =>
 				{
@@ -83,7 +83,7 @@ namespace NUnitTestContactsApp
 		}
 
 		[Test(Description = "Try to read nonexistent file")]
-		public void TestFileReadWrite_NonexistentFile()
+		public void TestReadProject_NonexistentFile()
 		{
 			var expected = JsonConvert.SerializeObject(new Project());
 
