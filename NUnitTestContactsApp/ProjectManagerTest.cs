@@ -74,13 +74,12 @@ namespace NUnitTestContactsApp
 		[Test(Description = "Read broken  file")]
 		public void TestFileReadWrite_BrokenData()
 		{
-			var expected = new Project();
-
-			ProjectManager.DefaultPath = _referenceBrokenPath;
-			var actual = ProjectManager.ReadProject();
-
-			Assert.AreEqual(expected.Contacts, actual.Contacts, 
-				"File is not broken");
+			Assert.Throws<JsonReaderException>(() =>
+				{
+					ProjectManager.DefaultPath = _referenceBrokenPath;
+					var project = ProjectManager.ReadProject();
+				},
+				"Can read the file");
 		}
 
 		[Test(Description = "Try to read nonexistent file")]
