@@ -6,10 +6,10 @@ using System.Linq;
 using ContactsApp;
 using NUnit.Framework.Internal;
 
-namespace NUnitTestProject
+namespace NUnitTestContactsApp
 {
 	[TestFixture]
-	public class TestValidator
+	public class ValidatorTest
 	{
 		[TestCase(1600, 1, 1, "Exception: date is not below 1900",
 			TestName = "Date below 1900")]

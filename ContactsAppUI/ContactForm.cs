@@ -53,8 +53,8 @@ namespace ContactsAppUI
 					SurnameTextBox.Text, phoneNumber, 
 					BirthdayDateTimePicker.Value, EmailTextBox.Text,
 					VkTextBox.Text);
-                //TODO: форма закрывается без присвоения dialogResult
-				this.Close();
+				//TODO: форма закрывается без присвоения dialogResult(Done)
+				DialogResult = DialogResult.OK;
 			}
 			catch(ArgumentException exception)
 			{
@@ -63,15 +63,13 @@ namespace ContactsAppUI
 					MessageBoxIcon.Error);
 				return;
 			}
-
-			DialogResult = DialogResult.OK;
 		}
 
 		private void Cancel_Click(object sender, EventArgs e)
 		{
-            //TODO: присвоить результат диалога перед закрытием
+            //TODO: присвоить результат диалога перед закрытием(done)
             Contact = _oldContact;
-			this.Close();
+            DialogResult = DialogResult.Cancel;
 		}
 
 		private void SurnameTextBox_TextChanged(object sender, EventArgs e)

@@ -220,65 +220,35 @@ namespace ContactsAppUI
 
 		private void AddPictureBox_MouseHover(object sender, EventArgs e)
 		{
-            //TODO: я в дискорде писал сообщение, что здесь логика с формами слишком сложная. Можно сделать на обычных кнопках, используя свойства Image или BackImage. А это всё удалить
-            int imageWidth = AddButton.BackgroundImage.Width - (
-				(AddButton.Width * 20) / 100);
-			int imageHeight = AddButton.BackgroundImage.Height - (
-				(AddButton.Height * 20) / 100);
-			Bitmap newImage = new Bitmap(imageWidth,
-				imageHeight);
-			Graphics g = Graphics.FromImage(newImage);
-			g.DrawImage(AddButton.BackgroundImage, new Rectangle(Point.Empty,
-				newImage.Size));
-			AddButton.BackgroundImage = newImage;
-			AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			//TODO: я в дискорде писал сообщение, что здесь логика с формами слишком сложная. Можно сделать на обычных кнопках, используя свойства Image или BackImage. А это всё удалить(done)
+			AddButton.BackgroundImage = Properties.Resources.plus;
 		}
 
 		private void AddPictureBox_MouseLeave(object sender, EventArgs e)
 		{
-			AddButton.BackgroundImage = Properties.Resources.plus;
+			AddButton.BackgroundImage = Properties.Resources.plus_min;
 		}
 
 		private void EditPictureBox_MouseHover(object sender, EventArgs e)
 		{
-            //TODO: см. выше
-            int imageWidth = EditButton.BackgroundImage.Width - (
-				(EditButton.Width * 20) / 100);
-			int imageHeight = EditButton.BackgroundImage.Height - (
-				(EditButton.Height * 20) / 100);
-			Bitmap newImage = new Bitmap(imageWidth,
-				imageHeight);
-			Graphics g = Graphics.FromImage(newImage);
-			g.DrawImage(EditButton.BackgroundImage, new Rectangle(Point.Empty,
-				newImage.Size));
-			EditButton.BackgroundImage = newImage;
-			EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			//TODO: см. выше(done)
+			EditButton.BackgroundImage = Properties.Resources.edit;
 		}
 
 		private void EditPictureBox_MouseLeave(object sender, EventArgs e)
 		{
-			EditButton.BackgroundImage = Properties.Resources.edit;
+			EditButton.BackgroundImage = Properties.Resources.edit_min;
 		}
 
 		private void RemovePictureBox_MouseHover(object sender, EventArgs e)
 		{
-            //TODO: см. выше
-            int imageWidth = RemoveButton.BackgroundImage.Width - (
-				(RemoveButton.Width * 20) / 100);
-			int imageHeight = RemoveButton.BackgroundImage.Height - (
-				(RemoveButton.Height * 20) / 100);
-			Bitmap newImage = new Bitmap(imageWidth,
-				imageHeight);
-			Graphics g = Graphics.FromImage(newImage);
-			g.DrawImage(RemoveButton.BackgroundImage, new Rectangle(Point.Empty,
-				newImage.Size));
-			RemoveButton.BackgroundImage = newImage;
-			RemoveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			//TODO: см. выше(done)
+			RemoveButton.BackgroundImage = Properties.Resources.bin;
 		}
 
 		private void RemovePictureBox_MouseLeave(object sender, EventArgs e)
 		{
-			RemoveButton.BackgroundImage = Properties.Resources.bin;
+			RemoveButton.BackgroundImage = Properties.Resources.bin_min;
 		}
 
 		private void Search_TextChanged(object sender, EventArgs e)

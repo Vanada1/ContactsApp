@@ -156,5 +156,14 @@
   <ItemGroup>
     <None Include="Properties\bin.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\bin_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\edit_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\plus_min.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

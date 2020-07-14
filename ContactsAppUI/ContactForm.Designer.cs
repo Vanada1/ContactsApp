@@ -56,7 +56,7 @@
 			this.PhoneMaskedTextBox.Mask = "7 (999) 000-0000";
 			this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
 			this.PhoneMaskedTextBox.Size = new System.Drawing.Size(302, 20);
-			this.PhoneMaskedTextBox.TabIndex = 32;
+			this.PhoneMaskedTextBox.TabIndex = 4;
 			this.PhoneMaskedTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.PhoneMaskedTextBox_MaskInputRejected);
 			// 
 			// BirthdayDateTimePicker
@@ -72,7 +72,7 @@
 			this.BirthdayDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
 			this.BirthdayDateTimePicker.Size = new System.Drawing.Size(163, 20);
-			this.BirthdayDateTimePicker.TabIndex = 31;
+			this.BirthdayDateTimePicker.TabIndex = 3;
 			this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.BirthdayDateTimePicker.ValueChanged += new System.EventHandler(this.BirthdayDateTimePicker_ValueChanged);
 			// 
@@ -82,7 +82,7 @@
 			this.VkTextBox.Location = new System.Drawing.Point(66, 130);
 			this.VkTextBox.Name = "VkTextBox";
 			this.VkTextBox.Size = new System.Drawing.Size(302, 20);
-			this.VkTextBox.TabIndex = 30;
+			this.VkTextBox.TabIndex = 6;
 			this.VkTextBox.TextChanged += new System.EventHandler(this.VkTextBox_TextChanged);
 			// 
 			// EmailTextBox
@@ -91,7 +91,7 @@
 			this.EmailTextBox.Location = new System.Drawing.Point(66, 103);
 			this.EmailTextBox.Name = "EmailTextBox";
 			this.EmailTextBox.Size = new System.Drawing.Size(302, 20);
-			this.EmailTextBox.TabIndex = 29;
+			this.EmailTextBox.TabIndex = 5;
 			this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
 			// 
 			// NameTextBox
@@ -100,7 +100,7 @@
 			this.NameTextBox.Location = new System.Drawing.Point(66, 28);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(302, 20);
-			this.NameTextBox.TabIndex = 28;
+			this.NameTextBox.TabIndex = 2;
 			this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
 			// 
 			// SurnameTextBox
@@ -109,7 +109,7 @@
 			this.SurnameTextBox.Location = new System.Drawing.Point(66, 3);
 			this.SurnameTextBox.Name = "SurnameTextBox";
 			this.SurnameTextBox.Size = new System.Drawing.Size(302, 20);
-			this.SurnameTextBox.TabIndex = 27;
+			this.SurnameTextBox.TabIndex = 1;
 			this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
 			// 
 			// vkId
@@ -179,7 +179,7 @@
 			this.OKButton.Location = new System.Drawing.Point(3, 3);
 			this.OKButton.Name = "OKButton";
 			this.OKButton.Size = new System.Drawing.Size(94, 24);
-			this.OKButton.TabIndex = 33;
+			this.OKButton.TabIndex = 7;
 			this.OKButton.Text = "OK";
 			this.OKButton.UseVisualStyleBackColor = true;
 			this.OKButton.Click += new System.EventHandler(this.OK_Click);
@@ -192,7 +192,7 @@
 			this.CancelButton.Location = new System.Drawing.Point(103, 3);
 			this.CancelButton.Name = "CancelButton";
 			this.CancelButton.Size = new System.Drawing.Size(94, 24);
-			this.CancelButton.TabIndex = 34;
+			this.CancelButton.TabIndex = 8;
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
 			this.CancelButton.Click += new System.EventHandler(this.Cancel_Click);

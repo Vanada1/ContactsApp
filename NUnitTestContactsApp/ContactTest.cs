@@ -4,13 +4,13 @@ using NUnit.Framework;
 using ContactsApp;
 using NUnit.Framework.Internal;
 
-namespace NUnitTestProject
+namespace NUnitTestContactsApp
 {
 	[TestFixture]
-	class TestContact
+	class ContactTest
 	{
-        //TODO: именование метода
-        private Contact createEmptyContact()
+        //TODO: именование метода(done)
+        private Contact CreateEmptyContact()
 		{
 			return new Contact(" ", " ", new PhoneNumber(70000000000),
 				DateTime.Now, " ", " ");
@@ -22,7 +22,7 @@ namespace NUnitTestProject
 		{
 			var expected = "Name";
 
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			contact.Name = expected;
 
 			var actual = contact.Name;
@@ -39,7 +39,7 @@ namespace NUnitTestProject
 		public void TestNameSet_ArgumentException(string wrongValue,
 			string message)
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			Assert.Throws<ArgumentException>(
 				() => { contact.Name = wrongValue; },
 				message);
@@ -48,7 +48,7 @@ namespace NUnitTestProject
 		[Test(Description = "Positive test of the Name setter")]
 		public void TestNameSet_CorrectValue()
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			var name = "Name";
 			Assert.DoesNotThrow(
 				() => { contact.Name = name; },
@@ -62,7 +62,7 @@ namespace NUnitTestProject
 		{
 			var expected = "Surname";
 
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			contact.Surname = expected;
 
 			var actual = contact.Surname;
@@ -79,7 +79,7 @@ namespace NUnitTestProject
 		public void TestSurnameSet_ArgumentException(string wrongValue, 
 			string message)
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			Assert.Throws<ArgumentException>(
 				() => { contact.Surname = wrongValue; },
 				message);
@@ -88,7 +88,7 @@ namespace NUnitTestProject
 		[Test(Description = "Positive test of the Surname setter")]
 		public void TestSurnameSet_CorrectValue()
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			var surname = "Surname";
 			Assert.DoesNotThrow(
 				() => { contact.Surname = surname; },
@@ -102,7 +102,7 @@ namespace NUnitTestProject
 		{
 			var expected = "Email";
 
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			contact.Email = expected;
 
 			var actual = contact.Email;
@@ -119,7 +119,7 @@ namespace NUnitTestProject
 		public void TestEmailSet_ArgumentException(string wrongValue, 
 			string message)
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			Assert.Throws<ArgumentException>(
 				() => { contact.Email = wrongValue; },
 				message);
@@ -128,7 +128,7 @@ namespace NUnitTestProject
 		[Test(Description = "Positive test of the Email setter")]
 		public void TestEmailSet_CorrectValue()
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			var email = "Email";
 			Assert.DoesNotThrow(
 				() => { contact.Email = email; },
@@ -142,7 +142,7 @@ namespace NUnitTestProject
 		{
 			var expected = "VKID";
 
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			contact.VkId = expected;
 
 			var actual = contact.VkId;
@@ -159,7 +159,7 @@ namespace NUnitTestProject
 		public void TestVKIDSet_ArgumentException(string wrongValue,
 			string message)
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			Assert.Throws<ArgumentException>(
 				() => { contact.VkId = wrongValue; },
 				message);
@@ -168,7 +168,7 @@ namespace NUnitTestProject
 		[Test(Description = "Positive test of the VKID setter")]
 		public void TestVKIDSet_CorrectValue()
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			var vkid = "VKID";
 			Assert.DoesNotThrow(
 				() => { contact.Name = vkid; },
@@ -182,7 +182,7 @@ namespace NUnitTestProject
 		{
 			var expected = new PhoneNumber(78005553535);
 
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			contact.PhoneNumber = expected;
 
 			var actual = contact.PhoneNumber;
@@ -198,7 +198,7 @@ namespace NUnitTestProject
 		public void TestPhoneNumber_ArgumentException(long wrongNumber,
 			string message)
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			Assert.Throws<ArgumentException>(
 				() => { contact.PhoneNumber = new PhoneNumber(wrongNumber); },
 				message);
@@ -207,7 +207,7 @@ namespace NUnitTestProject
 		[Test(Description = "Positive test of the PhoneNumber setter")]
 		public void TestPhoneNumberSet_CorrectValue()
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			var phoneNumber = new PhoneNumber(78005553535);
 			Assert.DoesNotThrow(
 				() => { contact.PhoneNumber = phoneNumber; },
@@ -221,7 +221,7 @@ namespace NUnitTestProject
 		{
 			var expected = new DateTime(2000,12,12);
 
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			contact.Birthday = expected;
 
 			var actual = contact.Birthday;
@@ -239,7 +239,7 @@ namespace NUnitTestProject
 		public void TestBirthdaySet_ArgumentException(int year, int month,
 			int day, string message)
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			var wrongValue = new DateTime(year, month, day);
 			Assert.Throws<ArgumentException>(
 				() => { contact.Birthday = wrongValue; },
@@ -249,7 +249,7 @@ namespace NUnitTestProject
 		[Test(Description = "Positive test of the Birthday setter")]
 		public void TestBirthdaySet_CorrectValue()
 		{
-			var contact = createEmptyContact();
+			var contact = CreateEmptyContact();
 			var dateTime = new DateTime(2000, 12, 21);
 			Assert.DoesNotThrow(
 				() => { contact.Birthday = dateTime; },

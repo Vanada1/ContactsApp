@@ -65,7 +65,7 @@ namespace ContactsApp
 			            project = JsonConvert.DeserializeObject<Project>(projectText);
 		            }
 	            }
-	            catch (SerializationException e)
+	            catch (JsonReaderException e)
 	            {
                     return project;
 	            }

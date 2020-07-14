@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using ContactsApp;
 using NUnit.Framework.Internal;
-//TODO: неправильное название у проекта с юнит-тестами
-//TODO: проект создан под NET Core, а бизнес-логика под Net Framework. Должно быть одинаковым, иначе это будет мешать адекватной работе тестов в разных средах
-namespace NUnitTestProject
+//TODO: неправильное название у проекта с юнит-тестами(DOne)
+//TODO: проект создан под NET Core, а бизнес-логика под Net Framework. Должно быть одинаковым, иначе это будет мешать адекватной работе тестов в разных средах(done)
+namespace NUnitTestContactsApp
 {
 	[TestFixture]
-	public class TestProject
+	public class ProjectTest
 	{
 		[Test(Description = "Positive test of the Contacts setter")]
 		public void TestContactsSet_CurrentValue()
