@@ -7,7 +7,7 @@ using NUnit.Framework.Internal;
 namespace NUnitTestContactsApp
 {
 	[TestFixture]
-	class ContactTest
+	class ContactTests
 	{
         private Contact CreateEmptyContact()
 		{

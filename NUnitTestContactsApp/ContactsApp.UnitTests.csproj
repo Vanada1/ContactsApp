@@ -9,8 +9,8 @@
     <ProjectGuid>{C8551A5A-3597-4140-8A83-03F28FFA0705}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NUnitTestContactsApp</RootNamespace>
-    <AssemblyName>NUnitTestContactsApp</AssemblyName>
+    <RootNamespace>ContactsApp.UnitTests</RootNamespace>
+    <AssemblyName>ContactsApp.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,11 +53,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactTest.cs" />
-    <Compile Include="ProjectTest.cs" />
-    <Compile Include="ProjectManagerTest.cs" />
-    <Compile Include="PhoneNumberTest.cs" />
-    <Compile Include="ValidatorTest.cs" />
+    <Compile Include="ContactTests.cs" />
+    <Compile Include="ProjectTests.cs" />
+    <Compile Include="ProjectManagerTests.cs" />
+    <Compile Include="PhoneNumberTests.cs" />
+    <Compile Include="ValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

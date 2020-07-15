@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace NUnitTestContactsApp
 {
     [TestFixture]
-	public class ProjectManagerTest
+	public class ProjectManagerTests
 	{
 		/// <summary>
 		/// File name for tests

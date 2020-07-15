@@ -6,7 +6,7 @@ using ContactsApp;
 namespace NUnitTestContactsApp
 {
     [TestFixture]
-	public class PhoneNumberTest
+	public class PhoneNumberTests
 	{
 		private PhoneNumber CreateClearPhoneNumber()
 		{

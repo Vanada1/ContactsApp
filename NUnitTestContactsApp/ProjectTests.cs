@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using ContactsApp;
 using NUnit.Framework.Internal;
-//TODO: всё еще неправильное название у проекта с юнит-тестами. Должно быть ContactsApp.UnitTests
+//TODO: всё еще неправильное название у проекта с юнит-тестами. Должно быть ContactsApp.UnitTests(Done)
 namespace NUnitTestContactsApp
 {
 	[TestFixture]
-	public class ProjectTest //TODO: Здесь и в других классах - слово Tests должно быть в множественном числе, так как класс - это множество тестов
+	public class ProjectTests //TODO: Здесь и в других классах - слово Tests должно быть в множественном числе, так как класс - это множество тестов(done)
     {
 		[Test(Description = "Positive test of the Contacts setter")]
 		public void TestContactsSet_CurrentValue()

@@ -9,7 +9,7 @@ using NUnit.Framework.Internal;
 namespace NUnitTestContactsApp
 {
 	[TestFixture]
-	public class ValidatorTest
+	public class ValidatorTests
 	{
 		[TestCase(1600, 1, 1, "Exception: date is not below 1900",
 			TestName = "Date below 1900")]
