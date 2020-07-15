@@ -127,15 +127,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\minus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\edit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -154,22 +145,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\unnamed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\bin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\bin_min.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\edit_min.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\plus_min.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="phonebook.ico" />
+    <None Include="Properties\RemoveFile.png" />
+    <None Include="Properties\ExclamationMark.png" />
+    <None Include="Properties\Customize.png" />
+    <None Include="Properties\AddFile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

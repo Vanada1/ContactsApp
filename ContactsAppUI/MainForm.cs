@@ -7,14 +7,14 @@ using System.Resources;
 
 namespace ContactsAppUI
 {
-    //TODO: Плашка с днём рождения висит всегда, а должна только тогда, когда у кого есть день рождения
-    //TODO: Под главным меню какая-то белая полоса. Проверь верстку
-    //TODO: Плашка с днём рождения сверстана криво - пиктограмма имеет разные поля от границ плашки, смотрится не аккуратно. И вообще, смотрится мрачновато
-    //TODO: текстбокс поиска не выровнен по размеру листбокса
-    //TODO: иконки для кнопок разношерстные - найти одинаковые по стилю
-    //TODO: после добавления/редактирования заметки почему-то сбрасывается текущая выбранная заметка. Надо менять фокус на новую заметку
-    //TODO: создал три заметки на русском языке, закрыл программу. Запустил еще раз - вместо русских символов показываются знаки вопроса
-    //TODO: у второго окна очень странная логика при растяжении - увеличивается расстояние между строчками, почему-то увеличиваются кнопки.
+    //TODO: Плашка с днём рождения висит всегда, а должна только тогда, когда у кого есть день рождения(done)
+    //TODO: Под главным меню какая-то белая полоса. Проверь верстку(done)
+    //TODO: Плашка с днём рождения сверстана криво - пиктограмма имеет разные поля от границ плашки, смотрится не аккуратно. И вообще, смотрится мрачновато(done)
+    //TODO: текстбокс поиска не выровнен по размеру листбокса(done)
+    //TODO: иконки для кнопок разношерстные - найти одинаковые по стилю(done)
+    //TODO: после добавления/редактирования заметки почему-то сбрасывается текущая выбранная заметка. Надо менять фокус на новую заметку(done)
+    //TODO: создал три заметки на русском языке, закрыл программу. Запустил еще раз - вместо русских символов показываются знаки вопроса(done)
+    //TODO: у второго окна очень странная логика при растяжении - увеличивается расстояние между строчками, почему-то увеличиваются кнопки.(done)
     public partial class MainForm : Form
 	{
 		/// <summary>
@@ -58,7 +58,10 @@ namespace ContactsAppUI
 
 				BirthdayLabel.Text += birthdayContacts[birthdayContacts.Count - 1].Surname;
 			}
-
+			else
+			{
+				this.Controls.Remove(birthdayTableLayoutPanel);
+			}
             UpdatesListBox(_contacts);
             ContactsListBox.ClearSelected();
 		}
@@ -72,45 +75,51 @@ namespace ContactsAppUI
 				var editForm = new ContactForm();
 				editForm.Contact = selectedContact;
 				editForm.ShowDialog();
+				var updateContact = editForm.Contact;
 				if (editForm.DialogResult == DialogResult.OK)
 				{
-					var updateContact = editForm.Contact;
+					
 					var selectIndexForProjectContacts = _project.FindIndex(
 						selectedContact);
 					_project.Contacts.RemoveAt(selectIndexForProjectContacts);
 					_project.Contacts.Insert(selectIndexForProjectContacts,
 						updateContact);
 					_project.Contacts = _project.SearchContacts();
+					
 				}
 
 				ProjectManager.SaveProject(_project);
+				SearchContact();
+				UpdatesListBox(_contacts);
+				ChangeTextBoxes(updateContact);
+				var selectContact = _project.FindIndex(updateContact);
+				ContactsListBox.ClearSelected();
+				ContactsListBox.SetSelected(selectContact, true);
 			}
 			else
 			{
 				MessageBox.Show("No contact selected", "Error", 
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-			
-			SearchContact();
-			UpdatesListBox(_contacts);
-			ContactsListBox.ClearSelected();
 		}
 
 		private void Add_Click(object sender, EventArgs e)
 		{
 			var addForm = new ContactForm();
 			addForm.ShowDialog();
-            if (addForm.DialogResult == DialogResult.OK)
+			if (addForm.DialogResult == DialogResult.OK)
 			{
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
 				ProjectManager.SaveProject(_project);
 				_project.Contacts = _project.SearchContacts();
+				SearchContact();
+				UpdatesListBox(_contacts);
+				ChangeTextBoxes(newContact);
+				var selectContact = _project.FindIndex(newContact);
+				ContactsListBox.ClearSelected();
+				ContactsListBox.SetSelected(selectContact, true);
 			}
-
-			SearchContact();
-			UpdatesListBox(_contacts);
-			ContactsListBox.ClearSelected();
 		}
 
 		private void Remove_Click(object sender, EventArgs e)
@@ -132,8 +141,11 @@ namespace ContactsAppUI
 				{
 					var selectedContact = _contacts[selectedIndex];
 					_project.Contacts.Remove(selectedContact);
-					ClearTextBoxes();
 					ProjectManager.SaveProject(_project);
+					SearchContact();
+					UpdatesListBox(_contacts);
+					ContactsListBox.ClearSelected();
+					ClearTextBoxes();
 				}
 			}
 			else
@@ -141,10 +153,6 @@ namespace ContactsAppUI
 				MessageBox.Show("No contact selected", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-
-			SearchContact();
-			UpdatesListBox(_contacts);
-			ContactsListBox.ClearSelected();
 		}
 
 		private void listBox1_SelectedIndexChanged(object sender,
@@ -152,11 +160,7 @@ namespace ContactsAppUI
 		{
             //TODO: не надо менять термины. Если называется selected - оставляй selected(done)
             var selectedIndex = ContactsListBox.SelectedIndex;
-			if (selectedIndex == -1)
-			{
-				ClearTextBoxes();
-				return;
-			}
+			if (selectedIndex == -1) return;
 			ChangeTextBoxes(_contacts[selectedIndex]);
 			
 		}

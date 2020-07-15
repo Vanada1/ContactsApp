@@ -91,7 +91,7 @@ namespace ContactsApp
 			}
 
 			using (StreamWriter file = new StreamWriter(
-				DefaultPath, false, System.Text.Encoding.Default))
+				DefaultPath, false, System.Text.Encoding.UTF8))
 			{
                 file.Write(JsonConvert.SerializeObject(project));
 			}
