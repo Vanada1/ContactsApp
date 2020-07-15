@@ -227,8 +227,8 @@ namespace ContactsAppUI
 
 		private void AddPictureBox_MouseHover(object sender, EventArgs e)
 		{
-			//TODO: я в дискорде писал сообщение, что здесь логика с формами слишком сложная. Можно сделать на обычных кнопках, используя свойства Image или BackImage. А это всё удалить(done)
-			AddButton.BackgroundImage = Properties.Resources.plus;
+            //TODO: эффект забавный, но не нужный
+            AddButton.BackgroundImage = Properties.Resources.plus;
 		}
 
 		private void AddPictureBox_MouseLeave(object sender, EventArgs e)
@@ -238,8 +238,7 @@ namespace ContactsAppUI
 
 		private void EditPictureBox_MouseHover(object sender, EventArgs e)
 		{
-			//TODO: см. выше(done)
-			EditButton.BackgroundImage = Properties.Resources.edit;
+            EditButton.BackgroundImage = Properties.Resources.edit;
 		}
 
 		private void EditPictureBox_MouseLeave(object sender, EventArgs e)
@@ -249,8 +248,7 @@ namespace ContactsAppUI
 
 		private void RemovePictureBox_MouseHover(object sender, EventArgs e)
 		{
-			//TODO: см. выше(done)
-			RemoveButton.BackgroundImage = Properties.Resources.bin;
+            RemoveButton.BackgroundImage = Properties.Resources.bin;
 		}
 
 		private void RemovePictureBox_MouseLeave(object sender, EventArgs e)

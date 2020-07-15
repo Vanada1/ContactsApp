@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 
 namespace NUnitTestContactsApp
 {
-    //TODO: два файла с заметками почему-то лежат вне папки тестдата. Более того, два набора файлов не нужно, достаточно только одного(done)
     [TestFixture]
 	public class ProjectManagerTest
 	{
@@ -32,7 +31,7 @@ namespace NUnitTestContactsApp
 		/// Reference path file for tests
 		/// </summary>
 		private static readonly string _referencePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\TestData\Reference.txt";
-        //TODO: ! Это не будет работать для других конфигураций сборки! Надо копировать файлы в выходную папку! Читай документ(done)
+        
         /// <summary>
         /// Reference path broken file for tests
         /// </summary>

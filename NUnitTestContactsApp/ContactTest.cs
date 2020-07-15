@@ -9,7 +9,6 @@ namespace NUnitTestContactsApp
 	[TestFixture]
 	class ContactTest
 	{
-        //TODO: именование метода(done)
         private Contact CreateEmptyContact()
 		{
 			return new Contact(" ", " ", new PhoneNumber(70000000000),

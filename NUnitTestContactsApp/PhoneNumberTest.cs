@@ -5,7 +5,6 @@ using ContactsApp;
 
 namespace NUnitTestContactsApp
 {
-    //TODO: у классов юнит-тестов разное именование, при чем у всех неправильное (done)
     [TestFixture]
 	public class PhoneNumberTest
 	{

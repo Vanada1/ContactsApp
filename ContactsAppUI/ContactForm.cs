@@ -53,8 +53,7 @@ namespace ContactsAppUI
 					SurnameTextBox.Text, phoneNumber, 
 					BirthdayDateTimePicker.Value, EmailTextBox.Text,
 					VkTextBox.Text);
-				//TODO: форма закрывается без присвоения dialogResult(Done)
-				DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
 			}
 			catch(ArgumentException exception)
 			{
@@ -67,7 +66,6 @@ namespace ContactsAppUI
 
 		private void Cancel_Click(object sender, EventArgs e)
 		{
-            //TODO: присвоить результат диалога перед закрытием(done)
             Contact = _oldContact;
             DialogResult = DialogResult.Cancel;
 		}
