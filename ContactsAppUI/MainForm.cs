@@ -7,7 +7,15 @@ using System.Resources;
 
 namespace ContactsAppUI
 {
-	public partial class MainForm : Form
+    //TODO: Плашка с днём рождения висит всегда, а должна только тогда, когда у кого есть день рождения
+    //TODO: Под главным меню какая-то белая полоса. Проверь верстку
+    //TODO: Плашка с днём рождения сверстана криво - пиктограмма имеет разные поля от границ плашки, смотрится не аккуратно. И вообще, смотрится мрачновато
+    //TODO: текстбокс поиска не выровнен по размеру листбокса
+    //TODO: иконки для кнопок разношерстные - найти одинаковые по стилю
+    //TODO: после добавления/редактирования заметки почему-то сбрасывается текущая выбранная заметка. Надо менять фокус на новую заметку
+    //TODO: создал три заметки на русском языке, закрыл программу. Запустил еще раз - вместо русских символов показываются знаки вопроса
+    //TODO: у второго окна очень странная логика при растяжении - увеличивается расстояние между строчками, почему-то увеличиваются кнопки.
+    public partial class MainForm : Form
 	{
 		/// <summary>
 		/// Contains all data of app
@@ -142,7 +150,8 @@ namespace ContactsAppUI
 		private void listBox1_SelectedIndexChanged(object sender,
 			EventArgs e)
 		{
-			var chosenIndex = ContactsListBox.SelectedIndex;
+            //TODO: не надо менять термины. Если называется selected - оставляй selected
+            var chosenIndex = ContactsListBox.SelectedIndex;
 			if (chosenIndex == -1)
 			{
 				ClearTextBoxes();

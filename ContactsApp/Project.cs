@@ -41,17 +41,17 @@ namespace ContactsApp
 			return contacts;
 		}
 
-		/// <summary>
-		/// Sorting all contacts
-		/// </summary>
-		/// <param name="substring">
-		/// looking for a substring
-		/// </param>
-		/// <returns>
-		/// Returns all contacts that have a <paramref name="substring"/>
-		/// </returns>
-		public List<Contact> SortContacts(string substring)
-		{
+        /// <summary>
+        /// Sorting all contacts
+        /// </summary>
+        /// <param name="substring">
+        /// looking for a substring //TODO: вот этот комментарий не дает никакой полезной информации. Здесь как раз надо написать, что поиск выполняется по подстроке в имени и фамилии. Это важно
+        /// </param>
+        /// <returns>
+        /// Returns all contacts that have a <paramref name="substring"/>
+        /// </returns>
+        public List<Contact> SortContacts(string substring) //TODO: именование - метод не просто сортирует, но и фильтрует по подстроке в имени/фамилии. Вообще, лучше такие методы делить на два - отдельно сортировка, отдельно фильтрация, тогда можно будет гибко использовать два отдельных метода в разных ситуациях.
+        {
 			for (int i = 0; i < Contacts.Count; i++)
 			{
 				if (Contacts[i] == null)
@@ -82,8 +82,8 @@ namespace ContactsApp
 		/// </summary>
 		/// <param name="date"></param>
 		/// <returns></returns>
-		public List<Contact> FindBirthday(DateTime date)
-		{
+		public List<Contact> FindBirthday(DateTime date) //TODO: именование - метод ищет не дни рождения, а ищет контакты по дню рождения
+        {
 			var birthdayContacts = new List<Contact>();
 			foreach (var contact in Contacts)
 			{
