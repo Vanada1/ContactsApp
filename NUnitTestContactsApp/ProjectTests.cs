@@ -60,7 +60,7 @@ namespace NUnitTestContactsApp
 			};
 
 			var actual = new Project();
-			actual.Contacts = project.SortContacts();
+			actual.Contacts = project.SearchContacts();
 
 			Assert.AreEqual(expected.Contacts[0].Surname, 
 				actual.Contacts[0].Surname, "Dotes not sorted");
@@ -73,7 +73,7 @@ namespace NUnitTestContactsApp
 
 			var excepted = new List<Contact>();
 
-			var actual = project.SortContacts();
+			var actual = project.SearchContacts();
 
 			Assert.AreEqual(excepted, actual,
 				"Don't Contain Values");
@@ -118,7 +118,7 @@ namespace NUnitTestContactsApp
 			};
 
 			var actual = new Project();
-			actual.Contacts = project.SortContacts();
+			actual.Contacts = project.SearchContacts();
 
 			Assert.AreEqual(expected.Contacts[0].Surname,
 				actual.Contacts[0].Surname, "Dotes not sorted");
@@ -154,7 +154,7 @@ namespace NUnitTestContactsApp
 			};
 
 			var actual = new Project();
-			actual.Contacts = project.SortContacts("A");
+			actual.Contacts = project.SearchContacts("A");
 
 			Assert.AreEqual(expected.Contacts[0].Surname,
 				actual.Contacts[0].Surname, "Dotes not sorted");
@@ -167,7 +167,7 @@ namespace NUnitTestContactsApp
 
 			var excepted = new List<Contact>();
 
-			var actual = project.SortContacts("A");
+			var actual = project.SearchContacts("A");
 
 			Assert.AreEqual(excepted, actual,
 				"Don't Contain Values");
@@ -204,7 +204,7 @@ namespace NUnitTestContactsApp
 			};
 
 			var actual = new Project();
-			actual.Contacts = project.SortContacts("C");
+			actual.Contacts = project.SearchContacts("C");
 
 			Assert.AreEqual(expected.Contacts[0].Surname,
 				actual.Contacts[0].Surname, "Dotes not sorted");
