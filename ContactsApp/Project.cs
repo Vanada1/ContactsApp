@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace ContactsApp
 		/// Sort contacts list
 		/// </summary>
 		/// <returns>All sorted contacts</returns>
-		public List<Contact> SortContacts()
+		private IOrderedEnumerable<Contact> SortContacts()
 		{
 			for (int i = 0; i < Contacts.Count; i++)
 			{
@@ -30,38 +31,24 @@ namespace ContactsApp
 					Contacts.RemoveAt(i);
 				}
 			}
-			var query = Contacts.OrderBy(
+			return Contacts.OrderBy(
 				contact => contact.Surname);
 			var contacts = new List<Contact>();
-			foreach (var i in query)
-			{
-				contacts.Add(i);
-			}
-
-			return contacts;
 		}
 
-        /// <summary>
-        /// Sorting all contacts
-        /// </summary>
-        /// <param name="substring">
-        /// looking for a substring //TODO: вот этот комментарий не дает никакой полезной информации. Здесь как раз надо написать, что поиск выполняется по подстроке в имени и фамилии. Это важно
-        /// </param>
-        /// <returns>
-        /// Returns all contacts that have a <paramref name="substring"/>
-        /// </returns>
-        public List<Contact> SortContacts(string substring) //TODO: именование - метод не просто сортирует, но и фильтрует по подстроке в имени/фамилии. Вообще, лучше такие методы делить на два - отдельно сортировка, отдельно фильтрация, тогда можно будет гибко использовать два отдельных метода в разных ситуациях.
+		/// <summary>
+		/// Sorting all contacts
+		/// </summary>
+		/// <param name="substring">
+		/// Searches for contacts by First Name and Last Name //TODO: вот этот комментарий не дает никакой полезной информации. Здесь как раз надо написать, что поиск выполняется по подстроке в имени и фамилии. Это важно(done)
+		/// </param>
+		/// <returns>
+		/// Returns all contacts that have a <paramref name="substring"/>
+		/// </returns>
+		public List<Contact> SearchContacts(string substring) //TODO: именование - метод не просто сортирует, но и фильтрует по подстроке в имени/фамилии. Вообще, лучше такие методы делить на два - отдельно сортировка, отдельно фильтрация, тогда можно будет гибко использовать два отдельных метода в разных ситуациях.(done)
         {
-			for (int i = 0; i < Contacts.Count; i++)
-			{
-				if (Contacts[i] == null)
-				{
-					Contacts.RemoveAt(i);
-				}
-			}
-			var query = Contacts.OrderBy(
-				contact => contact.Surname);
 			var contacts = new List<Contact>();
+	        var query = SortContacts();
 			foreach (var i in query)
 			{
 				if (i.Surname.Contains(substring))
@@ -75,6 +62,22 @@ namespace ContactsApp
 			}
 
 			return contacts;
+		}
+
+		/// <summary>
+		/// Looking for all non-zero contacts
+		/// </summary>
+		/// <returns>Returns all contacts</returns>
+		public List<Contact> SearchContacts()
+        {
+			var contacts = new List<Contact>();
+	        var query = SortContacts();
+	        foreach (var i in query)
+	        {
+		        contacts.Add(i);
+	        }
+
+	        return contacts;
 		}
 
 		/// <summary>

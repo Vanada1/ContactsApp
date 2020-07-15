@@ -421,7 +421,7 @@
 			this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.bin_min;
+			this.RemoveButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.bin;
 			this.RemoveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.RemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveButton.ForeColor = System.Drawing.SystemColors.Control;
@@ -431,8 +431,6 @@
 			this.RemoveButton.TabIndex = 5;
 			this.RemoveButton.UseVisualStyleBackColor = true;
 			this.RemoveButton.Click += new System.EventHandler(this.Remove_Click);
-			this.RemoveButton.MouseLeave += new System.EventHandler(this.RemovePictureBox_MouseLeave);
-			this.RemoveButton.MouseHover += new System.EventHandler(this.RemovePictureBox_MouseHover);
 			// 
 			// AddButton
 			// 
@@ -449,8 +447,6 @@
 			this.AddButton.TabIndex = 3;
 			this.AddButton.UseVisualStyleBackColor = true;
 			this.AddButton.Click += new System.EventHandler(this.Add_Click);
-			this.AddButton.MouseLeave += new System.EventHandler(this.AddPictureBox_MouseLeave);
-			this.AddButton.MouseHover += new System.EventHandler(this.AddPictureBox_MouseHover);
 			// 
 			// EditButton
 			// 
@@ -467,8 +463,6 @@
 			this.EditButton.TabIndex = 4;
 			this.EditButton.UseVisualStyleBackColor = true;
 			this.EditButton.Click += new System.EventHandler(this.Edit_Click);
-			this.EditButton.MouseLeave += new System.EventHandler(this.EditPictureBox_MouseLeave);
-			this.EditButton.MouseHover += new System.EventHandler(this.EditPictureBox_MouseHover);
 			// 
 			// MainForm
 			// 

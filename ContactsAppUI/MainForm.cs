@@ -37,7 +37,7 @@ namespace ContactsAppUI
 			try
 			{
 				_project = ProjectManager.ReadProject();
-				_project.Contacts = _project.SortContacts();
+				_project.Contacts = _project.SearchContacts();
 				_contacts = _project.Contacts;
 			}
 			catch(AccessViolationException exception)
@@ -80,7 +80,7 @@ namespace ContactsAppUI
 					_project.Contacts.RemoveAt(selectIndexForProjectContacts);
 					_project.Contacts.Insert(selectIndexForProjectContacts,
 						updateContact);
-					_project.Contacts = _project.SortContacts();
+					_project.Contacts = _project.SearchContacts();
 				}
 
 				ProjectManager.SaveProject(_project);
@@ -105,7 +105,7 @@ namespace ContactsAppUI
 				var newContact = addForm.Contact;
 				_project.Contacts.Add(newContact);
 				ProjectManager.SaveProject(_project);
-				_project.Contacts = _project.SortContacts();
+				_project.Contacts = _project.SearchContacts();
 			}
 
 			SearchContact();
@@ -234,37 +234,6 @@ namespace ContactsAppUI
 			VkTextBox.Text = contact.VkId;
 		}
 
-		private void AddPictureBox_MouseHover(object sender, EventArgs e)
-		{
-            //TODO: эффект забавный, но не нужный
-            AddButton.BackgroundImage = Properties.Resources.plus;
-		}
-
-		private void AddPictureBox_MouseLeave(object sender, EventArgs e)
-		{
-			AddButton.BackgroundImage = Properties.Resources.plus_min;
-		}
-
-		private void EditPictureBox_MouseHover(object sender, EventArgs e)
-		{
-            EditButton.BackgroundImage = Properties.Resources.edit;
-		}
-
-		private void EditPictureBox_MouseLeave(object sender, EventArgs e)
-		{
-			EditButton.BackgroundImage = Properties.Resources.edit_min;
-		}
-
-		private void RemovePictureBox_MouseHover(object sender, EventArgs e)
-		{
-            RemoveButton.BackgroundImage = Properties.Resources.bin;
-		}
-
-		private void RemovePictureBox_MouseLeave(object sender, EventArgs e)
-		{
-			RemoveButton.BackgroundImage = Properties.Resources.bin_min;
-		}
-
 		private void Search_TextChanged(object sender, EventArgs e)
 		{
 			SearchContact();
@@ -277,11 +246,11 @@ namespace ContactsAppUI
 		{
 			if (Search.Text.Length == 0)
 			{
-				_contacts = _project.SortContacts();
+				_contacts = _project.SearchContacts();
 			}
 			else
 			{
-				_contacts = _project.SortContacts(Search.Text);
+				_contacts = _project.SearchContacts(Search.Text);
 			}
 			UpdatesListBox(_contacts);
 		}
