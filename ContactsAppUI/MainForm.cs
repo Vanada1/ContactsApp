@@ -48,7 +48,7 @@ namespace ContactsAppUI
 			}
 
 			BirthdayLabel.Text = "Today birthday have:\n";
-			var birthdayContacts = _project.FindBirthday(DateTime.Now);
+			var birthdayContacts = _project.FindBirthdayContacts(DateTime.Now);
 			if (birthdayContacts.Count != 0)
 			{
 				for (int i = 0; i < birthdayContacts.Count - 1; i++)
@@ -150,14 +150,14 @@ namespace ContactsAppUI
 		private void listBox1_SelectedIndexChanged(object sender,
 			EventArgs e)
 		{
-            //TODO: не надо менять термины. Если называется selected - оставляй selected
-            var chosenIndex = ContactsListBox.SelectedIndex;
-			if (chosenIndex == -1)
+            //TODO: не надо менять термины. Если называется selected - оставляй selected(done)
+            var selectedIndex = ContactsListBox.SelectedIndex;
+			if (selectedIndex == -1)
 			{
 				ClearTextBoxes();
 				return;
 			}
-			ChangeTextBoxes(_contacts[chosenIndex]);
+			ChangeTextBoxes(_contacts[selectedIndex]);
 			
 		}
 

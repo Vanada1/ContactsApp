@@ -238,7 +238,7 @@ namespace NUnitTestContactsApp
 					"A", "A")
 			};
 
-			var actual = project.FindBirthday(
+			var actual = project.FindBirthdayContacts(
 				new DateTime(1900, 12, 31));
 
 			Assert.AreEqual(expected[0].Surname, 
@@ -253,7 +253,7 @@ namespace NUnitTestContactsApp
 
 			var expected = new List<Contact>();
 
-			var actual = project.FindBirthday(
+			var actual = project.FindBirthdayContacts(
 				new DateTime(1900, 12, 31));
 
 			Assert.AreEqual(expected,

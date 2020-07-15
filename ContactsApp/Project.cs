@@ -85,7 +85,7 @@ namespace ContactsApp
 		/// </summary>
 		/// <param name="date"></param>
 		/// <returns></returns>
-		public List<Contact> FindBirthday(DateTime date) //TODO: именование - метод ищет не дни рождения, а ищет контакты по дню рождения
+		public List<Contact> FindBirthdayContacts(DateTime date) //TODO: именование - метод ищет не дни рождения, а ищет контакты по дню рождения(done)
         {
 			var birthdayContacts = new List<Contact>();
 			foreach (var contact in Contacts)
