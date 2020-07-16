@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContactsApp
+namespace ContactsAppBL
 {
 	/// <summary>
 	/// The <see cref="Contact"> class contains information about the contact: 

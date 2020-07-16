@@ -3,7 +3,7 @@ using System.Runtime.InteropServices.ComTypes;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using ContactsApp;
+using ContactsAppBL;
 using NUnit.Framework.Internal;
 //TODO: всё еще неправильное название у проекта с юнит-тестами. Должно быть ContactsApp.UnitTests(Done)
 namespace NUnitTestContactsApp

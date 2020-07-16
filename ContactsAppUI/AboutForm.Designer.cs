@@ -1,4 +1,4 @@
-﻿namespace ContactsApp
+﻿namespace ContactsAppBL
 {
 	partial class About
 	{

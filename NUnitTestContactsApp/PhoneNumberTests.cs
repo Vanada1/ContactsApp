@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices.ComTypes;
 using NUnit.Framework;
-using ContactsApp;
+using ContactsAppBL;
 
 namespace NUnitTestContactsApp
 {

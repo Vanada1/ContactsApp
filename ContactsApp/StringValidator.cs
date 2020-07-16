@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContactsApp
+namespace ContactsAppBL
 {
 	/// <summary>
 	/// Support of work with strings

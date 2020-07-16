@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 
-namespace ContactsApp
+namespace ContactsAppBL
 {
 	/// <summary>
 	/// contains all the data about the <see cref="Project"/>

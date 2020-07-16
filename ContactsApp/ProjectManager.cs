@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
-namespace ContactsApp
+namespace ContactsAppBL
 {
 	/// <summary>
 	/// Class for working with files
@@ -49,26 +49,28 @@ namespace ContactsApp
 		public static Project ReadProject()
         {
             var project = new Project();
-            if (File.Exists(DefaultPath))
+            if (!File.Exists(DefaultPath))
             {
-	            try
-	            {
-		            using (StreamReader file = new StreamReader(
-			            DefaultPath, System.Text.Encoding.Default))
-		            {
-			            var projectText = file.ReadLine();
-			            if (string.IsNullOrEmpty(projectText))
-			            {
-				            projectText = null;
-			            }
+	            return project;
+            }
 
-			            project = JsonConvert.DeserializeObject<Project>(projectText);
-		            }
-	            }
-	            catch (SerializationException)
+            try
+            {
+	            using (StreamReader file = new StreamReader(
+		            DefaultPath, System.Text.Encoding.Default))
 	            {
-                    return project;
+		            var projectText = file.ReadLine();
+		            if (string.IsNullOrEmpty(projectText))
+		            {
+			            projectText = null;
+		            }
+
+		            project = JsonConvert.DeserializeObject<Project>(projectText);
 	            }
+            }
+            catch (SerializationException)
+            {
+	            return project;
             }
 
             return project;
