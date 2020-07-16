@@ -72,8 +72,10 @@ namespace ContactsAppUI
 			if(selectedIndex != -1)
 			{
 				var selectedContact = _contacts[selectedIndex];
-				var editForm = new ContactForm();
-				editForm.Contact = selectedContact;
+				var editForm = new ContactForm()
+				{
+					Contact = selectedContact
+				};
 				editForm.ShowDialog();
 				var updateContact = editForm.Contact;
 				if (editForm.DialogResult == DialogResult.OK)
@@ -155,7 +157,7 @@ namespace ContactsAppUI
 			}
 		}
 
-		private void listBox1_SelectedIndexChanged(object sender,
+		private void ListBox1_SelectedIndexChanged(object sender,
 			EventArgs e)
 		{
             //TODO: не надо менять термины. Если называется selected - оставляй selected(done)

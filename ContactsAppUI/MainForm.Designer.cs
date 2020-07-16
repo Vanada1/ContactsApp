@@ -224,7 +224,7 @@
 			this.ContactsListBox.ScrollAlwaysVisible = true;
 			this.ContactsListBox.Size = new System.Drawing.Size(247, 303);
 			this.ContactsListBox.TabIndex = 2;
-			this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+			this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
 			// 
 			// PhoneMaskedTextBox
 			// 

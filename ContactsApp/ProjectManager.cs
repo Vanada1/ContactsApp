@@ -18,7 +18,7 @@ namespace ContactsApp
 		/// <summary>
 		/// File name
 		/// </summary>
-		private static readonly string _fileName = "ContactsApp.notes";
+		private const string _fileName = "ContactsApp.notes";
 
 		/// <summary>
 		/// Folder for file
@@ -57,7 +57,7 @@ namespace ContactsApp
 			            DefaultPath, System.Text.Encoding.Default))
 		            {
 			            var projectText = file.ReadLine();
-			            if (projectText == "")
+			            if (string.IsNullOrEmpty(projectText))
 			            {
 				            projectText = null;
 			            }
@@ -65,7 +65,7 @@ namespace ContactsApp
 			            project = JsonConvert.DeserializeObject<Project>(projectText);
 		            }
 	            }
-	            catch (SerializationException e)
+	            catch (SerializationException)
 	            {
                     return project;
 	            }
