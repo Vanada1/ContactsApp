@@ -78,7 +78,7 @@ namespace ContactsAppUI
 					Contact.MAXLETTERCOUNT, null);
 				SurnameTextBox.BackColor = Color.White;
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException)
 			{
 				SurnameTextBox.BackColor = Color.LightSalmon;
 			}
@@ -92,7 +92,7 @@ namespace ContactsAppUI
 					Contact.MAXLETTERCOUNT, null);
 				NameTextBox.BackColor = Color.White;
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException)
 			{
 				NameTextBox.BackColor = Color.LightSalmon;
 			}
@@ -105,7 +105,7 @@ namespace ContactsAppUI
 				DateValidator.AssertDate(BirthdayDateTimePicker.Value);
 				BirthdayDateTimePicker.CalendarTitleBackColor = Color.White;
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException)
 			{
 				BirthdayDateTimePicker.CalendarTitleBackColor = Color.LightSalmon;
 			}
@@ -119,7 +119,7 @@ namespace ContactsAppUI
 					Contact.MAXLETTERCOUNT, null);
 				EmailTextBox.BackColor = Color.White;
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException)
 			{
 				EmailTextBox.BackColor = Color.LightSalmon;
 			}
@@ -133,7 +133,7 @@ namespace ContactsAppUI
 					Contact.MAXVKLETTERCOUNT, null);
 				VkTextBox.BackColor = Color.White;
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException)
 			{
 				VkTextBox.BackColor = Color.LightSalmon;
 			}
@@ -149,7 +149,7 @@ namespace ContactsAppUI
 					PhoneNumber.MAXDIGITCOUNT);
 				PhoneMaskedTextBox.BackColor = Color.White;
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException)
 			{
 				PhoneMaskedTextBox.BackColor = Color.LightSalmon;
 			}
