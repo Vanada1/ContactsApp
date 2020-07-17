@@ -3,7 +3,7 @@ using System.Runtime.InteropServices.ComTypes;
 using NUnit.Framework;
 using ContactsAppBL;
 
-namespace NUnitTestContactsApp
+namespace ContactsApp.UnitTests
 {
     [TestFixture]
 	public class PhoneNumberTests

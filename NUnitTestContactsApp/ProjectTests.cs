@@ -6,7 +6,7 @@ using System.Linq;
 using ContactsAppBL;
 using NUnit.Framework.Internal;
 
-namespace NUnitTestContactsApp
+namespace ContactsApp.UnitTests
 {
 	[TestFixture]
 	public class ProjectTests

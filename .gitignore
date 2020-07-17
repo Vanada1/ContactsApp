@@ -339,4 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-\InstallScripts\setup
+\InstallScripts\setup\*.exe

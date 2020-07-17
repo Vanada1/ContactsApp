@@ -7,7 +7,7 @@ using ContactsAppBL;
 using NUnit.Framework.Internal;
 using Newtonsoft.Json;
 
-namespace NUnitTestContactsApp
+namespace ContactsApp.UnitTests
 {
     [TestFixture]
 	public class ProjectManagerTests

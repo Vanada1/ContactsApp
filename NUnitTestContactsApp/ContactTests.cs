@@ -4,7 +4,7 @@ using NUnit.Framework;
 using ContactsAppBL;
 using NUnit.Framework.Internal;
 
-namespace NUnitTestContactsApp
+namespace ContactsApp.UnitTests
 {
 	[TestFixture]
 	class ContactTests
