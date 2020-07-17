@@ -19,6 +19,91 @@ namespace ContactsAppUI
         /// </summary>
         private List<Contact> _contacts;
 
+        /// <summary>
+        /// Looking for all contacts by first and last name
+        /// </summary>
+        private void SearchContact()
+        {
+	        if (Search.Text.Length == 0)
+	        {
+		        _contacts = _project.SearchContacts();
+	        }
+	        else
+	        {
+		        _contacts = _project.SearchContacts(Search.Text);
+	        }
+	        UpdatesListBox(_contacts);
+        }
+
+		/// <summary>
+		/// Clears all Text boxes
+		/// </summary>
+		private void ClearTextBoxes()
+        {
+	        SurnameTextBox.Clear();
+	        NameTextBox.Clear();
+	        BirthdayDateTimePicker.Value = BirthdayDateTimePicker.MinDate;
+	        PhoneMaskedTextBox.Clear();
+	        EmailTextBox.Clear();
+	        VkTextBox.Clear();
+        }
+
+        /// <summary>
+        /// Update Contacts list box
+        /// </summary>
+        private void UpdatesListBox(List<Contact> contacts)
+        {
+	        ContactsListBox.DataSource = null;
+	        ContactsListBox.DataSource = contacts;
+	        ContactsListBox.DisplayMember = "Surname";
+	        ContactsListBox.ValueMember = "PhoneNumber";
+        }
+
+        /// <summary>
+        /// Changes Text Boxes
+        /// </summary>
+        /// <param name="contact">
+        /// Contact to add to Text Boxes
+        /// </param>
+        private void ChangeTextBoxes(Contact contact)
+        {
+	        SurnameTextBox.Text = contact.Surname;
+	        NameTextBox.Text = contact.Name;
+	        BirthdayDateTimePicker.Value = contact.Birthday;
+	        PhoneMaskedTextBox.Text = contact.PhoneNumber.Number.ToString();
+	        EmailTextBox.Text = contact.Email;
+	        VkTextBox.Text = contact.VkId;
+        }
+
+        /// <summary>
+        /// Remove the element
+        /// </summary>
+        private void RemoveElement()
+        {
+	        var selectedIndex = ContactsListBox.SelectedIndex;
+	        if (selectedIndex != -1)
+	        {
+		        var choice = MessageBox.Show("Are you sure you want to delete",
+			        "To delete", MessageBoxButtons.YesNo);
+		        if (choice == DialogResult.Yes)
+		        {
+			        var selectedContact = _contacts[selectedIndex];
+			        _project.Contacts.Remove(selectedContact);
+			        ProjectManager.SaveProject(_project);
+			        SearchContact();
+			        UpdatesListBox(_contacts);
+			        ContactsListBox.ClearSelected();
+			        ClearTextBoxes();
+		        }
+	        }
+	        else
+	        {
+		        MessageBox.Show("No contact selected", "Error",
+			        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+	        }
+        }
+
+
 		public MainForm()
 		{
 			InitializeComponent();
@@ -121,34 +206,6 @@ namespace ContactsAppUI
 			RemoveElement();
 		}
 
-		/// <summary>
-		/// Remove the element
-		/// </summary>
-		private void RemoveElement()
-		{
-			var selectedIndex = ContactsListBox.SelectedIndex;
-			if (selectedIndex != -1)
-			{
-				var choice = MessageBox.Show("Are you sure you want to delete",
-					"To delete", MessageBoxButtons.YesNo);
-				if (choice == DialogResult.Yes)
-				{
-					var selectedContact = _contacts[selectedIndex];
-					_project.Contacts.Remove(selectedContact);
-					ProjectManager.SaveProject(_project);
-					SearchContact();
-					UpdatesListBox(_contacts);
-					ContactsListBox.ClearSelected();
-					ClearTextBoxes();
-				}
-			}
-			else
-			{
-				MessageBox.Show("No contact selected", "Error",
-					MessageBoxButtons.OK, MessageBoxIcon.Warning);
-			}
-		}
-
 		private void ListBox1_SelectedIndexChanged(object sender,
 			EventArgs e)
 		{
@@ -191,65 +248,11 @@ namespace ContactsAppUI
 			ProjectManager.SaveProject(_project);
 		}
 
-		/// <summary>
-		/// Clears all Text boxes
-		/// </summary>
-		private void ClearTextBoxes()
-		{
-			SurnameTextBox.Clear();
-			NameTextBox.Clear();
-			BirthdayDateTimePicker.Value = BirthdayDateTimePicker.MinDate;
-			PhoneMaskedTextBox.Clear();
-			EmailTextBox.Clear();
-			VkTextBox.Clear();
-		}
-
-		/// <summary>
-		/// Update Contacts list box
-		/// </summary>
-		private void UpdatesListBox(List<Contact> contacts)
-		{
-            ContactsListBox.DataSource = null;
-			ContactsListBox.DataSource = contacts;
-			ContactsListBox.DisplayMember = "Surname";
-			ContactsListBox.ValueMember = "PhoneNumber";
-		}
-
-		/// <summary>
-		/// Changes Text Boxes
-		/// </summary>
-		/// <param name="contact">
-		/// Contact to add to Text Boxes
-		/// </param>
-		private void ChangeTextBoxes(Contact contact)
-		{
-			SurnameTextBox.Text = contact.Surname;
-			NameTextBox.Text = contact.Name;
-			BirthdayDateTimePicker.Value = contact.Birthday;
-			PhoneMaskedTextBox.Text = contact.PhoneNumber.Number.ToString();
-			EmailTextBox.Text = contact.Email;
-			VkTextBox.Text = contact.VkId;
-		}
-
 		private void Search_TextChanged(object sender, EventArgs e)
 		{
 			SearchContact();
 		}
 
-		/// <summary>
-		/// Looking for all contacts by first and last name
-		/// </summary>
-		private void SearchContact()
-		{
-			if (Search.Text.Length == 0)
-			{
-				_contacts = _project.SearchContacts();
-			}
-			else
-			{
-				_contacts = _project.SearchContacts(Search.Text);
-			}
-			UpdatesListBox(_contacts);
-		}
+		
 	}
 }

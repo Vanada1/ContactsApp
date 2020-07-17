@@ -278,9 +278,9 @@
 		private System.Windows.Forms.Label Birthday;
 		private System.Windows.Forms.Label NamePerson;
 		private System.Windows.Forms.Label Surname;
-		private System.Windows.Forms.Button OKButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+		private System.Windows.Forms.Button OKButton;
 	}
 }

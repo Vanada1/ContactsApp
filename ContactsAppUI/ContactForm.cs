@@ -60,7 +60,6 @@ namespace ContactsAppUI
 				MessageBox.Show("Incorrect value: \n" +
 					exception.Message, "Error", MessageBoxButtons.OK,
 					MessageBoxIcon.Error);
-				return;
 			}
 		}
 
