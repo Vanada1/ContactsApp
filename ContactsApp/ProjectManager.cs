@@ -41,7 +41,7 @@ namespace ContactsAppBL
 		/// Read file along the folder
 		/// </summary>
 		/// <param name="path">Path to the file.
-		/// If <paramref name="path"/> is Null then take defult value
+		/// If <paramref name="path"/> is Null then take default value
 		/// </param>
 		/// <returns>
 		/// Returns all data from file
