@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ContactsAppBL
 {
-    //TODO: Открой форму через дизайнер и найди ошибку (done)
+    //TODO: Открой форму через дизайнер и найди ошибку (done) - Посмотри еще раз
     public partial class About : Form
 	{
 		public About()
