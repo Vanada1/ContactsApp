@@ -21,6 +21,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -38,9 +39,9 @@
 			this.label1.Location = new System.Drawing.Point(16, 12);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(152, 35);
+			this.label1.Size = new System.Drawing.Size(165, 35);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "CotactApp";
+			this.label1.Text = "CotactsApp";
 			// 
 			// label2
 			// 
@@ -74,7 +75,7 @@
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(103, 17);
 			this.label4.TabIndex = 3;
-			this.label4.Text = "email feedback: ";
+			this.label4.Text = "Email feedback: ";
 			// 
 			// linkLabel1
 			// 
@@ -137,9 +138,11 @@
 			this.Controls.Add(this.label4);
 			this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "About";
 			this.Text = "About";
+			this.Load += new System.EventHandler(this.About_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

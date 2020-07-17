@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ContactsAppBL
 {
-    //TODO: Открой форму через дизайнер и найди ошибку
+    //TODO: Открой форму через дизайнер и найди ошибку (done)
     public partial class About : Form
 	{
 		public About()
@@ -19,6 +19,11 @@ namespace ContactsAppBL
 		}
 
 		private void Label2_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void About_Load(object sender, EventArgs e)
 		{
 
 		}
